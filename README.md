@@ -51,7 +51,7 @@ Libraries/Frameworks |
 -------------------- |
 Database: Postgres |
 Backend : Sails.js |
-Node Library: https://github.com/andris9/Nodemailer
+Node Library: https://github.com/andris9/Nodemailer |
 MCV Framework: Angular.js |
 Angular:  Angular-ui-router |
 Library: validator.js |
@@ -61,8 +61,8 @@ Library: lodash.js |
 
 ----------------- |
 Email: travis.czerw@gmail.com |
-Twitter: https://twitter.com/TRexCzerw
-linkedIn: www.linkedin.com/in/TravisCzerw
+Twitter: https://twitter.com/TRexCzerw |
+linkedIn: www.linkedin.com/in/TravisCzerw |
 
 
 
