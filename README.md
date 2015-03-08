@@ -59,7 +59,7 @@ Library: lodash.js |
 
 ## Contact Information
 
------------------ |
+------------------------------------------- |
 Email: travis.czerw@gmail.com |
 Twitter: https://twitter.com/TRexCzerw |
 linkedIn: www.linkedin.com/in/TravisCzerw |
