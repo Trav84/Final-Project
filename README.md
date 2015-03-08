@@ -45,6 +45,18 @@ email: string, required, unique |
 
 The school model will track the information about a specific code school. The school will be able to log in and manage their students/tests. There will be one school for many students (one to many relation). The password and email will need to be verified (strong enough password, valid email). The rest needs to be verified that they are valid inputs (not empety strings or null). Validation will be done on the front-end by angular.
 
+## API List
+
+I will use the following API's:
+Libraries/Frameworks |
+--- |
+Database: Postgres |
+Backend : Sails.js |
+MCV Framework: Angular.js |
+Angular:  Angular-ui-router |
+Library: validator.js |
+Library: lodash.js |
+
 
 
 
