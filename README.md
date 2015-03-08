@@ -16,13 +16,14 @@ https://trello.com/b/7VdYtPS1/final-project
 
 ## Data Models
 
-**Student Model**
-school : string, required 
-name : string, required
-email: string, required, unique
-program : string, required
-login key : string, required, unique
-tests complete : boolean, required
+**Student Model** |
+----------------- |
+school : string, required | 
+name : string, required |
+email: string, required, unique |
+program : string, required |
+login key : string, required, unique |
+tests complete : boolean, required |
 
 The student model will track an individual student. They will be able to log into the site with a unique key sent to them and then take tests assigned to them by their school. There will be many students to one school (one to many relation). The only information a student will enter is their key and that will need to be verified. The rest is managed for them. Validation will be done on the front-end by angular.
 
