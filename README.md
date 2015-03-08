@@ -14,5 +14,35 @@ Student Eval seeks to assist in basic core evaluation of students once they have
 
 https://trello.com/b/7VdYtPS1/final-project
 
+## Data Models
+
+**Student Model**
+school : string, required 
+name : string, required
+email: string, required, unique
+program : string, required
+login key : string, required, unique
+tests complete : boolean, required
+
+The student model will track an individual student. They will be able to log into the site with a unique key sent to them and then take tests assigned to them by their school. There will be many students to one school (one to many relation). The only information a student will enter is their key and that will need to be verified. The rest is managed for them. Validation will be done on the front-end by angular.
+
+
+**Test Results Model**
+test name: string, required, unique
+questions: array, required
+results: array, required
+
+
+**School Model**
+name: string, required, unique
+programs: array, required
+username: string, required, unique
+password: string, required, unique
+email: string, required, unique
+
+The school model will track the information about a specific code school. The school will be able to log in and manage their students/tests. There will be one school for many students (one to many relation). The password and email will need to be verified (strong enough password, valid email). The rest needs to be verified that they are valid inputs (not empety strings or null). Validation will be done on the front-end by angular.
+
+
+
 
 
