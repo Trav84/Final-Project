@@ -32,7 +32,7 @@ The student model will track an individual student. They will be able to log int
 ---------------------- |
 test name: string, required, unique |
 questions: array, required |
-results: array, required |
+results: integer, required |
 
 
 **School Model** |
