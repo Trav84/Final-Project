@@ -12,6 +12,7 @@ Student Eval seeks to assist in basic core evaluation of students once they have
 
 ## User Stories
 
+https://trello.com/b/7VdYtPS1/final-project
 
 
 
