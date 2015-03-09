@@ -1,0 +1,54 @@
+/**
+ * importer.less
+ *
+ * By default, new Sails projects are configured to compile this file
+ * from LESS to CSS.  Unlike CSS files, LESS files are not compiled and
+ * included automatically unless they are imported below.
+ *
+ * The LESS files imported below are compiled and included in the order
+ * they are listed.  Mixins, variables, etc. should be imported first
+ * so that they can be accessed by subsequent LESS stylesheets.
+ *
+ * (Just like the rest of the asset pipeline bundled in Sails, you can
+ * always omit, customize, or replace this behavior with SASS, SCSS,
+ * or any other Grunt tasks you like.)
+ */
+@import url(reset.css);
+.test {
+  color: blue; }
+
+header {
+  background-color: #333333; }
+  header h1 {
+    color: white;
+    text-align: center;
+    padding: 1em 1em;
+    padding-bottom: 0.5em;
+    font-size: 2em; }
+  header div {
+    display: inline-block;
+    padding: 1em 2em;
+    color: white;
+    border: 1px solid white;
+    border-bottom: none; }
+  header div:hover {
+    background-color: grey; }
+
+.landing .wrapper {
+  margin: 0 auto;
+  margin-top: 3em;
+  text-align: center;
+  overflow: hidden;
+  width: 50%; }
+.landing div {
+  float: left;
+  margin: 1em 0.5em;
+  padding: 2em 1em;
+  border: 1px solid black;
+  border-radius: 5px;
+  width: 45%;
+  box-sizing: border-box; }
+.landing a {
+  color: black; }
+
+/*# sourceMappingURL=importer.css.map */

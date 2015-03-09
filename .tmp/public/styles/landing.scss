@@ -1,0 +1,24 @@
+.landing {
+
+	.wrapper {
+		margin:0 auto;
+		margin-top:3em;
+		text-align: center;
+		overflow:hidden;
+		width:50%;
+	}
+
+	div {
+		float:left;
+		margin:1em 0.5em;
+		padding:2em 1em;
+		border:1px solid black;
+		border-radius:5px;
+		width:45%;
+		box-sizing: border-box;
+	}
+
+	a {
+		color:black;
+	}
+}
