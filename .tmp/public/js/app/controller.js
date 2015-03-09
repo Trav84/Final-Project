@@ -35,16 +35,21 @@ angular.module('app.controllers', [])
 	};
 })
 .controller('testCtrl', function($scope, $http) {
-	$http.get('/Suite')
-	.success(function(recieved) {
-		console.log(recieved);
-		$scope.title = recieved[0].name;
-		$scope.question = recieved[0].questions[0].title;
 
-			$http.get('/SuiteAnswers?SuiteQuestionID='+recieved[0].questions[0].id)
+	var correctAnswer = null;
+	var position = 0;
+	var questionArray = [];
+
+	$http.get('/Suite')
+	.success(function(allQuestions) {
+		questionArray = allQuestions;
+		$scope.title = questionArray[0].name;
+		$scope.question = questionArray[0].questions[0].title;
+
+			$http.get('/SuiteAnswers?SuiteQuestionID='+questionArray[0].questions[0].id)
 			.success(function(answers) {
 				$scope.choices = answers;
-				console.log(answers);
+				correctAnswer = questionArray[0].questions[position].answer;
 			})
 			.error(function(err) {
 				console.log(err);
@@ -53,4 +58,29 @@ angular.module('app.controllers', [])
 	.error(function(err) {
 		console.log(err);
 	});
+
+	function getQuestion(position) {
+		$scope.question = questionArray[0].questions[position].title;
+
+		$http.get('/SuiteAnswers?SuiteQuestionID='+questionArray[0].questions[position].id)
+			.success(function(answers) {
+				$scope.choices = answers;
+				correctAnswer = questionArray[0].questions[position].answer;
+			})
+			.error(function(err) {
+				console.log(err);
+			});
+	}
+
+
+	$scope.choiceClick = function(choice) {
+		if(choice === correctAnswer) {
+			console.log('Correct answer was selected');
+			position++;
+			getQuestion(position);
+		} 
+		else {
+			console.log('Wrong answer was selected');
+		}
+	};
 });

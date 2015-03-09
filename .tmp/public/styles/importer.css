@@ -84,7 +84,14 @@ header {
   margin: 0 auto;
   margin: 1em 1em;
   text-align: center; }
+  .test .wrapper {
+    margin: 0 auto; }
   .test ul div {
-    border: 1px solid black; }
+    border: 1px solid black;
+    padding: 1em 1em;
+    margin: 1em auto;
+    width: 20%; }
+  .test ul div:hover {
+    background-color: grey; }
 
 /*# sourceMappingURL=importer.css.map */

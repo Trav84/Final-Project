@@ -3,12 +3,18 @@
 	margin:1em 1em;
 	text-align:center;
 
+	.wrapper {
+		margin:0 auto;
+	}
+
 	ul div {
 		border:1px solid black;
 		padding:1em 1em;
-		margin:1em 1em;
-		width:25%;
+		margin:1em auto;
+		width:20%;
 	}
 
-
+	ul div:hover {
+		background-color:grey;
+	}
 }

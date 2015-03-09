@@ -54,7 +54,7 @@ this["JST"]["assets/templates/test.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<section class="test">\n\t<h1 ng-bind="title"> [Test Name] </h1>\n\t<h2 ng-bind="question"> [Question Title] </h2>\n\t<ul ng-repeat="choice in choices">\n\t\t<div> {{ choice.displayText }} </div>\n\t</ul>\n</section>';
+__p += '<section class="test">\n\t<h1 ng-bind="title"> [Test Name] </h1>\n\t<h2> 1. {{question}}</h2>\n\t<section class="wrapper">\n\t\t<ul ng-repeat="choice in choices">\n\t\t\t<div ng-click="choiceClick(choice.answer)"> {{ choice.displayText }} </div>\n\t\t</ul>\n\t</section>\n</section>';
 
 }
 return __p
