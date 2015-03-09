@@ -14,7 +14,27 @@ this["JST"]["assets/templates/schoolLogIn.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += 'School Log In Page';
+__p += '<section class="school-login">\n\t<form>\n\t\t<input type="text" placeholder="Email">\n\t\t<input type="password" placeholder="Password">\n\t\t<button> Log In </button>\n\t</form>\n\n\t<button ng-click="schoolRegisterClick()"> Register New Code School </button>\n</section>';
+
+}
+return __p
+};
+
+this["JST"]["assets/templates/schoolRegister.html"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __e = _.escape;
+with (obj) {
+__p += '<section class="school-register">\n\t<form>\n\t\t<input type="text" placeholder="School Name">\n\t\t<input type="text" placeholder="Email">\n\t\t<input type="text" placeholder="Programs/Tracks You Offer">\n\t\t<input type="password" placeholder="Password">\n</section>';
+
+}
+return __p
+};
+
+this["JST"]["assets/templates/studentDashboard.html"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __e = _.escape;
+with (obj) {
+__p += '<section class="student-dash">\n\t<h2> Welcome [name] </h2>\n\t<p> You are here because you\'ve been accepted into a code school and are about to embark on a new journey.Congratulations! [School Name] has selected a set of simple assessment tests for you to complete so they can better understand the basic skill set you are bringing into class. This helps them tailor their cirriculum and course work to better suit the needs of you and your fellow classmates. Just click on a test below to get started. </p> \n\t<button ng-click="testClick()" class="test"> Terminal Line Assessment </button>\n\t<button ng-click="testClick()" class="test"> JavaScript Assessment </button>\n</section>';
 
 }
 return __p
@@ -24,7 +44,17 @@ this["JST"]["assets/templates/studentLogIn.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += 'Student Log In Page';
+__p += '<section class="student-login">\n\t<h2> Please enter the key you were emailed to log in </h2>\n\t<form ng-submit="studentLoginSubmit(uniqueKey)">\n\t\t<input ng-model="uniqueKey" type="text" placeholder="Key">\n\t\t<button> Log In </button>\n\t</form>\n\t<p ng-bind="errorMsg"> </p>\n</section>';
+
+}
+return __p
+};
+
+this["JST"]["assets/templates/test.html"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __e = _.escape;
+with (obj) {
+__p += 'I\'m a test!';
 
 }
 return __p

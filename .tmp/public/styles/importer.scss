@@ -29,10 +29,11 @@
 //
 // etc.
 
-.test {
-	color: blue;
-}
 
 @import 'reset.css';
 @import 'homepage.scss';
 @import 'landing.scss';
+@import 'schoolLogIn.scss';
+@import 'studentLogIn.scss';
+@import 'schoolRegister.scss';
+@import 'studentDashboard.scss';

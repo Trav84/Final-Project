@@ -1,1 +1,8 @@
-Student Log In Page
+<section class="student-login">
+	<h2> Please enter the key you were emailed to log in </h2>
+	<form ng-submit="studentLoginSubmit(uniqueKey)">
+		<input ng-model="uniqueKey" type="text" placeholder="Key">
+		<button> Log In </button>
+	</form>
+	<p ng-bind="errorMsg"> </p>
+</section>

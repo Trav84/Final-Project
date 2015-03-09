@@ -14,9 +14,6 @@
  * or any other Grunt tasks you like.)
  */
 @import url(reset.css);
-.test {
-  color: blue; }
-
 header {
   background-color: #333333; }
   header h1 {
@@ -25,12 +22,13 @@ header {
     padding: 1em 1em;
     padding-bottom: 0.5em;
     font-size: 2em; }
-  header div {
+  header a {
     display: inline-block;
     padding: 1em 2em;
     color: white;
     border: 1px solid white;
-    border-bottom: none; }
+    border-bottom: none;
+    text-decoration: none; }
   header div:hover {
     background-color: grey; }
 
@@ -50,5 +48,36 @@ header {
   box-sizing: border-box; }
 .landing a {
   color: black; }
+
+.school-login {
+  margin: 0 auto;
+  margin: 1em 1em;
+  text-align: center; }
+
+.student-login {
+  margin: 0 auto;
+  margin: 1em 1em;
+  text-align: center; }
+
+.school-register {
+  margin: 0 auto;
+  margin: 1em 1em;
+  text-align: center; }
+
+.student-dash .test {
+  padding: 1em 1em;
+  border: 1px solid black;
+  margin: 0 auto;
+  margin-top: 3em;
+  text-align: center;
+  width: 30%;
+  border-radius: 5px;
+  display: block;
+  cursor: pointer;
+  background-color: white;
+  font-size: 1.5em; }
+.student-dash a {
+  color: black;
+  text-decoration: none; }
 
 /*# sourceMappingURL=importer.css.map */

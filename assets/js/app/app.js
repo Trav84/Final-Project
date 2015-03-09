@@ -30,6 +30,11 @@ angular.module('app', ['app.controllers','ui.router'])
 		url: '/schoolRegister',
 		templateUrl: 'templates/schoolRegister.html',
 		controller: 'schoolRegisterCtrl'
+	})
+	.state('test', {
+		url: '/test',
+		templateUrl: 'templates/test.html',
+		controller: 'testCtrl'
 	});
 	$urlRouterProvider.otherwise('/landing');
 });
