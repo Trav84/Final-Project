@@ -24,7 +24,7 @@ this["JST"]["assets/templates/schoolRegister.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<section class="school-register">\n\t<form>\n\t\t<input type="text" placeholder="School Name">\n\t\t<input type="text" placeholder="Email">\n\t\t<input type="text" placeholder="Programs/Tracks You Offer">\n\t\t<input type="password" placeholder="Password">\n</section>';
+__p += '<section class="school-register">\n\t<form>\n\t\t<div>\n\t\t\t<h3> Enter your instution\'s name </h3>\n\t\t\t<input type="text" placeholder="School Name">\n\t\t</div>\n\t\t<div>\n\t\t\t<h3> Enter your email </h3>\n\t\t\t<input type="text" placeholder="Email">\n\t\t</div>\n\t\t<div>\n\t\t\t<h3> Enter the different programs or tracks you offer. For example, you might add "Front End Development", "Web Design", "Python" or "iOS Development". </h3>\n\t\t\t<input type="text" placeholder="Programs/Tracks You Offer">\n\t\t</div>\n\t\t<input type="password" placeholder="Password">\n</section>';
 
 }
 return __p
@@ -54,7 +54,7 @@ this["JST"]["assets/templates/test.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += 'I\'m a test!';
+__p += '<section class="test">\n\t<h1 ng-bind="title"> [Test Name] </h1>\n\t<h2 ng-bind="question"> [Question Title] </h2>\n\t<ul ng-repeat="choice in choices">\n\t\t<div> {{ choice.displayText }} </div>\n\t</ul>\n</section>';
 
 }
 return __p

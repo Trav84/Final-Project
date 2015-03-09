@@ -34,6 +34,23 @@ angular.module('app.controllers', [])
 		$state.go('test');
 	};
 })
-.controller('testCtrl', function() {
+.controller('testCtrl', function($scope, $http) {
+	$http.get('/Suite')
+	.success(function(recieved) {
+		console.log(recieved);
+		$scope.title = recieved[0].name;
+		$scope.question = recieved[0].questions[0].title;
 
+			$http.get('/SuiteAnswers?SuiteQuestionID='+recieved[0].questions[0].id)
+			.success(function(answers) {
+				$scope.choices = answers;
+				console.log(answers);
+			})
+			.error(function(err) {
+				console.log(err);
+			});
+	})
+	.error(function(err) {
+		console.log(err);
+	});
 });

@@ -1,1 +1,7 @@
-I'm a test!
+<section class="test">
+	<h1 ng-bind="title"> [Test Name] </h1>
+	<h2 ng-bind="question"> [Question Title] </h2>
+	<ul ng-repeat="choice in choices">
+		<div> {{ choice.displayText }} </div>
+	</ul>
+</section>

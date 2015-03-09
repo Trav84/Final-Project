@@ -80,4 +80,11 @@ header {
   color: black;
   text-decoration: none; }
 
+.test {
+  margin: 0 auto;
+  margin: 1em 1em;
+  text-align: center; }
+  .test ul div {
+    border: 1px solid black; }
+
 /*# sourceMappingURL=importer.css.map */
