@@ -1,24 +1,24 @@
 <section class="school-register">
-	<form>
+	<form ng-submit="schoolRegister(username, email, password)">
 		<div>
 			<h3> Enter your instution's name </h3>
-			<input type="text" placeholder="School Name">
+			<input ng-model="username" type="text" placeholder="School Name">
 		</div>
 		<div>
 			<h3> Enter your email </h3>
-			<input type="text" placeholder="Email">
+			<input ng-model="email" type="text" placeholder="Email">
 		</div>
-		<div>
+		<!-- <div>
 			<h3> Enter the number of different programs of tracks you offer (i.e. 4 or 5). </h3>
 			<input ng-change="programNumber(numOfPrograms)" ng-model="numOfPrograms" type="text" placeholder="6">
 			<h3> Enter the different programs or tracks you offer. For example, you might add "Front End Development", "Web Design", "Python" or "iOS Development". </h3>
 			<div ng-repeat="program in programs track by $index">
 				 Program: <input type="text" placeholder="Program/Track You Offer"> 
-			</div
-		</div>
+			</div>
+		</div> -->
 		<div>
 			<h3> Enter a password. It must be at least 8 characters long. </h3>
-			<input type="password" placeholder="Password">
+			<input ng-model="password" type="password" placeholder="Password">
 		</div>
 		<button> Register New Code School </button>
 </section>

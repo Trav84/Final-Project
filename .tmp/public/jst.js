@@ -30,6 +30,16 @@ __p += '<section class="landing">\n\t<section class="wrapper">\n\t\t<a ui-sref="
 return __p
 };
 
+this["JST"]["assets/templates/schoolDashboard.html"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __e = _.escape;
+with (obj) {
+__p += 'School Dashboard';
+
+}
+return __p
+};
+
 this["JST"]["assets/templates/schoolLogIn.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
@@ -44,7 +54,7 @@ this["JST"]["assets/templates/schoolRegister.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<section class="school-register">\n\t<form>\n\t\t<div>\n\t\t\t<h3> Enter your instution\'s name </h3>\n\t\t\t<input type="text" placeholder="School Name">\n\t\t</div>\n\t\t<div>\n\t\t\t<h3> Enter your email </h3>\n\t\t\t<input type="text" placeholder="Email">\n\t\t</div>\n\t\t<div>\n\t\t\t<h3> Enter the number of different programs of tracks you offer (i.e. 4 or 5). </h3>\n\t\t\t<input ng-change="programNumber(numOfPrograms)" ng-model="numOfPrograms" type="text" placeholder="6">\n\t\t\t<h3> Enter the different programs or tracks you offer. For example, you might add "Front End Development", "Web Design", "Python" or "iOS Development". </h3>\n\t\t\t<div ng-repeat="program in programs track by $index">\n\t\t\t\t Program: <input type="text" placeholder="Program/Track You Offer"> \n\t\t\t</div\n\t\t</div>\n\t\t<div>\n\t\t\t<h3> Enter a password. It must be at least 8 characters long. </h3>\n\t\t\t<input type="password" placeholder="Password">\n\t\t</div>\n\t\t<button> Register New Code School </button>\n</section>\n';
+__p += '<section class="school-register">\n\t<form ng-submit="schoolRegister(username, email, password)">\n\t\t<div>\n\t\t\t<h3> Enter your instution\'s name </h3>\n\t\t\t<input ng-model="username" type="text" placeholder="School Name">\n\t\t</div>\n\t\t<div>\n\t\t\t<h3> Enter your email </h3>\n\t\t\t<input ng-model="email" type="text" placeholder="Email">\n\t\t</div>\n\t\t<!-- <div>\n\t\t\t<h3> Enter the number of different programs of tracks you offer (i.e. 4 or 5). </h3>\n\t\t\t<input ng-change="programNumber(numOfPrograms)" ng-model="numOfPrograms" type="text" placeholder="6">\n\t\t\t<h3> Enter the different programs or tracks you offer. For example, you might add "Front End Development", "Web Design", "Python" or "iOS Development". </h3>\n\t\t\t<div ng-repeat="program in programs track by $index">\n\t\t\t\t Program: <input type="text" placeholder="Program/Track You Offer"> \n\t\t\t</div>\n\t\t</div> -->\n\t\t<div>\n\t\t\t<h3> Enter a password. It must be at least 8 characters long. </h3>\n\t\t\t<input ng-model="password" type="password" placeholder="Password">\n\t\t</div>\n\t\t<button> Register New Code School </button>\n</section>\n';
 
 }
 return __p
@@ -54,7 +64,7 @@ this["JST"]["assets/templates/studentDashboard.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<section class="student-dash">\n\t<h2> Welcome [name] </h2>\n\t<p> You are here because you\'ve been accepted into a code school and are about to embark on a new journey.Congratulations! [School Name] has selected a set of simple assessment tests for you to complete so they can better understand the basic skill set you are bringing into class. This helps them tailor their cirriculum and course work to better suit the needs of you and your fellow classmates. Just click on a test below to get started. </p> \n\t<button ng-click="testClick(0)" class="test" ng-repeat="test in tests"> {{ test.name }} </button>\n</section>';
+__p += '<section class="student-dash">\n\t<h2> Welcome [name] </h2>\n\t<p> You are here because you\'ve been accepted into a code school and are about to embark on a new journey.Congratulations! [School Name] has selected a set of simple assessment tests for you to complete so they can better understand the basic skill set you are bringing into class. This helps them tailor their cirriculum and course work to better suit the needs of you and your fellow classmates. Just click on a test below to get started. </p> \n\t<button ng-click="testClick(test.id)" class="test" ng-repeat="test in tests"> {{ test.name }} </button>\n</section>';
 
 }
 return __p

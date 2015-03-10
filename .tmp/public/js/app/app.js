@@ -32,7 +32,7 @@ angular.module('app', ['app.controllers','ui.router'])
 		controller: 'schoolRegisterCtrl'
 	})
 	.state('test', {
-		url: '/test',
+		url: '/test/:id',
 		templateUrl: 'templates/test.html',
 		controller: 'testCtrl'
 	})

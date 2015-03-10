@@ -25,7 +25,7 @@ angular.module('app.controllers', ['app.services'])
 		$state.go('schoolRegister');
 	};
 })
-.controller('schoolRegisterCtrl', function($scope) {
+.controller('schoolRegisterCtrl', function($scope, $http, $state) {
 
 	$scope.programs = [];
 
@@ -40,6 +40,75 @@ angular.module('app.controllers', ['app.services'])
 			console.log($scope.programs);
 		}
 	};
+
+	$scope.schoolRegister = function(username, email, password) {
+		var errorObject = {
+			userPass: false,
+			emailPass: false,
+			passPass: false
+		}
+
+		var loginObject = {
+			username: '',
+			email: '',
+			password: ''
+		}
+
+		if(validator.isNull(username)) {
+			console.log('Username is null');
+		}
+		else if(username.length === 0) {
+			console.log('Username is an empty string');
+		}
+		else {
+			errorObject.userPass = true;
+			loginObject.username = username;
+		}
+
+		if(!validator.isEmail(email)) {
+			console.log('Email is not a valid email');
+		}
+		else if(email.length === 0) {
+			console.log('Email is an empty string');
+		}
+		else {
+			errorObject.emailPass = true;
+			loginObject.email = email;
+		}
+
+		if(validator.isNull(password)) {
+			console.log('Password is null');
+		}
+		else if(password.length === 0) {
+			console.log('Password is an empty string');
+		}
+		else if(password.length < 8) {
+			console.log('Password is too short')
+		}
+		else {
+			errorObject.passPass = true;
+			loginObject.password = password;
+		}
+		console.log(loginObject);
+
+		if(errorObject.userPass && errorObject.emailPass && errorObject.passPass) {
+			console.log('All pass, can post');
+			$http.post('/auth/local/register', loginObject)
+			.success(function(res) {
+				console.log(res);
+				if(res.errors.length > 0) {
+					$scope.loginErrorArray = errorMessageSort(res.errors[0]);
+				}
+				if(res.success) {
+					$state.go('scchoolDashboard');
+				}
+			})
+			.error(function(err) {
+				console.log('Error!');
+				console.log(err);
+			});
+		}
+	}
 })
 .controller('studentDashboardCtrl', function($scope, $http, $state, testNumberShare) {
 
@@ -51,32 +120,30 @@ angular.module('app.controllers', ['app.services'])
 		console.log(err);
 	})
 
-	$scope.testClick = function(test) {
-		testNumberShare(test);
-		console.log('Test '+test+' was chosen');
-		$state.go('test');
+	$scope.testClick = function(testID) {
+		console.log('Test '+testID+' was chosen');
+		$state.go('test',{id:testID});
 	};
 })
-.controller('testCtrl', function($scope, $http, $state, testNumberShare) {
+.controller('testCtrl', function($scope, $http, $state, $stateParams) {
 
 	var correctAnswer = null;
 	var position = 0;
-	var test = 0;
+	var test = $stateParams.id;
 	var question = 0;
 	var numberCorrect = 0;
-	$scope.testNumber = testNumberShare.test;
 	
-	function getTestData(test, question) {
+	function getTestData(question) {
 		if(question < 2) {
-			$http.get('/Suite')
+			$http.get('/Suite?id='+test)
 			.success(function(testAndQuestions) {
-				$scope.title = testAndQuestions[test].name;
-				$scope.question = testAndQuestions[test].questions[question].title;
+				$scope.title = testAndQuestions.name;
+				$scope.question = testAndQuestions.questions[question].title;
 
-				$http.get('/SuiteAnswers?SuiteQuestionID='+testAndQuestions[test].questions[question].id)
+				$http.get('/SuiteAnswers?SuiteQuestionID='+testAndQuestions.questions[question].id)
 					.success(function(answers) {
 						$scope.choices = answers;
-						correctAnswer = testAndQuestions[test].questions[question].answer;
+						correctAnswer = testAndQuestions.questions[question].answer;
 					})
 					.error(function(err) {
 						console.log(err);
@@ -93,7 +160,7 @@ angular.module('app.controllers', ['app.services'])
 		}
 	}
 
-	getTestData(test,question);
+	getTestData(question);
 
 	$scope.choiceClick = function(choice) {
 
@@ -101,12 +168,13 @@ angular.module('app.controllers', ['app.services'])
 			console.log('Correct answer was selected');
 			question++;
 			numberCorrect++;
-			getTestData(test, question);
+			getTestData(question);
+
 		} 
 		else {
 			console.log('Wrong answer was selected');
 			question++;
-			getTestData(test, question);
+			getTestData(question);
 		}
 	};
 })

@@ -1,15 +1,15 @@
 angular.module('app.services', []) 
 .factory('getTestDetails', function($http) {
 
-	return function() {
+	return function(cb) {
 		var title = '';
 
 		$http.get('/Suite')
 		.success(function(testAndQuestions) {
-			title = testAndQuestions[0].name;
+			cb(null, testAndQuestions[0].name);
 		})
 		.error(function(err) {
-			console.log(err);
+			cb(err);
 		});
 		return title;
 	};
