@@ -45,6 +45,11 @@ angular.module('app', ['app.controllers','ui.router'])
 		url: '/codeSchools',
 		templateUrl: 'templates/codeSchools.html',
 		controller: 'codeSchoolsCtrl'
+	})
+	.state('about', {
+		url: '/about',
+		templateUrl: 'templates/about.html',
+		controller: 'aboutCtrl'
 	});
 	$urlRouterProvider.otherwise('/landing');
 });

@@ -41,7 +41,15 @@ angular.module('app.controllers', ['app.services'])
 		}
 	};
 })
-.controller('studentDashboardCtrl', function($scope, $state, testNumberShare) {
+.controller('studentDashboardCtrl', function($scope, $http, $state, testNumberShare) {
+
+	$http.get('/Suite')
+	.success(function(testData) {
+		$scope.tests = testData;
+	})
+	.error(function(err){
+		console.log(err);
+	})
 
 	$scope.testClick = function(test) {
 		testNumberShare(test);
@@ -55,6 +63,7 @@ angular.module('app.controllers', ['app.services'])
 	var position = 0;
 	var test = 0;
 	var question = 0;
+	var numberCorrect = 0;
 	$scope.testNumber = testNumberShare.test;
 	
 	function getTestData(test, question) {
@@ -79,7 +88,7 @@ angular.module('app.controllers', ['app.services'])
 		}
 		else {
 			console.log('No more questions. End of test');
-
+			console.log('Student got '+numberCorrect+' answers correct');
 			$state.go('testEnd');
 		}
 	}
@@ -91,10 +100,13 @@ angular.module('app.controllers', ['app.services'])
 		if(choice === correctAnswer) {
 			console.log('Correct answer was selected');
 			question++;
+			numberCorrect++;
 			getTestData(test, question);
 		} 
 		else {
 			console.log('Wrong answer was selected');
+			question++;
+			getTestData(test, question);
 		}
 	};
 })
@@ -104,5 +116,8 @@ angular.module('app.controllers', ['app.services'])
 	}
 })
 .controller('codeSchoolsCtrl', function() {
+
+})
+.controller('aboutCtrl', function() {
 
 });

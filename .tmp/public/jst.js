@@ -1,5 +1,15 @@
 this["JST"] = this["JST"] || {};
 
+this["JST"]["assets/templates/about.html"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __e = _.escape;
+with (obj) {
+__p += '<section class="about">\n\t<h1> Why Codify? </h1>\n\t<p> Codify exists because I believe code schools like the Iron Yard are a vital bridge to the future of education. These insututions are not only helping fulfill a need in the tech industry, but they also transform lives and help people become creators and builders in their world rather than simply consumers and users. Programming and it\'s related skills allow individuals to bring their ideas to life and share them with the world. No other one skill has such a profound impact upon a person in our modern world.</p>\n\n\t<p> But code schools face a unique challenge. Many of those who enter their doors have little to no experience with programming in any shape or form. They come from all walks of lives - from all ages and backgrounds. Classes may have students ranging from industry veterans looking to freshen up or change skillsets to users whose backgrounds may have not ehmphasized even light computer use. This presents a peculiar challenge to these schools as they mold their students into developers from often a blank slate. </p>\n\n\t<p> Codify seeks to assist in basic core evaluation of students once they have been accepted into a code school. Codify provides the instructors and insututions detailed breakdowns of their student\'s and clsses skills before they even show up for day one. An instructor who has twelve weeks to rapidaly transform a pupil into a marketable developer has no time to spare. Codify gives them the information to help craft cirriculum to each and every cohert that comes through their doors as well as target specific individuals weaknesses with additional pre-course work or assistance throughout.</p>\n</section>';
+
+}
+return __p
+};
+
 this["JST"]["assets/templates/codeSchools.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
@@ -44,7 +54,7 @@ this["JST"]["assets/templates/studentDashboard.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<section class="student-dash">\n\t<h2> Welcome [name] </h2>\n\t<p> You are here because you\'ve been accepted into a code school and are about to embark on a new journey.Congratulations! [School Name] has selected a set of simple assessment tests for you to complete so they can better understand the basic skill set you are bringing into class. This helps them tailor their cirriculum and course work to better suit the needs of you and your fellow classmates. Just click on a test below to get started. </p> \n\t<button ng-click="testClick(0)" class="test"> Terminal Line Assessment </button>\n\t<button ng-click="testClick(1)" class="test"> JavaScript Assessment </button>\n</section>';
+__p += '<section class="student-dash">\n\t<h2> Welcome [name] </h2>\n\t<p> You are here because you\'ve been accepted into a code school and are about to embark on a new journey.Congratulations! [School Name] has selected a set of simple assessment tests for you to complete so they can better understand the basic skill set you are bringing into class. This helps them tailor their cirriculum and course work to better suit the needs of you and your fellow classmates. Just click on a test below to get started. </p> \n\t<button ng-click="testClick(0)" class="test" ng-repeat="test in tests"> {{ test.name }} </button>\n</section>';
 
 }
 return __p
@@ -74,7 +84,7 @@ this["JST"]["assets/templates/testEnd.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<section class="test-end">\n\t<h1> You\'re all done! </h1>\n\t<p> We wish you the best of luck on your journey as you enter your program. We look forward to seeing all the awesome things you come up with and build! Your input will be used by your school and instructors to help talior cirriculum and course work with your needs in mind. <p>\n\t<div>\n\t\t<button ng-click="buttonClick()"> Back to Dashboard </button>\n\t</div>\n</section>';
+__p += '<section class="test-end">\n\t<h1> You\'re all done! </h1>\n\t<p> If there are more assessements assigned to you, you can return to the dashboard to complete them. </P>\n\t<p> If not, we wish you the best of luck on your journey as you enter your program. We look forward to seeing all the awesome things you come up with and build! Your input will be used by your school and instructors to help talior cirriculum and course work with the needs of you and your fellow students in mind. <p>\n\t<div>\n\t\t<button ng-click="buttonClick()"> Back to Dashboard </button>\n\t</div>\n</section>';
 
 }
 return __p
