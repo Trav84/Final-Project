@@ -1,11 +1,13 @@
 <section ng-app="app">
     <header>
         <h1> Codify </h1>
-        <nav>
+        <nav ng-controller="landingCtrl">
            <a ui-sref="landing"> Home </a> 
            <a ui-sref="about"> About </a> 
            <a ui-sref="codeSchools"> Code Schools </a> 
            <a ui-sref="contact"> Contact </a> 
+           <button ng-bind="currentUser"> Test Name </button>
+           <button ng-click="logoutClick()"> Logout </button>
         </nav>
     </header>
 

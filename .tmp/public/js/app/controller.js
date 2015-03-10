@@ -1,6 +1,23 @@
 angular.module('app.controllers', ['app.services'])
 .controller('landingCtrl', function($scope, $http, $state) {
+	$scope.logoutClick = function() {
+		$http.get('/logout')
+		.success(function(recieved) {
+			console.log('Logged out');
+			$state.go('landing');
+		})
+		.error(function(err) {
+			console.log(err);
+		});
+	}
 
+	// $http.get('/auth/user')
+	// .success(function(answers) {
+	// 	$scope.currentUser = answers.username;
+	// 	})
+	// 	.error(function(err) {
+	// 		console.log(err);
+	// 	});
 })
 .controller('studentLogInCtrl', function($scope, $state) {
 
@@ -19,7 +36,30 @@ angular.module('app.controllers', ['app.services'])
 		}
 	};
 })
-.controller('schoolLogInCtrl', function($scope, $state) {
+.controller('schoolLogInCtrl', function($scope, $state, $http) {
+
+	$scope.schoolLogin = function(user) {
+		$http.post('/auth/local', user)
+			.success(function(res) {
+				if(res.errors.length > 0) {
+					$scope.loginErrorArray = errorMessageSort(res.errors[0]);
+				}
+				if(res.success) {
+					$state.go('studentDashboard');
+				}
+					$http.get('/auth/user')
+					.success(function(answers) {
+						$scope.currentUser = answers.username;
+					})
+					.error(function(err) {
+						console.log(err);
+					});
+			})
+			.error(function(err) {
+				console.log('Error!');
+				console.log(err);
+			});
+	}
 
 	$scope.schoolRegisterClick = function() {
 		$state.go('schoolRegister');
@@ -96,11 +136,8 @@ angular.module('app.controllers', ['app.services'])
 			$http.post('/auth/local/register', loginObject)
 			.success(function(res) {
 				console.log(res);
-				if(res.errors.length > 0) {
-					$scope.loginErrorArray = errorMessageSort(res.errors[0]);
-				}
 				if(res.success) {
-					$state.go('scchoolDashboard');
+					$state.go('schoolDashboard');
 				}
 			})
 			.error(function(err) {

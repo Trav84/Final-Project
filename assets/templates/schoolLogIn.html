@@ -1,7 +1,7 @@
 <section class="school-login">
-	<form>
-		<input type="text" placeholder="Email">
-		<input type="password" placeholder="Password">
+	<form ng-submit="schoolLogin(user)">
+		<input ng-model="user.email" type="text" placeholder="Email">
+		<input ng-model="user.password" type="password" placeholder="Password">
 		<button> Log In </button>
 	</form>
 

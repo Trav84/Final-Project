@@ -18,7 +18,11 @@ header {
 		text-decoration: none;
 	}
 
-	div:hover {
+	a:hover {
 		background-color:grey;
+	}
+
+	button {
+		float:right;
 	}
 }
