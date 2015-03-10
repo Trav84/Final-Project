@@ -25,8 +25,21 @@ angular.module('app.controllers', [])
 		$state.go('schoolRegister');
 	};
 })
-.controller('schoolRegisterCtrl', function() {
+.controller('schoolRegisterCtrl', function($scope) {
 
+	$scope.programs = [];
+
+	$scope.programNumber = function(num) {
+		if(num.length === 0) {
+			$scope.programs = [];
+		} 
+		else {
+			for(var i=0; i<num;i++) {
+				$scope.programs.push(i);
+			};
+			console.log($scope.programs);
+		};
+	};
 })
 .controller('studentDashboardCtrl', function($scope, $state) {
 
