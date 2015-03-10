@@ -1,4 +1,4 @@
-angular.module('app.controllers', [])
+angular.module('app.controllers', ['app.services'])
 .controller('landingCtrl', function($scope, $http, $state) {
 
 })
@@ -36,64 +36,73 @@ angular.module('app.controllers', [])
 		else {
 			for(var i=0; i<num;i++) {
 				$scope.programs.push(i);
-			};
+			}
 			console.log($scope.programs);
-		};
+		}
 	};
 })
-.controller('studentDashboardCtrl', function($scope, $state) {
+.controller('studentDashboardCtrl', function($scope, $state, testNumberShare) {
 
-	$scope.testClick = function() {
+	$scope.testClick = function(test) {
+		testNumberShare(test);
+		console.log('Test '+test+' was chosen');
 		$state.go('test');
 	};
 })
-.controller('testCtrl', function($scope, $http) {
+.controller('testCtrl', function($scope, $http, $state, testNumberShare) {
 
 	var correctAnswer = null;
 	var position = 0;
-	var questionArray = [];
+	var test = 0;
+	var question = 0;
+	$scope.testNumber = testNumberShare.test;
+	
+	function getTestData(test, question) {
+		if(question < 2) {
+			$http.get('/Suite')
+			.success(function(testAndQuestions) {
+				$scope.title = testAndQuestions[test].name;
+				$scope.question = testAndQuestions[test].questions[question].title;
 
-	$http.get('/Suite')
-	.success(function(allQuestions) {
-		questionArray = allQuestions;
-		$scope.title = questionArray[0].name;
-		$scope.question = questionArray[0].questions[0].title;
-
-			$http.get('/SuiteAnswers?SuiteQuestionID='+questionArray[0].questions[0].id)
-			.success(function(answers) {
-				$scope.choices = answers;
-				correctAnswer = questionArray[0].questions[position].answer;
-			})
+				$http.get('/SuiteAnswers?SuiteQuestionID='+testAndQuestions[test].questions[question].id)
+					.success(function(answers) {
+						$scope.choices = answers;
+						correctAnswer = testAndQuestions[test].questions[question].answer;
+					})
+					.error(function(err) {
+						console.log(err);
+					});
+				})
 			.error(function(err) {
 				console.log(err);
 			});
-	})
-	.error(function(err) {
-		console.log(err);
-	});
+		}
+		else {
+			console.log('No more questions. End of test');
 
-	function getQuestion(position) {
-		$scope.question = questionArray[0].questions[position].title;
-
-		$http.get('/SuiteAnswers?SuiteQuestionID='+questionArray[0].questions[position].id)
-			.success(function(answers) {
-				$scope.choices = answers;
-				correctAnswer = questionArray[0].questions[position].answer;
-			})
-			.error(function(err) {
-				console.log(err);
-			});
+			$state.go('testEnd');
+		}
 	}
 
+	getTestData(test,question);
 
 	$scope.choiceClick = function(choice) {
+
 		if(choice === correctAnswer) {
 			console.log('Correct answer was selected');
-			position++;
-			getQuestion(position);
+			question++;
+			getTestData(test, question);
 		} 
 		else {
 			console.log('Wrong answer was selected');
 		}
 	};
+})
+.controller('testEndCtrl', function($state, $scope) {
+	$scope.buttonClick = function() {
+		$state.go('studentDashboard');
+	}
+})
+.controller('codeSchoolsCtrl', function() {
+
 });

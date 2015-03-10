@@ -35,6 +35,16 @@ angular.module('app', ['app.controllers','ui.router'])
 		url: '/test',
 		templateUrl: 'templates/test.html',
 		controller: 'testCtrl'
+	})
+	.state('testEnd', {
+		url: '/testEnd',
+		templateUrl: 'templates/testEnd.html',
+		controller: 'testEndCtrl'
+	})
+	.state('codeSchools', {
+		url: '/codeSchools',
+		templateUrl: 'templates/codeSchools.html',
+		controller: 'codeSchoolsCtrl'
 	});
 	$urlRouterProvider.otherwise('/landing');
 });

@@ -1,5 +1,15 @@
 this["JST"] = this["JST"] || {};
 
+this["JST"]["assets/templates/codeSchools.html"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __e = _.escape;
+with (obj) {
+__p += '<section class=\'code-schools\'>\n\t<h1> Check Out Some Code Schools </h1>\n\t<p> Just a smattering of code schools, more are springing up everyday. If you\'re interested in breaking into the tech industry and getting started in a whole new career, check these places out. </p>\n\n\t<nav>\n\t\t<div class="dojo">  </div> \n\t\t<div class="flat">  </div> \n\t\t<div class="ga">  </div> \n\t\t<div class="makers">  </div> \n\t\t<div class="boot">  </div> \n\t\t<div class="hack">  </div> \n\t\t<div class="iron">  </div> \n\t</nav>\n</section>';
+
+}
+return __p
+};
+
 this["JST"]["assets/templates/landing.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
@@ -34,7 +44,7 @@ this["JST"]["assets/templates/studentDashboard.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<section class="student-dash">\n\t<h2> Welcome [name] </h2>\n\t<p> You are here because you\'ve been accepted into a code school and are about to embark on a new journey.Congratulations! [School Name] has selected a set of simple assessment tests for you to complete so they can better understand the basic skill set you are bringing into class. This helps them tailor their cirriculum and course work to better suit the needs of you and your fellow classmates. Just click on a test below to get started. </p> \n\t<button ng-click="testClick()" class="test"> Terminal Line Assessment </button>\n\t<button ng-click="testClick()" class="test"> JavaScript Assessment </button>\n</section>';
+__p += '<section class="student-dash">\n\t<h2> Welcome [name] </h2>\n\t<p> You are here because you\'ve been accepted into a code school and are about to embark on a new journey.Congratulations! [School Name] has selected a set of simple assessment tests for you to complete so they can better understand the basic skill set you are bringing into class. This helps them tailor their cirriculum and course work to better suit the needs of you and your fellow classmates. Just click on a test below to get started. </p> \n\t<button ng-click="testClick(0)" class="test"> Terminal Line Assessment </button>\n\t<button ng-click="testClick(1)" class="test"> JavaScript Assessment </button>\n</section>';
 
 }
 return __p
@@ -55,6 +65,16 @@ obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
 __p += '<section class="test">\n\t<h1 ng-bind="title"> [Test Name] </h1>\n\t<h2> 1. {{question}}</h2>\n\t<section class="wrapper">\n\t\t<ul ng-repeat="choice in choices">\n\t\t\t<div ng-click="choiceClick(choice.answer)"> {{ choice.displayText }} </div>\n\t\t</ul>\n\t</section>\n</section>';
+
+}
+return __p
+};
+
+this["JST"]["assets/templates/testEnd.html"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __e = _.escape;
+with (obj) {
+__p += '<section class="test-end">\n\t<h1> You\'re all done! </h1>\n\t<p> We wish you the best of luck on your journey as you enter your program. We look forward to seeing all the awesome things you come up with and build! Your input will be used by your school and instructors to help talior cirriculum and course work with your needs in mind. <p>\n\t<div>\n\t\t<button ng-click="buttonClick()"> Back to Dashboard </button>\n\t</div>\n</section>';
 
 }
 return __p

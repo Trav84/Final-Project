@@ -1,0 +1,51 @@
+.code-schools {
+
+	div {
+		margin-top:2em;
+		width:10em;
+		height:10em;
+		display:inline-block;
+	}
+
+	.dojo {
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-image: url('../images/coding_dojo.png');
+	}
+
+	.flat {
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-image: url('../images/flatiron-school-logo.png');
+	}
+
+	.ga {
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-image: url('../images/General_Assembly_logo.png');
+	}
+
+	.makers {
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-image: url('../images/makers.png');
+	}
+
+	.boot {
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-image: url('../images/logo.png');
+	}
+
+	.hack {
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-image: url('../images/logo@2x.png');
+	}
+
+	.iron {
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-image: url('../images/the-iron-yard-logo.png');	
+	}
+}
