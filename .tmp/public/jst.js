@@ -30,11 +30,31 @@ __p += '<section class="landing">\n\t<section class="wrapper">\n\t\t<a ui-sref="
 return __p
 };
 
+this["JST"]["assets/templates/manageStudents.html"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __e = _.escape;
+with (obj) {
+__p += '';
+
+}
+return __p
+};
+
+this["JST"]["assets/templates/manageTests.html"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __e = _.escape;
+with (obj) {
+__p += '<section class="manage-tests">\n\t<section class="header">\n\t\t<h1 ng-bind="testName"> Test Suite Management </j1>\n\t</section>\n\t<p> Here you can manage which tests you have in each of your schools specific programs. First select the program you wish to manage, then select to either add or remove a test to that suite. </p>\n\t<span> Select a Suite To Manage </span>\n\t<select ng-change="testChanged(testSelected)" ng-model="testSelected">\n  \t\t<option> Front End Development </option>\n\t\t<option> Ruby On Rails </option>\n\t\t<option> Web Design </option>\n\t\t<option> iOS Development </option>\n\t</select>\n\t<ul>\n\t\t<button ng-click="buttonClick(\'Add\')"> \n\t\t\t<i ng-hide="Add" class="fa fa-caret-right"></i> <i ng-show="Add" class="fa fa-caret-down"></i> Add Test\n\t\t </button>\n\t\t<button ng-click="buttonClick(\'Remove\')">\n\t\t\t<i ng-hide="visible" class="fa fa-caret-right"></i> <i ng-show="visible" class="fa fa-caret-down"></i> Remove Test \n\t\t</button>\n\t\t<button ng-click="buttonClick(\'Create\')"> \n\t\t\t<i ng-hide="visible" class="fa fa-caret-right"></i> <i ng-show="visible" class="fa fa-caret-down"></i> Create Custom Test \n\t\t</button>\n\t</ul>\n</section>';
+
+}
+return __p
+};
+
 this["JST"]["assets/templates/schoolDashboard.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += 'School Dashboard\n\n<h1 ng-bind="currentUser"> Test </h1>';
+__p += '<section class="school-dashboard">\n\t<h1> Welcome {{ currentUser }} </h1>\n\t<nav>\n\t\t<a ui-sref="manageTests"> Manage Test Suites </a>\n\t\t<a ui-sref="#"> Add Student </a>\n\t\t<a ui-sref="#"> Manage Students </a>\n\t</nav>\n</section>';
 
 }
 return __p
@@ -65,6 +85,16 @@ obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
 __p += '<section class="student-dash">\n\t<h2> Welcome [name] </h2>\n\t<p> You are here because you\'ve been accepted into a code school and are about to embark on a new journey.Congratulations! [School Name] has selected a set of simple assessment tests for you to complete so they can better understand the basic skill set you are bringing into class. This helps them tailor their cirriculum and course work to better suit the needs of you and your fellow classmates. Just click on a test below to get started. </p> \n\t<button ng-click="testClick(test.id)" class="test" ng-repeat="test in tests"> {{ test.name }} </button>\n</section>';
+
+}
+return __p
+};
+
+this["JST"]["assets/templates/studentInfo.html"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __e = _.escape;
+with (obj) {
+__p += '';
 
 }
 return __p

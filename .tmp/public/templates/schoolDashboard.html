@@ -1,3 +1,8 @@
-School Dashboard
-
-<h1 ng-bind="currentUser"> Test </h1>
+<section class="school-dashboard">
+	<h1> Welcome {{ currentUser }} </h1>
+	<nav>
+		<a ui-sref="manageTests"> Manage Test Suites </a>
+		<a ui-sref="#"> Add Student </a>
+		<a ui-sref="#"> Manage Students </a>
+	</nav>
+</section>

@@ -8,13 +8,14 @@
 module.exports = {
 
   attributes: {
-  // 	name: { type: 'string', unique: true, required: true},
-  // 	email: { type: 'string', unique: true, required: true},
-  // 	password: { type: 'string', unique: false, required: true},
-  // 	programs: {
-  // 		collection: 'Programs',
-  //   	via: 'owner'
-  // 	}
+  	name: { type: 'string', unique: true, required: true},
+    user: {
+      model: 'User'
+    },
+  	programs: {
+      collection: 'Program',
+      via: 'schoolID'
+    }
    }
 };
 

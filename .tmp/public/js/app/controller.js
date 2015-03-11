@@ -38,21 +38,15 @@ angular.module('app.controllers', ['app.services'])
 
 		$http.post('/auth/local', loginObject)
 			.success(function(res) {
-				// if(res.errors.length > 0) {
-				// 	$scope.loginErrorArray = errorMessageSort(res.errors[0]);
-				// }
-				// if(res.success) {
-					$http.get('/auth/user')
-					.success(function(response) {
-						console.log(response);
-						$scope.currentUser = response.username;
-					})
-					.error(function(err) {
-						console.log(err);
-					});
-					//$state.go('studentDashboard');
-				// }
-					
+				$http.get('/auth/user')
+				.success(function(response) {
+					console.log(response);
+					$scope.currentUser = response.username;
+					$state.go('schoolDashboard');
+				})
+				.error(function(err) {
+					console.log(err);
+				});					
 			})
 			.error(function(err) {
 				console.log('Error!');
@@ -146,7 +140,7 @@ angular.module('app.controllers', ['app.services'])
 		}
 	}
 })
-.controller('studentDashboardCtrl', function($scope, $http, $state, testNumberShare) {
+.controller('studentDashboardCtrl', function($scope, $http, $state) {
 
 	$http.get('/Suite')
 	.success(function(testData) {
@@ -223,5 +217,34 @@ angular.module('app.controllers', ['app.services'])
 
 })
 .controller('aboutCtrl', function() {
+
+})
+.controller('schoolDashboardCtrl', function($scope, $http) {
+	
+	$http.get('/auth/user')
+		.success(function(response) {
+			$scope.currentUser = response.username;
+		})
+		.error(function(err) {
+			console.log(err);
+		});
+
+})
+.controller('manageTestsCtrl', function($scope) {
+
+	$scope.testName = "Test Suite Management";
+	$scope.Add = false;
+
+	$scope.testChanged = function(testSelected) {
+		$scope.testName = testSelected;
+	}
+
+	$scope.buttonClick = function(button) {
+		console.log(button);
+		button = $scope.button;
+		$scope.button = !$scope.button;
+		console.log($scope.button);
+		console.log($scope.Add);
+	}
 
 });

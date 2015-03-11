@@ -8,7 +8,10 @@
 module.exports = {
 
   attributes: {
-
+  	name: { type: 'string', unique: false, required: true},
+  	schoolID: {
+    	model: 'School'
+    }
   }
 };
 
