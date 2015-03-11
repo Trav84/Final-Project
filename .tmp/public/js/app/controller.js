@@ -247,4 +247,7 @@ angular.module('app.controllers', ['app.services'])
 		console.log($scope.Add);
 	}
 
+})
+.controller('manageStudentsCtrl', function() {
+
 });

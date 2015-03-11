@@ -34,7 +34,7 @@ this["JST"]["assets/templates/manageStudents.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '';
+__p += '<section class="manage-students">\n\t<section class="header">\n\t\t<h1> Student Management </h1>\n\t\t<h2> No Program Selected </h2>\n\t</section>\n\t<table>\n\t\t<tr>\n\t\t\t<th> Student</th>\n\t\t\t<th> Test 1</th>\n\t\t\t<th> Test 2</th>\n\t\t\t<th> Test 3</th>\n\t\t\t<th> Finished </th>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Travis Czerw</td>\n\t\t\t<td> <button></button> </td>\n\t\t\t<td> <button></button> </td>\n\t\t\t<td> <button></button></td>\n\t\t\t<td> <button></button></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Jacob Burkhart</td>\n\t\t\t<td> <button></button></td>\n\t\t\t<td> <button></button></td>\n\t\t\t<td> <button></button></td>\n\t\t\t<td> <button></button></td>\n\t\t</tr>\n\t</table>\n</section>';
 
 }
 return __p
