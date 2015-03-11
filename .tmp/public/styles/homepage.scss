@@ -1,5 +1,6 @@
 header {
-	background-color: rgb(51,51,51);
+	background-color: rgb(66,66,66);
+	border-bottom:1px solid black;
 
 	h1 {
 		color: white;
@@ -25,4 +26,8 @@ header {
 	button {
 		float:right;
 	}
+}
+
+body {
+	background-color:rgb(233,233,233);
 }

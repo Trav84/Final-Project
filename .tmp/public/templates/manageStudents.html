@@ -1,29 +1,48 @@
 <section class="manage-students">
 	<section class="header">
 		<h1> Student Management </h1>
-		<h2> No Program Selected </h2>
+		<h2 ng-bind="programName"> No Program Selected </h2>
+		<select ng-change="changeName(programSelected)" ng-model="programSelected">
+			<option> Front End Development </option>
+			<option> Ruby on Rails </option>
+			<option> Web Development & Design </option>
+		</select>
 	</section>
 	<table>
 		<tr>
 			<th> Student</th>
-			<th> Test 1</th>
-			<th> Test 2</th>
-			<th> Test 3</th>
+			<th> Javascript </th>
+			<th> Mac OSX Command Line </th>
+			<th> Networking Basics </th>
 			<th> Finished </th>
 		</tr>
 		<tr>
-			<td>Travis Czerw</td>
-			<td> <button></button> </td>
-			<td> <button></button> </td>
+			<td> Travis Czerw </td>
+			<td> <button class="complete"></button> </td>
+			<td> <button class="complete"></button> </td>
 			<td> <button></button></td>
 			<td> <button></button></td>
 		</tr>
 		<tr>
-			<td>Jacob Burkhart</td>
+			<td> Jacob Burkhart </td>
+			<td> <button class="complete"></button></td>
 			<td> <button></button></td>
 			<td> <button></button></td>
 			<td> <button></button></td>
+		</tr>
+		<tr>
+			<td> Student McStudent </td>
+			<td> <button class="complete"></button></td>
 			<td> <button></button></td>
+			<td> <button></button></td>
+			<td> <button></button></td>
+		</tr>
+		<tr>
+			<td> Student McClassFace </td>
+			<td> <button class="complete"></button></td>
+			<td> <button class="complete"></button></td>
+			<td> <button class="complete"></button></td>
+			<td> <button class="complete"></button></td>
 		</tr>
 	</table>
 </section>

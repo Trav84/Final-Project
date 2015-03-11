@@ -12,6 +12,10 @@ module.exports = {
   	questions: {
     	collection: 'SuiteQuestions',
     	via: 'owner'
+    },
+    programs: {
+    	collection: 'Program',
+    	via: 'suites'
     }
   }
 };

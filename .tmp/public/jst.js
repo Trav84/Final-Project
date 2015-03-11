@@ -24,7 +24,17 @@ this["JST"]["assets/templates/landing.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<section class="landing">\n\t<section class="wrapper">\n\t\t<a ui-sref="studentLogIn"> <div> I\'m A Student </div> </a>\n\t\t<a ui-sref="schoolLogIn"> <div> I\'m A Code School </div> </a>\n\t</section>\n</section>\n';
+__p += '<section class="landing">\n\t<h1> Welcome to Codify! </h1>\n\t<section class="wrapper">\n\t\t<a ui-sref="studentLogIn"> <div> I\'m A Student </div> </a>\n\t\t<a ui-sref="schoolLogIn"> <div> I\'m A Code School </div> </a>\n\t</section>\n</section>\n';
+
+}
+return __p
+};
+
+this["JST"]["assets/templates/managePrograms.html"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __e = _.escape;
+with (obj) {
+__p += '<section class="manage-programs">\n\t<h1> Program Management </h1>\n\t<div>\n\t\t<p> Here you can manage the programs that your school offers. Just enter the different programs or tracks you offer and click add. For example, you might add "Front End Development", "Web Design", "Python" or "iOS Development". </p>\n\t\t<div>\n\t\t\t<input ng-model="programAdded" type="text" placeholder="Program You Offer"> \n\t\t\t<button ng-click="addProgram(programAdded)"> \n\t\t\t\t<i class="fa fa-plus"></i> Add Program\n\t\t\t</button>\n\t\t\t<p class="program-display" ng-repeat="program in programs track by $index"> {{ program }} </p>\n\t\t\t<div>\n\t\t\t\t<button ng-click="saveClick()"> Save </button>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</section>';
 
 }
 return __p
@@ -34,7 +44,7 @@ this["JST"]["assets/templates/manageStudents.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<section class="manage-students">\n\t<section class="header">\n\t\t<h1> Student Management </h1>\n\t\t<h2> No Program Selected </h2>\n\t</section>\n\t<table>\n\t\t<tr>\n\t\t\t<th> Student</th>\n\t\t\t<th> Test 1</th>\n\t\t\t<th> Test 2</th>\n\t\t\t<th> Test 3</th>\n\t\t\t<th> Finished </th>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Travis Czerw</td>\n\t\t\t<td> <button></button> </td>\n\t\t\t<td> <button></button> </td>\n\t\t\t<td> <button></button></td>\n\t\t\t<td> <button></button></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Jacob Burkhart</td>\n\t\t\t<td> <button></button></td>\n\t\t\t<td> <button></button></td>\n\t\t\t<td> <button></button></td>\n\t\t\t<td> <button></button></td>\n\t\t</tr>\n\t</table>\n</section>';
+__p += '<section class="manage-students">\n\t<section class="header">\n\t\t<h1> Student Management </h1>\n\t\t<h2 ng-bind="programName"> No Program Selected </h2>\n\t\t<select ng-change="changeName(programSelected)" ng-model="programSelected">\n\t\t\t<option> Front End Development </option>\n\t\t\t<option> Ruby on Rails </option>\n\t\t\t<option> Web Development & Design </option>\n\t\t</select>\n\t</section>\n\t<table>\n\t\t<tr>\n\t\t\t<th> Student</th>\n\t\t\t<th> Javascript </th>\n\t\t\t<th> Mac OSX Command Line </th>\n\t\t\t<th> Networking Basics </th>\n\t\t\t<th> Finished </th>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td> Travis Czerw </td>\n\t\t\t<td> <button class="complete"></button> </td>\n\t\t\t<td> <button class="complete"></button> </td>\n\t\t\t<td> <button></button></td>\n\t\t\t<td> <button></button></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td> Jacob Burkhart </td>\n\t\t\t<td> <button class="complete"></button></td>\n\t\t\t<td> <button></button></td>\n\t\t\t<td> <button></button></td>\n\t\t\t<td> <button></button></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td> Student McStudent </td>\n\t\t\t<td> <button class="complete"></button></td>\n\t\t\t<td> <button></button></td>\n\t\t\t<td> <button></button></td>\n\t\t\t<td> <button></button></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td> Student McClassFace </td>\n\t\t\t<td> <button class="complete"></button></td>\n\t\t\t<td> <button class="complete"></button></td>\n\t\t\t<td> <button class="complete"></button></td>\n\t\t\t<td> <button class="complete"></button></td>\n\t\t</tr>\n\t</table>\n</section>';
 
 }
 return __p
@@ -44,7 +54,7 @@ this["JST"]["assets/templates/manageTests.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<section class="manage-tests">\n\t<section class="header">\n\t\t<h1 ng-bind="testName"> Test Suite Management </j1>\n\t</section>\n\t<p> Here you can manage which tests you have in each of your schools specific programs. First select the program you wish to manage, then select to either add or remove a test to that suite. </p>\n\t<span> Select a Suite To Manage </span>\n\t<select ng-change="testChanged(testSelected)" ng-model="testSelected">\n  \t\t<option> Front End Development </option>\n\t\t<option> Ruby On Rails </option>\n\t\t<option> Web Design </option>\n\t\t<option> iOS Development </option>\n\t</select>\n\t<ul>\n\t\t<button ng-click="buttonClick(\'Add\')"> \n\t\t\t<i ng-hide="Add" class="fa fa-caret-right"></i> <i ng-show="Add" class="fa fa-caret-down"></i> Add Test\n\t\t </button>\n\t\t<button ng-click="buttonClick(\'Remove\')">\n\t\t\t<i ng-hide="visible" class="fa fa-caret-right"></i> <i ng-show="visible" class="fa fa-caret-down"></i> Remove Test \n\t\t</button>\n\t\t<button ng-click="buttonClick(\'Create\')"> \n\t\t\t<i ng-hide="visible" class="fa fa-caret-right"></i> <i ng-show="visible" class="fa fa-caret-down"></i> Create Custom Test \n\t\t</button>\n\t</ul>\n</section>';
+__p += '<section class="manage-tests">\n\t<section class="header">\n\t\t<h1 ng-bind="testName"> Test Suite Management </j1>\n\t</section>\n\t<p> Here you can manage which tests you have in each of your schools specific programs. First select the program you wish to manage, then select to either add or remove a test to that suite. </p>\n\t<span> Select a Program To Manage </span>\n\t<select ng-change="testChanged(testSelected)" ng-model="testSelected">\n  \t\t<option> Front End Development </option>\n\t\t<option> Ruby On Rails </option>\n\t\t<option> Web Design </option>\n\t\t<option> iOS Development </option>\n\t</select>\n\t<ul>\n\t\t<button ng-click="buttonClick(\'Add\')"> \n\t\t\t<i ng-hide="Add" class="fa fa-caret-right"></i> <i ng-show="Add" class="fa fa-caret-down"></i> Add Test\n\t\t </button>\n\t\t<button ng-click="buttonClick(\'Remove\')">\n\t\t\t<i ng-hide="visible" class="fa fa-caret-right"></i> <i ng-show="visible" class="fa fa-caret-down"></i> Remove Test \n\t\t</button>\n\t\t<button ng-click="buttonClick(\'Create\')"> \n\t\t\t<i ng-hide="visible" class="fa fa-caret-right"></i> <i ng-show="visible" class="fa fa-caret-down"></i> Create Custom Test \n\t\t</button>\n\t</ul>\n</section>';
 
 }
 return __p
@@ -54,7 +64,7 @@ this["JST"]["assets/templates/schoolDashboard.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<section class="school-dashboard">\n\t<h1> Welcome {{ currentUser }} </h1>\n\t<nav>\n\t\t<a ui-sref="manageTests"> Manage Test Suites </a>\n\t\t<a ui-sref="#"> Add Student </a>\n\t\t<a ui-sref="#"> Manage Students </a>\n\t</nav>\n</section>';
+__p += '<section class="school-dashboard">\n\t<h1> Welcome {{ currentUser }} </h1>\n\t<nav>\n\t\t<a ui-sref="manageTests"> Manage Test Suites </a>\n\t\t<a ui-sref="managePrograms"> Manage School Programs </a>\n\t\t<a ui-sref="#"> Add Student </a>\n\t\t<a ui-sref="#"> Manage Students </a>\n\t</nav>\n</section>';
 
 }
 return __p
@@ -74,7 +84,7 @@ this["JST"]["assets/templates/schoolRegister.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<section class="school-register">\n\t<form ng-submit="schoolRegister(username, email, password)">\n\t\t<div>\n\t\t\t<h3> Enter your instution\'s name </h3>\n\t\t\t<input ng-model="username" type="text" placeholder="School Name">\n\t\t</div>\n\t\t<div>\n\t\t\t<h3> Enter your email </h3>\n\t\t\t<input ng-model="email" type="text" placeholder="Email">\n\t\t</div>\n\t\t<!-- <div>\n\t\t\t<h3> Enter the number of different programs of tracks you offer (i.e. 4 or 5). </h3>\n\t\t\t<input ng-change="programNumber(numOfPrograms)" ng-model="numOfPrograms" type="text" placeholder="6">\n\t\t\t<h3> Enter the different programs or tracks you offer. For example, you might add "Front End Development", "Web Design", "Python" or "iOS Development". </h3>\n\t\t\t<div ng-repeat="program in programs track by $index">\n\t\t\t\t Program: <input type="text" placeholder="Program/Track You Offer"> \n\t\t\t</div>\n\t\t</div> -->\n\t\t<div>\n\t\t\t<h3> Enter a password. It must be at least 8 characters long. </h3>\n\t\t\t<input ng-model="password" type="password" placeholder="Password">\n\t\t</div>\n\t\t<button> Register New Code School </button>\n</section>\n';
+__p += '<section class="school-register">\n\t<form ng-submit="schoolRegister(username, email, password)">\n\t\t<div>\n\t\t\t<h3> Enter your instution\'s name </h3>\n\t\t\t<input ng-model="username" type="text" placeholder="School Name">\n\t\t</div>\n\t\t<div>\n\t\t\t<h3> Enter your email </h3>\n\t\t\t<input ng-model="email" type="text" placeholder="Email">\n\t\t</div>\n\t\t<div>\n\t\t\t<h3> Enter a password. It must be at least 8 characters long. </h3>\n\t\t\t<input ng-model="password" type="password" placeholder="Password">\n\t\t</div>\n\t\t<button> Register New Code School </button>\n\t</form>\n</section>\n';
 
 }
 return __p

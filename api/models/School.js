@@ -7,15 +7,15 @@
 
 module.exports = {
 
-  attributes: {
-  	name: { type: 'string', unique: true, required: true},
-    user: {
-      model: 'User'
-    },
-  	programs: {
-      collection: 'Program',
-      via: 'schoolID'
-    }
-   }
+  // attributes: {
+  // 	name: { type: 'string', unique: true, required: true},
+  //   user: {
+  //     model: 'User'
+  //   },
+  // 	programs: {
+  //     collection: 'Program',
+  //     via: 'schoolID'
+  //   }
+  //  }
 };
 

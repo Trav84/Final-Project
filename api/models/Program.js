@@ -9,8 +9,13 @@ module.exports = {
 
   attributes: {
   	name: { type: 'string', unique: false, required: true},
-  	schoolID: {
-    	model: 'School'
+  	programID: {
+    	model: 'User'
+    },
+    suites: {
+    	collection: 'Suite',
+    	via: 'programs',
+    	dominant: true
     }
   }
 };

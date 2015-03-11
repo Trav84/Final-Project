@@ -15,7 +15,8 @@
  */
 @import url(reset.css);
 header {
-  background-color: #333333; }
+  background-color: #424242;
+  border-bottom: 1px solid black; }
   header h1 {
     color: white;
     text-align: center;
@@ -34,6 +35,14 @@ header {
   header button {
     float: right; }
 
+body {
+  background-color: #e9e9e9; }
+
+.landing h1 {
+  margin-top: 1em;
+  text-align: center;
+  font-size: 2.5em;
+  font-weight: 500px; }
 .landing .wrapper {
   margin: 0 auto;
   margin-top: 3em;
@@ -41,6 +50,7 @@ header {
   overflow: hidden;
   width: 50%; }
 .landing div {
+  background-color: #ff9900;
   float: left;
   margin: 1em 0.5em;
   padding: 2em 1em;
@@ -65,6 +75,11 @@ header {
   margin: 0 auto;
   margin: 1em 1em;
   text-align: center; }
+  .school-register .program-display {
+    margin: 0.4em auto;
+    border-radius: 5px;
+    border: 1px solid black;
+    width: 20%; }
 
 .student-dash .test {
   padding: 1em 1em;
@@ -183,22 +198,43 @@ header {
   font-size: 1.5em;
   border-radius: 5px; }
 
+.manage-students .complete {
+  background-color: green; }
+.manage-students .incomplete {
+  background-color: red; }
 .manage-students .header {
-  border-bottom: 1px solid black; }
+  border-bottom: 1px solid black;
+  text-align: center; }
   .manage-students .header h1 {
     margin-top: 1em;
     margin-bottom: 0.5em;
-    text-align: center;
     font-size: 2em;
     font-style: bold; }
+  .manage-students .header h2 {
+    font-size: 1.5em;
+    margin-bottom: 0.5em; }
+  .manage-students .header select {
+    margin-bottom: 0.5em; }
+.manage-students table {
+  width: 95%;
+  margin: 1em 2em; }
 .manage-students table tr {
   border: 1px solid black; }
 .manage-students table th {
-  border: 1px solid black; }
+  border: 1px solid black;
+  padding: 0.6em 0.6em;
+  font-weight: 500;
+  background-color: #333333;
+  color: white; }
 .manage-students td {
+  padding: 0.4em 0.4em;
   text-align: center;
-  vertical-align: middle; }
+  vertical-align: middle;
+  border: 1px solid black; }
 .manage-students button {
-  background-color: red; }
+  background-color: red;
+  vertical-align: middle;
+  width: 50%;
+  height: 50%; }
 
 /*# sourceMappingURL=importer.css.map */

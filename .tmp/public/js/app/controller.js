@@ -61,18 +61,20 @@ angular.module('app.controllers', ['app.services'])
 .controller('schoolRegisterCtrl', function($scope, $http, $state) {
 
 	$scope.programs = [];
+	$scope.userID = null;
 
-	$scope.programNumber = function(num) {
-		if(num.length === 0) {
-			$scope.programs = [];
-		} 
-		else {
-			for(var i=0; i<num;i++) {
-				$scope.programs.push(i);
-			}
-			console.log($scope.programs);
-		}
-	};
+	// $http.get('/auth/user')
+	// 	.success(function(response) {
+	// 		$scope.userID = response.id;
+	// 	})
+	// 	.error(function(err) {
+	// 		console.log(err);
+	// 	});		
+
+	$scope.addProgram = function(programAdded) {
+		$scope.programs.push(programAdded);
+		$scope.programAdded = '';
+	}
 
 	$scope.schoolRegister = function(username, email, password) {
 		var errorObject = {
@@ -80,7 +82,6 @@ angular.module('app.controllers', ['app.services'])
 			emailPass: false,
 			passPass: false
 		}
-
 		var loginObject = {
 			username: '',
 			email: '',
@@ -116,13 +117,18 @@ angular.module('app.controllers', ['app.services'])
 			console.log('Password is an empty string');
 		}
 		else if(password.length < 8) {
-			console.log('Password is too short')
+			console.log('Password is too short');
 		}
 		else {
 			errorObject.passPass = true;
 			loginObject.password = password;
 		}
 		console.log(loginObject);
+
+		// for(var key in $scope.programs) {
+		// 	console.log(key+' Added');
+		// 	$http.post('Program', { name: key, programID: $scope.userID });
+		// }
 
 		if(errorObject.userPass && errorObject.emailPass && errorObject.passPass) {
 			console.log('All pass, can post');
@@ -230,10 +236,23 @@ angular.module('app.controllers', ['app.services'])
 		});
 
 })
-.controller('manageTestsCtrl', function($scope) {
+.controller('manageTestsCtrl', function($scope, $http) {
 
 	$scope.testName = "Test Suite Management";
-	$scope.Add = false;
+
+	//POST /:model/:record/:association/:record_to_add?
+	// $http.post('/Program/22/Suite/1')
+	// .success(function(res) {
+	// 	console.log(response);
+	// })
+	// .error(function(err) {
+	// 	console.log(err);
+	// });	
+
+	// $http.post('/Ajax/addSuite', { programId: 22 , suiteId:1 })
+	// .then(function (response) {
+ //  		console.log(response);
+	// });
 
 	$scope.testChanged = function(testSelected) {
 		$scope.testName = testSelected;
@@ -248,6 +267,42 @@ angular.module('app.controllers', ['app.services'])
 	}
 
 })
-.controller('manageStudentsCtrl', function() {
+.controller('manageStudentsCtrl', function($scope) {
 
+	$scope.programName = "No Program Selected";
+
+	$scope.changeName = function(programSelected) {
+		$scope.programName = programSelected;
+	}
+})
+.controller('manageProgramsCtrl', function($scope, $http) {
+
+	$scope.programs = [];
+
+	$http.get('/auth/user')
+		.success(function(response) {
+			$scope.userID = response.id;
+		})
+		.error(function(err) {
+			console.log(err);
+		});
+
+	$scope.addProgram = function(programAdded) {
+		$scope.programs.push(programAdded);
+		$scope.programAdded = '';
+		console.log($scope.programs);
+	}
+
+	$scope.saveClick = function() {
+		for(var key in $scope.programs) {
+			$http.post('/Program', { name: $scope.programs[key], programID: $scope.userID})
+			.success(function(res) {
+				console.log(res);
+				console.log('Posted program model');
+			})
+			.error(function(err) {
+				console.log(err);
+			});	
+		}
+	}
 });
