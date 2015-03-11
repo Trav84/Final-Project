@@ -34,7 +34,7 @@ this["JST"]["assets/templates/schoolDashboard.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += 'School Dashboard';
+__p += 'School Dashboard\n\n<h1 ng-bind="currentUser"> Test </h1>';
 
 }
 return __p
@@ -44,7 +44,7 @@ this["JST"]["assets/templates/schoolLogIn.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<section class="school-login">\n\t<form ng-submit="schoolLogin(user)">\n\t\t<input ng-model="user.email" type="text" placeholder="Email">\n\t\t<input ng-model="user.password" type="password" placeholder="Password">\n\t\t<button> Log In </button>\n\t</form>\n\n\t<button ng-click="schoolRegisterClick()"> Register New Code School </button>\n</section>';
+__p += '<section class="school-login">\n\t<form ng-submit="schoolLogin(user)">\n\t\t<input ng-model="user.email" type="text" placeholder="Email">\n\t\t<input ng-model="user.password" type="password" placeholder="Password">\n\t\t<button> Log In </button>\n\t</form>\n\n\t<button ng-click="schoolRegisterClick()"> Register New Code School </button>\n\n\t<h1 ng-bind="currentUser"> </h1>\n</section>';
 
 }
 return __p

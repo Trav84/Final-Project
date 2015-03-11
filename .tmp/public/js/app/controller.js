@@ -10,14 +10,6 @@ angular.module('app.controllers', ['app.services'])
 			console.log(err);
 		});
 	}
-
-	// $http.get('/auth/user')
-	// .success(function(answers) {
-	// 	$scope.currentUser = answers.username;
-	// 	})
-	// 	.error(function(err) {
-	// 		console.log(err);
-	// 	});
 })
 .controller('studentLogInCtrl', function($scope, $state) {
 
@@ -39,21 +31,28 @@ angular.module('app.controllers', ['app.services'])
 .controller('schoolLogInCtrl', function($scope, $state, $http) {
 
 	$scope.schoolLogin = function(user) {
-		$http.post('/auth/local', user)
+		loginObject = {
+			identifier: user.email,
+			password: user.password
+		}
+
+		$http.post('/auth/local', loginObject)
 			.success(function(res) {
-				if(res.errors.length > 0) {
-					$scope.loginErrorArray = errorMessageSort(res.errors[0]);
-				}
-				if(res.success) {
-					$state.go('studentDashboard');
-				}
+				// if(res.errors.length > 0) {
+				// 	$scope.loginErrorArray = errorMessageSort(res.errors[0]);
+				// }
+				// if(res.success) {
 					$http.get('/auth/user')
-					.success(function(answers) {
-						$scope.currentUser = answers.username;
+					.success(function(response) {
+						console.log(response);
+						$scope.currentUser = response.username;
 					})
 					.error(function(err) {
 						console.log(err);
 					});
+					//$state.go('studentDashboard');
+				// }
+					
 			})
 			.error(function(err) {
 				console.log('Error!');
