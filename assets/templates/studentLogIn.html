@@ -1,8 +1,14 @@
 <section class="student-login">
-	<h2> Please enter the key you were emailed to log in </h2>
-	<form ng-submit="studentLoginSubmit(uniqueKey)">
-		<input ng-model="uniqueKey" type="text" placeholder="Key">
-		<button> Log In </button>
-	</form>
-	<p ng-bind="errorMsg"> </p>
+	<h1> Hi! </h1>
+	<p> This process is designed to be as simple and painless for you as possible. All you need to do is enter the key that was emailed to you in the space below. Once in, you'll have some assessment tests to take. Don't stress over the questions or panic if you don't know the answers. No one expects you to be awesome at programing or be a computer whiz - that's why you are entering a code school! We are just here to help your school understand where you are in terms of your basic skills. </p>
+	<section class="login-area"> 
+		<h2> Please enter the key you were emailed to log in </h2>
+		<form ng-submit="studentLoginSubmit(uniqueKey)">
+			<input ng-model="uniqueKey" type="text" placeholder="Key">
+			<div>
+				<button> Log In </button>
+			</div>
+		</form>
+		<span ng-bind="errorMsg"> </span>
+	</section>
 </section>
