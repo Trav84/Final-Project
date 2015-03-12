@@ -65,6 +65,11 @@ angular.module('app', ['app.controllers','ui.router'])
 		url: '/managePrograms',
 		templateUrl: 'templates/managePrograms.html',
 		controller: 'manageProgramsCtrl'
+	})
+	.state('studentResults', {
+		url: '/studentResults',
+		templateUrl: 'templates/studentResults.html',
+		controller: 'studentResultsCtrl'
 	});
 
 	$urlRouterProvider.otherwise('/landing');

@@ -11,21 +11,35 @@ angular.module('app.controllers', ['app.services'])
 		});
 	}
 })
-.controller('studentLogInCtrl', function($scope, $state) {
+.controller('studentLogInCtrl', function($scope, $state, $http, student) {
 
 	$scope.studentLoginSubmit = function(key) {
 
-		if(validator.isNull(key)) {
-			console.log('Key is null');
-			$scope.errorMsg = 'Please enter a valid key';
-		}
-		else if (key.length === 0) {
-			console.log('Key has length of zero');
-			$scope.errorMsg = 'Please enter a valid key';
-		}
-		else {
-			$state.go('studentDashboard');
-		}
+		$http.get('/Student?loginKey='+key)
+		.success(function(recieved) {
+			console.log('Grabbing student data...');
+			if(recieved.length > 0) {
+				student.info = recieved[0];
+				$state.go('studentDashboard');
+			}
+			else {
+				$scope.errorMsg = 'Key is not valid.';
+			}
+		})
+		.error(function(err) {
+			console.log(err);
+		});
+
+		// if(validator.isNull(key)) {
+		// 	$scope.errorMsg = 'Please enter a valid key';
+		// }
+		// else if (key.length === 0) {
+		// 	$scope.errorMsg = 'Please enter a valid key';
+		// }
+		// else if(correctKey) {
+			
+		// }
+		
 	};
 })
 .controller('schoolLogInCtrl', function($scope, $state, $http) {
@@ -146,7 +160,13 @@ angular.module('app.controllers', ['app.services'])
 		}
 	}
 })
-.controller('studentDashboardCtrl', function($scope, $http, $state) {
+.controller('studentDashboardCtrl', function($scope, $http, $state, student) {
+	console.log(student);
+	$scope.studentName = student.info.name;
+	$scope.studentProgram = student.info.studentID.name;
+
+	console.log($scope.studentName);
+	console.log($scope.studentProgram);
 
 	$http.get('/Suite')
 	.success(function(testData) {
@@ -240,6 +260,7 @@ angular.module('app.controllers', ['app.services'])
 
 	$scope.testName = "Test Suite Management";
 	$scope.retrievedPrograms = [];
+	$scope.test = "test";
 
 	$http.get('/auth/user')
 		.success(function(response) {
@@ -253,15 +274,24 @@ angular.module('app.controllers', ['app.services'])
 
 	function getPrograms() {	
 
-	$http.get('/Program?programID='+$scope.userID)
+		$http.get('/Program?programID='+$scope.userID)
+			.success(function(response) {
+				console.log(response);
+				$scope.retrievedPrograms = response;
+			})
+			.error(function(err) {
+				console.log(err);
+			});
+	}
+
+	$http.get('/Suite')
 		.success(function(response) {
 			console.log(response);
-			$scope.retrievedPrograms = response;
+			$scope.retrievedTests = response;
 		})
 		.error(function(err) {
 			console.log(err);
 		});
-	}
 
 	//POST /:model/:record/:association/:record_to_add?
 	// $http.post('/Program/22/Suite/1')
@@ -272,17 +302,28 @@ angular.module('app.controllers', ['app.services'])
 	// 	console.log(err);
 	// });	
 
-
 	$scope.testChanged = function(testSelected) {
 		$scope.testName = testSelected;
 	}
 
 	$scope.buttonClick = function(button) {
-		console.log(button);
-		button = $scope.button;
-		$scope.button = !$scope.button;
-		console.log($scope.button);
-		console.log($scope.Add);
+		if(button === 'Add') {
+			$scope.Add = !$scope.Add;
+			console.log('Add test button clicked');
+
+		}
+		else if (button === "Remove") {
+			$scope.Remove = !$scope.Remove;
+			console.log('Remove test button clicked');
+		} 
+		else if(button === "Create") {
+			$scope.Create = !$scope.Create;
+			console.log('Create test button clicked');
+		}
+	}
+
+	$scope.testClick = function(test) {
+		
 	}
 
 })
@@ -324,4 +365,7 @@ angular.module('app.controllers', ['app.services'])
 			});	
 		}
 	}
+})
+.controller('studentResultsCtrl', function() {
+
 });

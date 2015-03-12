@@ -54,7 +54,7 @@ this["JST"]["assets/templates/manageTests.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<section class="manage-tests">\n\t<section class="header">\n\t\t<h1 ng-bind="testName"> Test Suite Management </j1>\n\t</section>\n\t<p> Here you can manage which tests you have in each of your schools specific programs. First select the program you wish to manage, then select to either add or remove a test to that suite. </p>\n\t<span> Select a Program To Manage </span>\n\t<select ng-change="testChanged(testSelected)" ng-model="testSelected">\n  \t\t<option ng-repeat="program in retrievedPrograms"> {{ program.name }}</option>\n\t</select>\n\t<ul>\n\t\t<button ng-click="buttonClick(\'Add\')"> \n\t\t\t<i ng-hide="Add" class="fa fa-caret-right"></i> <i ng-show="Add" class="fa fa-caret-down"></i> Add Test\n\t\t </button>\n\t\t<button ng-click="buttonClick(\'Remove\')">\n\t\t\t<i ng-hide="visible" class="fa fa-caret-right"></i> <i ng-show="visible" class="fa fa-caret-down"></i> Remove Test \n\t\t</button>\n\t\t<button ng-click="buttonClick(\'Create\')"> \n\t\t\t<i ng-hide="visible" class="fa fa-caret-right"></i> <i ng-show="visible" class="fa fa-caret-down"></i> Create Custom Test \n\t\t</button>\n\t</ul>\n</section>';
+__p += '<section class="manage-tests">\n\t<section class="header">\n\t\t<h1 ng-bind="testName"> Test Suite Management </j1>\n\t</section>\n\t<p> Here you can manage which tests you have in each of your schools specific programs. First select the program you wish to manage, then select to either add or remove a test to that suite. </p>\n\t<span> Select a Program To Manage </span>\n\t<select ng-change="testChanged(testSelected)" ng-model="testSelected">\n  \t\t<option ng-repeat="program in retrievedPrograms"> {{ program.name }}</option>\n\t</select>\n\t<ul>\n\t\t<button ng-click="buttonClick(\'Add\')"> \n\t\t\t<i ng-hide="Add" class="fa fa-caret-right"></i> <i ng-show="Add" class="fa fa-caret-down"></i> Add Test\n\t\t</button>\n\t\t<button ng-repeat="test in retrievedTests" class="test" ng-show="Add"> {{ test.name }} </button>\n\t\t<button ng-click="buttonClick(\'Remove\')">\n\t\t\t<i ng-hide="visible" class="fa fa-caret-right"></i> <i ng-show="visible" class="fa fa-caret-down"></i> Remove Test \n\t\t</button>\n\t\t<button ng-click="buttonClick(\'Create\')"> \n\t\t\t<i ng-hide="visible" class="fa fa-caret-right"></i> <i ng-show="visible" class="fa fa-caret-down"></i> Create Custom Test \n\t\t</button>\n\t\t<button class="test" ng-show="Create"> Coming Soon! </button>\n\t</ul>\n</section>';
 
 }
 return __p
@@ -94,7 +94,7 @@ this["JST"]["assets/templates/studentDashboard.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<section class="student-dash">\n\t<h2> Welcome [name] </h2>\n\t<p> You are here because you\'ve been accepted into a code school and are about to embark on a new journey.Congratulations! [School Name] has selected a set of simple assessment tests for you to complete so they can better understand the basic skill set you are bringing into class. This helps them tailor their cirriculum and course work to better suit the needs of you and your fellow classmates. Just click on a test below to get started. </p> \n\t<button ng-click="testClick(test.id)" class="test" ng-repeat="test in tests"> {{ test.name }} </button>\n</section>';
+__p += '<section class="student-dash">\n\t<h2> Welcome {{ studentName }}</h2>\n\t<h3> A brand new student in {{ studentProgram }} </h3>\n\t<p> You are here because you\'ve been accepted into your code school and are about to embark on a new journey. Congratulations! Your school has selected a set of simple assessment tests for you to complete so they can better understand the basic skill set you are bringing into class. This helps them tailor their cirriculum and course work to better suit the needs of you and your fellow classmates. Just click on a test below to get started. </p> \n\t<button ng-click="testClick(test.id)" class="test" ng-repeat="test in tests"> {{ test.name }} </button>\n</section>';
 
 }
 return __p
@@ -120,6 +120,16 @@ __p += '<section class="student-login">\n\t<h2> Please enter the key you were em
 return __p
 };
 
+this["JST"]["assets/templates/studentResults.html"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __e = _.escape;
+with (obj) {
+__p += '<section class="student-results">\n\t<section class="header">\n\t\t<h1> Travis Czerw </h1>\n\t</section>\n\t<h2> Front End Development </h2>\n\t<section class="results">\n\t\t<div class="results-row">\n\t\t\t<div class="test-name"></div>\n\t\t\t<div>\n\t\t\t\t<p class="category weak" title="Weak means a score of 25% or less"> Weak </p>\n\t\t\t\t<p class="category moderate" title="Moderate means a score between 25% and 75%"> Moderate </p>\n\t\t\t\t<p class="category last strong" title="Strong means a score of 75% or more"> Strong </p>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class="results-row">\n\t\t\t<div class="test-name"> JavaScript Assessment: </div>\n\t\t\t<div class="stretchRight box">  </div>\n\t\t</div>\n\t\t<div class="results-row">\n\t\t\t<div class="test-name"> Mac OSX Command Line: </div>\n\t\t\t<div class="stretchRight box two"> </div>\n\t\t</div>\n\t\t<div class="results-row">\n\t\t\t<div class="test-name"> Basic Networking: </div>\n\t\t\t<div class="stretchRight box three">  </div>\n\t\t</div>\n</section>';
+
+}
+return __p
+};
+
 this["JST"]["assets/templates/test.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
@@ -134,7 +144,7 @@ this["JST"]["assets/templates/testEnd.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<section class="test-end">\n\t<h1> You\'re all done! </h1>\n\t<p> If there are more assessements assigned to you, you can return to the dashboard to complete them. </P>\n\t<p> If not, we wish you the best of luck on your journey as you enter your program. We look forward to seeing all the awesome things you come up with and build! Your input will be used by your school and instructors to help talior cirriculum and course work with the needs of you and your fellow students in mind. <p>\n\t<div>\n\t\t<button ng-click="buttonClick()"> Back to Dashboard </button>\n\t</div>\n</section>';
+__p += '<section class="test-end">\n\t<h1> You\'re all done! </h1>\n\t<p> First off - don\'t stress about how well you did. These questions are for your instructors to have a better grasp on your skills coming into program, not to disqualify or worry you. </p>\n\t<p> If there are more assessements assigned to you, you can return to the dashboard to complete them. </P>\n\t<p> If not, we wish you the best of luck on your journey as you enter your program. We look forward to seeing all the awesome things you come up with and build! Your input will be used by your school and instructors to help talior cirriculum and course work with the needs of you and your fellow students in mind. <p>\n\t<div>\n\t\t<button ng-click="buttonClick()"> Back to Dashboard </button>\n\t</div>\n</section>';
 
 }
 return __p

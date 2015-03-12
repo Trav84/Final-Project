@@ -27,4 +27,7 @@ angular.module('app.services', [])
 			cb(err);
 		});
 	};
+})
+.factory('student', function() {
+	return {};
 });

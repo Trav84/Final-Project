@@ -1,0 +1,81 @@
+.student-results {
+
+	.header {
+		h1 {
+			text-align: center;
+			font-size:2em;
+			font-weight:700;
+			border-bottom:1px solid black;
+			margin:1em 0;
+		}
+	}
+
+	h2 {
+		text-align: center;
+		font-size:1.5em;
+		margin:1em 0;
+	}
+
+	.results {
+		margin:1em 2em;
+		font-size:2em;
+		padding:1em 1em;
+		border:1px solid black;
+		border-radius:5px;
+	}
+
+	.results-row div {
+		display: inline-block;
+	}
+
+	.box {
+		width:10em;
+		height:2em;
+		background-color:orange;
+	}
+
+	.two {
+		width:4em;
+		height:2em;
+	}
+
+	.three {
+		width:14em;
+		height:2em;
+	}
+
+	.test-name {
+		width:25%;
+		vertical-align: top;
+		padding-top:0.4em;
+	}
+
+	.category {
+		display:inline-block;
+		margin-bottom:0.2em;
+		padding:0.4em 2em;
+		width:32%;
+		box-sizing:border-box;
+		border-left:1px solid black;
+	}
+
+	.category:hover {
+		background-color:rgb(50,183,187);
+	}
+
+	.last {
+		border-right:1px solid black;
+	}
+
+	.weak:hover {
+		
+	}
+
+	.moderate {
+
+	}
+
+	.strong {
+
+	}
+}

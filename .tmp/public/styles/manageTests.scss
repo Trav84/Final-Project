@@ -12,6 +12,16 @@
 		}
 	}
 
+	.test {
+		display:inline-block;
+		background-color: white;
+	}
+
+	.test-clicked {
+		display:inline-block;
+		background-color:green;
+	}
+
 	p {
 		margin:1em 1em;
 	}

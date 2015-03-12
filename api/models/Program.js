@@ -16,6 +16,10 @@ module.exports = {
     	collection: 'Suite',
     	via: 'programs',
     	dominant: true
+    },
+    students: {
+      collection: 'Student',
+      via: 'studentID'
     }
   }
 };
