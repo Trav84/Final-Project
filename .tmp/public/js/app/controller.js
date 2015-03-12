@@ -239,6 +239,29 @@ angular.module('app.controllers', ['app.services'])
 .controller('manageTestsCtrl', function($scope, $http) {
 
 	$scope.testName = "Test Suite Management";
+	$scope.retrievedPrograms = [];
+
+	$http.get('/auth/user')
+		.success(function(response) {
+			$scope.userID = response.id;
+			console.log(response);
+			getPrograms();
+		})
+		.error(function(err) {
+			console.log(err);
+		});
+
+	function getPrograms() {	
+
+	$http.get('/Program?programID='+$scope.userID)
+		.success(function(response) {
+			console.log(response);
+			$scope.retrievedPrograms = response;
+		})
+		.error(function(err) {
+			console.log(err);
+		});
+	}
 
 	//POST /:model/:record/:association/:record_to_add?
 	// $http.post('/Program/22/Suite/1')
@@ -249,10 +272,6 @@ angular.module('app.controllers', ['app.services'])
 	// 	console.log(err);
 	// });	
 
-	// $http.post('/Ajax/addSuite', { programId: 22 , suiteId:1 })
-	// .then(function (response) {
- //  		console.log(response);
-	// });
 
 	$scope.testChanged = function(testSelected) {
 		$scope.testName = testSelected;
