@@ -1,9 +1,7 @@
 <section class="test">
 	<h1 ng-bind="title"> [Test Name] </h1>
-	<h2> 1. {{question}}</h2>
-	<section class="wrapper">
-		<ul ng-repeat="choice in choices">
-			<div ng-click="choiceClick(choice.answer)"> {{ choice.displayText }} </div>
-		</ul>
-	</section>
+	<h2> {{question}}</h2>
+	<div class="choice-box">
+		<div ng-repeat="choice in choices" class="col-xs-12 push_button blue" ng-click="choiceClick(choice.answer)"> {{ choice.displayText }} </div>
+	</div>
 </section>

@@ -1,5 +1,6 @@
 angular.module('app.controllers', ['app.services'])
 .controller('landingCtrl', function($scope, $http, $state) {
+
 	$scope.logoutClick = function() {
 		$http.get('/logout')
 		.success(function(recieved) {

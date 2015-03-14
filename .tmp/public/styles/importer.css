@@ -13,54 +13,128 @@
  * always omit, customize, or replace this behavior with SASS, SCSS,
  * or any other Grunt tasks you like.)
  */
-@import url(reset.css);
 header {
   background-color: #424242;
-  border-bottom: 1px solid black; }
+  position: relative; }
+  header nav {
+    font-size: 0; }
   header h1 {
     color: white;
+    font-family: 'Monofett';
     text-align: center;
-    padding: 1em 1em;
-    padding-bottom: 0.5em;
-    font-size: 2em; }
+    padding: 0.5em 1em;
+    font-size: 4.5em; }
   header a {
+    font-size: 16px;
     display: inline-block;
     padding: 1em 2em;
     color: white;
-    border: 1px solid white;
+    text-decoration: none; }
+  header a:visited {
+    color: white; }
+  header a:hover {
+    background-color: grey;
+    color: white;
     border-bottom: none;
     text-decoration: none; }
-  header a:hover {
-    background-color: grey; }
-  header button {
-    float: right; }
+  header div {
+    font-size: 16px;
+    float: right;
+    position: relative;
+    top: -9.5em;
+    margin-top: 1em;
+    margin-right: 1em;
+    color: white; }
+  header div:hover {
+    color: #ff9900; }
+  header ul {
+    color: white; }
+  header li {
+    text-align: left;
+    width: 10%; }
 
-body {
+html, body {
   background-color: #e9e9e9; }
+
+input:not([type=submit]):not([type=file]) {
+  font-size: 1.4em;
+  border: 5px solid white;
+  -webkit-box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1), 0 0 16px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1), 0 0 16px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1), 0 0 16px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.5);
+  margin: 0 0 10px 0; }
 
 .landing h1 {
   margin-top: 1em;
   text-align: center;
   font-size: 2.5em;
   font-weight: 500px; }
-.landing .wrapper {
-  margin: 0 auto;
-  margin-top: 3em;
-  text-align: center;
-  overflow: hidden;
-  width: 50%; }
 .landing div {
-  background-color: #ff9900;
-  float: left;
-  margin: 1em 0.5em;
-  padding: 2em 1em;
-  border: 1px solid black;
-  border-radius: 5px;
-  width: 45%;
-  box-sizing: border-box;
-  font-size: 1.5em; }
+  font-size: 2em;
+  padding-top: 1.4em; }
 .landing a {
-  color: black; }
+  color: black;
+  text-decoration: none; }
+.landing .push_button {
+  margin-top: 1em;
+  position: relative;
+  height: 4em;
+  text-align: center;
+  color: #FFF;
+  color: #333333;
+  text-decoration: none;
+  line-height: 43px;
+  font-family: 'Oswald', Helvetica;
+  display: block; }
+.landing .push_button:hover {
+  color: #FFF; }
+.landing .push_button:before {
+  background: #f0f0f0;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#D0D0D0), to(#f0f0f0));
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) inset, 0 1px 0 #FFF;
+  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) inset, 0 1px 0 #FFF;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) inset, 0 1px 0 #FFF;
+  position: absolute;
+  content: "";
+  left: -6px;
+  right: -6px;
+  top: -6px;
+  bottom: -10px;
+  z-index: -1; }
+.landing .push_button:active {
+  -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset, 0 -1px 0 rgba(255, 255, 255, 0.1) inset;
+  top: 5px; }
+.landing .push_button:active:before {
+  top: -11px;
+  bottom: -5px;
+  content: ""; }
+.landing .blue {
+  text-shadow: -1px -1px 0 #2C7982;
+  background-color: #32b7bb;
+  border: 1px solid #379AA4;
+  background-image: -webkit-linear-gradient(top, #48C6D4, #3EACBA);
+  background-image: -moz-linear-gradient(top, #48C6D4, #3EACBA);
+  background-image: -ms-linear-gradient(top, #48C6D4, #3EACBA);
+  background-image: -o-linear-gradient(top, #48C6D4, #3EACBA);
+  background-image: linear-gradient(top, #48C6D4, #3EACBA);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset, 0 -1px 0 rgba(255, 255, 255, 0.1) inset, 0 4px 0 #338A94, 0 4px 2px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset, 0 -1px 0 rgba(255, 255, 255, 0.1) inset, 0 4px 0 #338A94, 0 4px 2px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset, 0 -1px 0 rgba(255, 255, 255, 0.1) inset, 0 4px 0 #338A94, 0 4px 2px rgba(0, 0, 0, 0.5); }
+.landing .blue:hover {
+  background: #48C6D4;
+  background-image: -webkit-linear-gradient(top, #3EACBA, #48C6D4);
+  background-image: -moz-linear-gradient(top, #3EACBA, #48C6D4);
+  background-image: -ms-linear-gradient(top, #3EACBA, #48C6D4);
+  background-image: -o-linear-gradient(top, #3EACBA, #48C6D4);
+  background-image: linear-gradient(top, #3EACBA, #48C6D4); }
 
 .school-login {
   margin: 0 auto;
@@ -70,15 +144,6 @@ body {
 .student-login {
   margin: 0 auto;
   margin: 1em 1em; }
-  .student-login input:not([type=submit]):not([type=file]) {
-    font-size: 1.4em;
-    border: 5px solid white;
-    -webkit-box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1), 0 0 16px rgba(0, 0, 0, 0.1);
-    -moz-box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1), 0 0 16px rgba(0, 0, 0, 0.1);
-    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1), 0 0 16px rgba(0, 0, 0, 0.1);
-    padding: 15px;
-    background: rgba(255, 255, 255, 0.5);
-    margin: 0 0 10px 0; }
   .student-login h1 {
     margin-top: 1em;
     text-indent: 50px;
@@ -102,6 +167,25 @@ body {
   .student-login span {
     font-size: 1.5em;
     color: #c9462c; }
+  .student-login button {
+    -webkit-border-radius: 28;
+    -moz-border-radius: 28;
+    border-radius: 28px;
+    text-shadow: 1px 1px 3px #666666;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 34px;
+    background: #3498db;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none; }
+  .student-login button:hover {
+    background: #3cb0fd;
+    background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+    text-decoration: none; }
 
 .school-register {
   margin: 0 auto;
@@ -115,13 +199,11 @@ body {
 
 .student-dash {
   margin-bottom: 2em; }
-  .student-dash .test {
+  .student-dash .test-display {
     padding: 1em 1em;
     border: 1px solid black;
-    margin: 0 auto;
-    margin-top: 2em;
+    margin: 1em 0;
     text-align: center;
-    width: 30%;
     border-radius: 5px;
     display: block;
     cursor: pointer;
@@ -140,23 +222,87 @@ body {
     font-size: 1.5em;
     margin-bottom: 2em; }
   .student-dash p {
+    text-indent: 50px;
     line-height: 1.6em; }
+  .student-dash div {
+    margin: 0 auto;
+    width: 100%; }
 
 .test {
-  margin: 0 auto;
-  margin: 1em 1em;
   text-align: center; }
-  .test .wrapper {
-    margin: 0 auto; }
-  .test ul div {
+  .test h1 {
+    margin-top: 0.5em;
+    font-size: 2em; }
+  .test h2 {
+    font-size: 1.5em; }
+  .test .choice-box {
+    margin: 1em 1em; }
+  .test .option {
     border: 1px solid black;
     padding: 1em 1em;
-    margin: 1em auto;
-    width: 20%;
+    margin: 0.5em 0;
     border-radius: 10px;
     font-size: 1.3em; }
-  .test ul div:hover {
+  .test .option:hover {
     background-color: grey; }
+  .test .push_button {
+    margin-top: 1em;
+    position: relative;
+    height: 40px;
+    text-align: center;
+    color: #FFF;
+    color: #333333;
+    text-decoration: none;
+    line-height: 43px;
+    font-family: 'Oswald', Helvetica;
+    display: block; }
+  .test .push_button:hover {
+    color: #FFF; }
+  .test .push_button:before {
+    background: #f0f0f0;
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#D0D0D0), to(#f0f0f0));
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) inset, 0 1px 0 #FFF;
+    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) inset, 0 1px 0 #FFF;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) inset, 0 1px 0 #FFF;
+    position: absolute;
+    content: "";
+    left: -6px;
+    right: -6px;
+    top: -6px;
+    bottom: -10px;
+    z-index: -1; }
+  .test .push_button:active {
+    -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset, 0 -1px 0 rgba(255, 255, 255, 0.1) inset;
+    top: 5px; }
+  .test .push_button:active:before {
+    top: -11px;
+    bottom: -5px;
+    content: ""; }
+  .test .blue {
+    text-shadow: -1px -1px 0 #2C7982;
+    background-color: #32b7bb;
+    border: 1px solid #379AA4;
+    background-image: -webkit-linear-gradient(top, #48C6D4, #3EACBA);
+    background-image: -moz-linear-gradient(top, #48C6D4, #3EACBA);
+    background-image: -ms-linear-gradient(top, #48C6D4, #3EACBA);
+    background-image: -o-linear-gradient(top, #48C6D4, #3EACBA);
+    background-image: linear-gradient(top, #48C6D4, #3EACBA);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset, 0 -1px 0 rgba(255, 255, 255, 0.1) inset, 0 4px 0 #338A94, 0 4px 2px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset, 0 -1px 0 rgba(255, 255, 255, 0.1) inset, 0 4px 0 #338A94, 0 4px 2px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset, 0 -1px 0 rgba(255, 255, 255, 0.1) inset, 0 4px 0 #338A94, 0 4px 2px rgba(0, 0, 0, 0.5); }
+  .test .blue:hover {
+    background: #48C6D4;
+    background-image: -webkit-linear-gradient(top, #3EACBA, #48C6D4);
+    background-image: -moz-linear-gradient(top, #3EACBA, #48C6D4);
+    background-image: -ms-linear-gradient(top, #3EACBA, #48C6D4);
+    background-image: -o-linear-gradient(top, #3EACBA, #48C6D4);
+    background-image: linear-gradient(top, #3EACBA, #48C6D4); }
 
 .test-end {
   margin: 0 auto; }
@@ -210,9 +356,10 @@ body {
 
 .about h1 {
   font-size: 2em;
-  margin: 1.5em 0;
+  margin: 1em 0;
   text-align: center; }
 .about p {
+  text-indent: 50px;
   line-height: 1.4em;
   margin: 1em 0; }
 
@@ -255,44 +402,43 @@ body {
   font-size: 1.5em;
   border-radius: 5px; }
 
-.manage-students .complete {
-  background-color: green; }
-.manage-students .incomplete {
-  background-color: red; }
-.manage-students .header {
-  border-bottom: 1px solid black;
-  text-align: center; }
-  .manage-students .header h1 {
-    margin-top: 1em;
-    margin-bottom: 0.5em;
-    font-size: 2em;
-    font-style: bold; }
-  .manage-students .header h2 {
+.manage-students {
+  font-size: 16px; }
+  .manage-students .fa-check-circle-o {
+    color: #7bab5f;
+    color: #55a626; }
+  .manage-students .fa-times-circle-o {
+    color: #b11623; }
+  .manage-students .header {
+    border-bottom: 1px solid black;
+    text-align: center; }
+    .manage-students .header h1 {
+      margin-top: 0.5em;
+      margin-bottom: 0.5em;
+      font-size: 2em;
+      font-style: bold; }
+    .manage-students .header h2 {
+      font-size: 1.5em;
+      margin-bottom: 0.5em; }
+    .manage-students .header select {
+      margin-bottom: 0.5em; }
+  .manage-students table {
+    width: 95%;
+    margin: 1em 2em; }
+  .manage-students table tr {
+    border: 1px solid black; }
+  .manage-students table th {
+    border: 1px solid black;
+    padding: 0.6em 0.6em;
+    font-weight: 500;
+    background-color: #333333;
+    color: white; }
+  .manage-students td {
     font-size: 1.5em;
-    margin-bottom: 0.5em; }
-  .manage-students .header select {
-    margin-bottom: 0.5em; }
-.manage-students table {
-  width: 95%;
-  margin: 1em 2em; }
-.manage-students table tr {
-  border: 1px solid black; }
-.manage-students table th {
-  border: 1px solid black;
-  padding: 0.6em 0.6em;
-  font-weight: 500;
-  background-color: #333333;
-  color: white; }
-.manage-students td {
-  padding: 0.4em 0.4em;
-  text-align: center;
-  vertical-align: middle;
-  border: 1px solid black; }
-.manage-students button {
-  background-color: red;
-  vertical-align: middle;
-  width: 50%;
-  height: 50%; }
+    padding: 0.4em 0.4em;
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid black; }
 
 .student-results .header h1 {
   text-align: center;

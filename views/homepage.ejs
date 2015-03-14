@@ -6,10 +6,11 @@
            <a ui-sref="about"> About </a> 
            <a ui-sref="codeSchools"> Code Schools </a> 
            <a ui-sref="contact"> Contact </a> 
-           <button ng-bind="currentUser"> Test Name </button>
-           <button ng-click="logoutClick()"> Logout </button>
+          <div> 
+            <i ng-mouseenter="show = true" ng-mouseleave="show = false" ng-click="logoutClick()" class="fa fa-angle-double-down fa-3x"></i> 
+          </div> 
         </nav>
     </header>
 
-    <div ui-view></div>
+    <div class="container-fluid" ui-view></div>
 </section>

@@ -1,13 +1,11 @@
 .student-dash {
 	margin-bottom:2em;
 
-	.test {
+	.test-display {
 		padding:1em 1em;
 		border: 1px solid black;
-		margin:0 auto;
-		margin-top:2em;
+		margin:1em 0;
 		text-align:center;
-		width:30%;
 		border-radius:5px;
 		display:block;
 		cursor:pointer;
@@ -34,6 +32,13 @@
 	}
 
 	p {
+		text-indent: 50px;
 		line-height:1.6em;
 	}
+
+	div {
+		margin:0 auto;
+		width:100%;
+	}
 }
+
