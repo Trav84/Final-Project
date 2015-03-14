@@ -22,7 +22,7 @@ header {
     color: white;
     font-family: 'Monofett';
     text-align: center;
-    padding: 0.5em 1em;
+    padding: 0.2em 1em;
     font-size: 4.5em; }
   header a {
     font-size: 16px;
@@ -41,7 +41,7 @@ header {
     font-size: 16px;
     float: right;
     position: relative;
-    top: -9.5em;
+    top: -7.5em;
     margin-top: 1em;
     margin-right: 1em;
     color: white; }
@@ -137,8 +137,6 @@ input:not([type=submit]):not([type=file]) {
   background-image: linear-gradient(top, #3EACBA, #48C6D4); }
 
 .school-login {
-  margin: 0 auto;
-  margin: 1em 1em;
   text-align: center; }
 
 .student-login {
@@ -154,10 +152,11 @@ input:not([type=submit]):not([type=file]) {
     margin-top: 2em;
     margin-bottom: 0.5em; }
   .student-login p {
+    font-size: 1.4em;
     text-indent: 50px;
     line-height: 1.6em; }
   .student-login .login-area {
-    margin: 0 auto;
+    margin: 1em auto;
     text-align: center; }
   .student-login button {
     font-size: 1.5em;
@@ -168,24 +167,33 @@ input:not([type=submit]):not([type=file]) {
     font-size: 1.5em;
     color: #c9462c; }
   .student-login button {
-    -webkit-border-radius: 28;
-    -moz-border-radius: 28;
-    border-radius: 28px;
-    text-shadow: 1px 1px 3px #666666;
-    font-family: Arial;
-    color: #ffffff;
-    font-size: 34px;
-    background: #3498db;
-    padding: 10px 20px 10px 20px;
-    text-decoration: none; }
+    border-top: 1px solid #96d1f8;
+    background: #65a9d7;
+    background: -webkit-gradient(linear, left top, left bottom, from(#3e779d), to(#65a9d7));
+    background: -webkit-linear-gradient(top, #3e779d, #65a9d7);
+    background: -moz-linear-gradient(top, #3e779d, #65a9d7);
+    background: -ms-linear-gradient(top, #3e779d, #65a9d7);
+    background: -o-linear-gradient(top, #3e779d, #65a9d7);
+    padding: 15px 30px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: black 0 1px 0;
+    -moz-box-shadow: black 0 1px 0;
+    box-shadow: black 0 1px 0;
+    text-shadow: rgba(0, 0, 0, 0.4) 0 1px 0;
+    color: white;
+    font-size: 16px;
+    font-family: Georgia, serif;
+    text-decoration: none;
+    vertical-align: middle; }
   .student-login button:hover {
-    background: #3cb0fd;
-    background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
-    background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
-    background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
-    background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
-    background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
-    text-decoration: none; }
+    border-top-color: #1c2c36;
+    background: #1c2c36;
+    color: #ccc; }
+  .student-login button:active {
+    border-top-color: #1b435e;
+    background: #1b435e; }
 
 .school-register {
   margin: 0 auto;
@@ -201,7 +209,7 @@ input:not([type=submit]):not([type=file]) {
   margin-bottom: 2em; }
   .student-dash .test-display {
     padding: 1em 1em;
-    border: 1px solid black;
+    border: 3px solid #ff9900;
     margin: 1em 0;
     text-align: center;
     border-radius: 5px;
@@ -234,7 +242,9 @@ input:not([type=submit]):not([type=file]) {
     margin-top: 0.5em;
     font-size: 2em; }
   .test h2 {
-    font-size: 1.5em; }
+    margin-top: 0.5em;
+    font-size: 1.5em;
+    text-decoration: underline; }
   .test .choice-box {
     margin: 1em 1em; }
   .test .option {
@@ -307,10 +317,13 @@ input:not([type=submit]):not([type=file]) {
 .test-end {
   margin: 0 auto; }
   .test-end h1 {
-    margin: 1.5em 0;
+    margin: 1em 0;
     font-size: 2em;
     text-align: center; }
   .test-end p {
+    font-size: 1.4em;
+    line-height: 1.6em;
+    text-indent: 50px;
     margin-bottom: 1em; }
   .test-end div {
     margin: 0 auto;

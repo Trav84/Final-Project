@@ -74,7 +74,7 @@ this["JST"]["assets/templates/schoolLogIn.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<section class="school-login">\n\t<form ng-submit="schoolLogin(user)">\n\t\t<input ng-model="user.email" type="text" placeholder="Email">\n\t\t<input ng-model="user.password" type="password" placeholder="Password">\n\t\t<button> Log In </button>\n\t</form>\n\n\t<button ng-click="schoolRegisterClick()"> Register New Code School </button>\n\n\t<h1 ng-bind="currentUser"> </h1>\n</section>';
+__p += '<section class="school-login">\n\t<form ng-submit="schoolLogin(user)" class="col-xs-12">\n\t\t<input ng-model="user.email" type="text" placeholder="Email">\n\t\t<input ng-model="user.password" type="password" placeholder="Password">\n\t\t<button> Log In </button>\n\t</form>\n\n\t<button ng-click="schoolRegisterClick()"> Register New Code School </button>\n\n\t<h1 ng-bind="currentUser"> </h1>\n</section>';
 
 }
 return __p
@@ -114,7 +114,7 @@ this["JST"]["assets/templates/studentLogIn.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<section class="student-login">\n\t<h1> Hi! </h1>\n\t<p> This process is designed to be as simple and painless for you as possible. All you need to do is enter the key that was emailed to you in the space below. Once in, you\'ll have some assessment tests to take. Don\'t stress over the questions or panic if you don\'t know the answers. No one expects you to be awesome at programing or be a computer whiz - that\'s why you are entering a code school! We are just here to help your school understand where you are in terms of your basic skills. </p>\n\t<section class="login-area"> \n\t\t<h2> Please enter the key you were emailed to log in </h2>\n\t\t<form ng-submit="studentLoginSubmit(uniqueKey)">\n\t\t\t<input ng-model="uniqueKey" type="text" placeholder="Key">\n\t\t\t<div>\n\t\t\t\t<button> Log In </button>\n\t\t\t</div>\n\t\t</form>\n\t\t<span ng-bind="errorMsg"> </span>\n\t</section>\n</section>';
+__p += '<section class="student-login">\n\t<p> This process is designed to be as simple and painless for you as possible. All you need to do is enter the key that was emailed to you in the space below. Once in, you\'ll have some assessment tests to take. Don\'t stress over the questions or panic if you don\'t know the answers. No one expects you to be awesome at programing or be a computer whiz - that\'s why you are entering a code school! We are just here to help your school understand where you are in terms of your basic skills. </p>\n\t<section class="login-area"> \n\t\t<form ng-submit="studentLoginSubmit(uniqueKey)">\n\t\t\t<input ng-model="uniqueKey" type="text" placeholder="Key">\n\t\t\t<div>\n\t\t\t\t<button> Log In </button>\n\t\t\t</div>\n\t\t</form>\n\t\t<span ng-bind="errorMsg"> </span>\n\t</section>\n</section>';
 
 }
 return __p
@@ -134,7 +134,7 @@ this["JST"]["assets/templates/test.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<section class="test">\n\t<h1 ng-bind="title"> [Test Name] </h1>\n\t<h2> {{question}}</h2>\n\t<div class="choice-box">\n\t\t<div ng-repeat="choice in choices" class="col-xs-12 push_button blue" ng-click="choiceClick(choice.answer)"> {{ choice.displayText }} </div>\n\t</div>\n</section>';
+__p += '<section class="test">\n\t<h1 ng-bind="title"> [Test Name] </h1>\n\t<h2> <i class="fa fa-question-circle"></i> {{question}}</h2>\n\t<div class="choice-box">\n\t\t<div ng-repeat="choice in choices" class="col-xs-12 push_button blue" ng-click="choiceClick(choice.answer)"> {{ choice.displayText }} </div>\n\t</div>\n</section>';
 
 }
 return __p
@@ -144,7 +144,7 @@ this["JST"]["assets/templates/testEnd.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<section class="test-end">\n\t<h1> You\'re all done! </h1>\n\t<p> First off - don\'t stress about how well you did. These questions are for your instructors to have a better grasp on your skills coming into program, not to disqualify or worry you. </p>\n\t<p> If there are more assessements assigned to you, you can return to the dashboard to complete them. </P>\n\t<p> If not, we wish you the best of luck on your journey as you enter your program. We look forward to seeing all the awesome things you come up with and build! Your input will be used by your school and instructors to help talior cirriculum and course work with the needs of you and your fellow students in mind. <p>\n\t<div>\n\t\t<button ng-click="buttonClick()"> Back to Dashboard </button>\n\t</div>\n</section>';
+__p += '<section class="test-end">\n\t<h1> Test Finished! </h1>\n\t<p> First off - don\'t stress about how well you did. These questions are for your instructors to have a better grasp on your skills coming into program, not to disqualify or worry you.\n\tIf there are more assessements assigned to you, you can return to the dashboard to complete them.\n\tIf not, we wish you the best of luck on your journey as you enter your program. We look forward to seeing all the awesome things you come up with and build! </p>\n\t<div>\n\t\t<button ng-click="buttonClick()"> Back to Dashboard </button>\n\t</div>\n</section>';
 
 }
 return __p
