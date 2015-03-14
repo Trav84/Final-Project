@@ -4,7 +4,6 @@ angular.module('app.controllers', ['app.services'])
 	$scope.logoutClick = function() {
 		$http.get('/logout')
 		.success(function(recieved) {
-			console.log('Logged out');
 			$state.go('landing');
 		})
 		.error(function(err) {
@@ -86,14 +85,6 @@ angular.module('app.controllers', ['app.services'])
 	$scope.programs = [];
 	$scope.userID = null;
 
-	// $http.get('/auth/user')
-	// 	.success(function(response) {
-	// 		$scope.userID = response.id;
-	// 	})
-	// 	.error(function(err) {
-	// 		console.log(err);
-	// 	});		
-
 	$scope.addProgram = function(programAdded) {
 		$scope.programs.push(programAdded);
 		$scope.programAdded = '';
@@ -146,12 +137,6 @@ angular.module('app.controllers', ['app.services'])
 			errorObject.passPass = true;
 			loginObject.password = password;
 		}
-		console.log(loginObject);
-
-		// for(var key in $scope.programs) {
-		// 	console.log(key+' Added');
-		// 	$http.post('Program', { name: key, programID: $scope.userID });
-		// }
 
 		if(errorObject.userPass && errorObject.emailPass && errorObject.passPass) {
 			$http.post('/auth/local/register', loginObject)
@@ -165,14 +150,24 @@ angular.module('app.controllers', ['app.services'])
 		}
 	}
 })
-.controller('studentDashboardCtrl', function($scope, $http, $state, student) {
+.controller('studentDashboardCtrl', function($scope, $http, $state, student, completeTest) {
 
 	$scope.studentName = student.info.name;
 	$scope.studentProgram = student.info.studentID.name;
+	$scope.tests = [];
 
 	$http.get('/Suite')
 	.success(function(testData) {
-		$scope.tests = testData;
+		if(!completeTest.noTestFinished) {
+			for(var key in testData) {
+				if(completeTest.id !== testData[key].id) {
+					$scope.tests.push(testData[key]);
+				}
+			}
+		}
+		else {
+			$scope.tests = testData;			
+		}
 	})
 	.error(function(err){
 		console.log(err);
@@ -182,7 +177,7 @@ angular.module('app.controllers', ['app.services'])
 		$state.go('test',{id:testID});
 	};
 })
-.controller('testCtrl', function($scope, $http, $state, $stateParams) {
+.controller('testCtrl', function($scope, $http, $state, $stateParams, completeTest) {
 
 	var correctAnswer = null;
 	var position = 0;
@@ -191,14 +186,18 @@ angular.module('app.controllers', ['app.services'])
 	var numberCorrect = 0;
 	var numberOfQuestions = 5;
 	$scope.questionNum = 1;
+	console.log(completeTest);
 	
 	function getTestData(question) {
 		if(question < numberOfQuestions) {
 			$http.get('/Suite?id='+test)
 			.success(function(testAndQuestions) {
 				$scope.title = testAndQuestions.name;
+				console.log(testAndQuestions);
 				$scope.question = testAndQuestions.questions[question].title;
 				numberOfQuestions = testAndQuestions.questions.length;
+				console.log(testAndQuestions.id);
+				completeTest.id = testAndQuestions.id;
 
 				$http.get('/SuiteAnswers?SuiteQuestionID='+testAndQuestions.questions[question].id)
 					.success(function(answers) {
@@ -216,6 +215,7 @@ angular.module('app.controllers', ['app.services'])
 		else {
 			console.log('No more questions. End of test');
 			console.log('Student got '+numberCorrect+' answers correct');
+			completeTest.noTestFinished = false;
 			$state.go('testEnd');
 		}
 	}
