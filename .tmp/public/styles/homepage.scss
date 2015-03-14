@@ -1,3 +1,11 @@
+html, body {
+	background-color:rgb(233,233,233);
+
+	p, h1, h2, h3, span {
+		font-family: 'Roboto', sans-serif;
+	}
+}
+
 header {
 	background-color: rgb(66,66,66);
 	position:relative;
@@ -56,24 +64,3 @@ header {
 		width:10%;
 	}
 }
-
-html, body {
-	background-color:rgb(233,233,233);
-}
-
-input:not([type=submit]):not([type=file]) {
-		font-size:1.4em;
-   		border: 5px solid white; 
-    	-webkit-box-shadow: 
-      	inset 0 0 8px  rgba(0,0,0,0.1),
-            0 0 16px rgba(0,0,0,0.1); 
-    	-moz-box-shadow: 
-     		inset 0 0 8px  rgba(0,0,0,0.1),
-            0 0 16px rgba(0,0,0,0.1); 
-   		box-shadow: 
-    		inset 0 0 8px  rgba(0,0,0,0.1),
-            0 0 16px rgba(0,0,0,0.1); 
-    	padding: 15px;
-    	background: rgba(255,255,255,0.5);
-    	margin: 0 0 10px 0;
-}	

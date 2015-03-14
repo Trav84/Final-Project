@@ -1,6 +1,6 @@
 <section class="test">
 	<h1 ng-bind="title"> [Test Name] </h1>
-	<h2> <i class="fa fa-question-circle"></i> {{question}}</h2>
+	<h2> Question {{ questionNum}} : {{question}}</h2>
 	<div class="choice-box">
 		<div ng-repeat="choice in choices" class="col-xs-12 push_button blue" ng-click="choiceClick(choice.answer)"> {{ choice.displayText }} </div>
 	</div>

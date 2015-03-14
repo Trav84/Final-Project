@@ -14,7 +14,7 @@ this["JST"]["assets/templates/codeSchools.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<section class=\'code-schools\'>\n\t<h1> Check Out Some Code Schools </h1>\n\t<p> Just a smattering of code schools, more are springing up everyday. If you\'re interested in breaking into the tech industry and getting started in a whole new career, check these places out. </p>\n\n\t<nav>\n\t\t<div class="dojo">  </div> \n\t\t<div class="flat">  </div> \n\t\t<div class="ga">  </div> \n\t\t<div class="makers">  </div> \n\t\t<div class="boot">  </div> \n\t\t<div class="hack">  </div> \n\t\t<div class="iron">  </div> \n\t</nav>\n</section>';
+__p += '<section class=\'code-schools\'>\n\t<h1> Check Out Some Code Schools </h1>\n\t<h2>  If you\'re interested in breaking into the tech industry and getting started in a whole new career, check these places out. </h2>\n\t<nav>\n\t\t<a ng-href="http://www.codingdojo.com/"> \n\t\t\t<div class="dojo"> </div> \n\t\t</a> \n\t\t<a ng-href="http://flatironschool.com/"> \n\t\t\t<div class="flat">  </div> \n\t\t</a>\n\t\t<a ng-href="http://theironyard.com/"> \n\t\t\t<div class="iron">  </div> \n\t\t</a>\n\t\t<a ng-href="https://generalassemb.ly/"> \n\t\t\t<div class="ga">  </div> \n\t\t</a>\n\t\t<a ng-href="http://www.makersquare.com/"> \n\t\t\t<div class="makers">  </div> \n\t\t</a>\n\t\t<a ng-href="http://devbootcamp.com/"> \n\t\t\t<div class="boot">  </div> \n\t\t</a>\n\t\t<a ng-href="http://www.hackreactor.com/"> \n\t\t\t<div class="hack">  </div> \n\t\t</a>\n\t</nav>\n</section>';
 
 }
 return __p
@@ -44,7 +44,7 @@ this["JST"]["assets/templates/manageStudents.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<section class="manage-students">\n\t<section class="header">\n\t\t<h1> Student Management </h1>\n\t\t<h2 ng-bind="programName"> No Program Selected </h2>\n\t\t<select ng-change="changeName(programSelected)" ng-model="programSelected">\n\t\t\t<option> Front End Development </option>\n\t\t\t<option> Ruby on Rails </option>\n\t\t\t<option> Web Development & Design </option>\n\t\t</select>\n\t</section>\n\t<table>\n\t\t<tr>\n\t\t\t<th> Student</th>\n\t\t\t<th> Javascript </th>\n\t\t\t<th> Mac OSX Command Line </th>\n\t\t\t<th> Networking Basics </th>\n\t\t\t<th> Finished </th>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td> Travis Czerw </td>\n\t\t\t<td> <i class="fa fa-check-circle-o "></i> </td>\n\t\t\t<td> <i class="fa fa-check-circle-o "></i> </td>\n\t\t\t<td> <i class="fa fa-times-circle-o "></i> </td>\n\t\t\t<td> <i class="fa fa-times-circle-o "></i> </td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td> Jacob Burkhart </td>\n\t\t\t<td> <i class="fa fa-check-circle-o "></i> </td>\n\t\t\t<td> <i class="fa fa-times-circle-o "></i> </td>\n\t\t\t<td> <i class="fa fa-times-circle-o "></i> </td>\n\t\t\t<td> <i class="fa fa-times-circle-o "></i> </td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td> Student McStudent </td>\n\t\t\t<td> <i class="fa fa-check-circle-o "></i> </td>\n\t\t\t<td> <i class="fa fa-check-circle-o "></i> </td>\n\t\t\t<td> <i class="fa fa-check-circle-o "></i> </td>\n\t\t\t<td> <i class="fa fa-check-circle-o "></i> </td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td> Student McClassFace </td>\n\t\t\t<td> <i class="fa fa-times-circle-o "></i> </td>\n\t\t\t<td> <i class="fa fa-times-circle-o "></i></td>\n\t\t\t<td> <i class="fa fa-check-circle-o "></i> </td>\n\t\t\t<td> <i class="fa fa-times-circle-o "></i> </td>\n\t\t</tr>\n\t</table>\n</section>';
+__p += '<section class="manage-students">\n\t<section class="header">\n\t\t<h1> Student Management </h1>\n\t\t<h2 ng-bind="programName"> No Program Selected </h2>\n\t\t<select ng-change="changeName(programSelected)" ng-model="programSelected">\n\t\t\t<option> Front End Development </option>\n\t\t\t<option> Ruby on Rails </option>\n\t\t\t<option> Web Development & Design </option>\n\t\t</select>\n\t</section>\n\t<table>\n\t\t<tr>\n\t\t\t<th> Student</th>\n\t\t\t<th> Javascript </th>\n\t\t\t<th> Mac OSX Command Line </th>\n\t\t\t<th> Networking Basics </th>\n\t\t\t<th> Finished </th>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td class="student" ng-click="studentResults(\'Travis Czerw\')"> Travis Czerw </td>\n\t\t\t<td> <i class="fa fa-check-circle-o "></i> </td>\n\t\t\t<td> <i class="fa fa-check-circle-o "></i> </td>\n\t\t\t<td> <i class="fa fa-times-circle-o "></i> </td>\n\t\t\t<td> <i class="fa fa-times-circle-o "></i> </td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td class="student" ui-sref="studentResults"> Jacob Burkhart </td>\n\t\t\t<td> <i class="fa fa-check-circle-o "></i> </td>\n\t\t\t<td> <i class="fa fa-times-circle-o "></i> </td>\n\t\t\t<td> <i class="fa fa-times-circle-o "></i> </td>\n\t\t\t<td> <i class="fa fa-times-circle-o "></i> </td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td class="student" ui-sref="studentResults"> Student McStudent </td>\n\t\t\t<td> <i class="fa fa-check-circle-o "></i> </td>\n\t\t\t<td> <i class="fa fa-check-circle-o "></i> </td>\n\t\t\t<td> <i class="fa fa-check-circle-o "></i> </td>\n\t\t\t<td> <i class="fa fa-check-circle-o "></i> </td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td class="student" ui-sref="studentResults"> Student McClassFace </td>\n\t\t\t<td> <i class="fa fa-times-circle-o "></i> </td>\n\t\t\t<td> <i class="fa fa-times-circle-o "></i></td>\n\t\t\t<td> <i class="fa fa-check-circle-o "></i> </td>\n\t\t\t<td> <i class="fa fa-times-circle-o "></i> </td>\n\t\t</tr>\n\t</table>\n</section>';
 
 }
 return __p
@@ -64,7 +64,7 @@ this["JST"]["assets/templates/schoolDashboard.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<section class="school-dashboard">\n\t<h1> Welcome {{ currentUser }} </h1>\n\t<nav>\n\t\t<a ui-sref="manageTests"> Manage Test Suites </a>\n\t\t<a ui-sref="managePrograms"> Manage School Programs </a>\n\t\t<a ui-sref="#"> Add Student </a>\n\t\t<a ui-sref="#"> Manage Students </a>\n\t</nav>\n</section>';
+__p += '<section class="school-dashboard">\n\t<h1> Welcome {{ currentUser }} </h1>\n\t<nav>\n\t\t<a ui-sref="manageTests"> Manage Test Suites </a>\n\t\t<a ui-sref="managePrograms"> Manage School Programs </a>\n\t\t<a ui-sref="addStudents"> Add Student </a>\n\t\t<a ui-sref="manageStudents"> Manage Students </a>\n\t</nav>\n</section>';
 
 }
 return __p
@@ -74,7 +74,7 @@ this["JST"]["assets/templates/schoolLogIn.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<section class="school-login">\n\t<form ng-submit="schoolLogin(user)" class="col-xs-12">\n\t\t<input ng-model="user.email" type="text" placeholder="Email">\n\t\t<input ng-model="user.password" type="password" placeholder="Password">\n\t\t<button> Log In </button>\n\t</form>\n\n\t<button ng-click="schoolRegisterClick()"> Register New Code School </button>\n\n\t<h1 ng-bind="currentUser"> </h1>\n</section>';
+__p += '<section class="school-login">\n\t<form class="col-xs-12 col-md-8 col-md-offset-2 col-lg-7 col-lg-offset-4 row" ng-submit="schoolLogin(user.email, user.password)">\n\t\t<div class="form-group">\n\t \t\t<label for="inputEmail">Email address</label>\n\t\t\t<input class="form-control" ng-model="user.email" type="text" id="inputEmail" placeholder="Email">\n\t\t\t<p ng-bind="emailErrorMsg"> </p>\n\t\t</div>\n\t\t<div class="form-group">\n\t\t\t<label for="inputPassword">Password</label>\n\t\t\t<input class="form-control" ng-model="user.password" type="password" id="inputPassword" placeholder="Password">\n\t\t\t<p ng-bind="passErrorMsg"> </p>\n\t\t</div>\n\t\t<div class="text-center">\n\t\t\t<button class="btn btn-default "> Log In </button>\n\t\t</div>\n\t</form>\n\t<div class="text-center">\n\t\t<button type="button" class="btn btn-default register-button" ng-click="schoolRegisterClick()"> Register New Code School </button>\n\t</div>\n\t<h1 ng-bind="currentUser"> </h1>\n</section>';
 
 }
 return __p
@@ -100,21 +100,11 @@ __p += '<section class="student-dash">\n\t<h2> Welcome {{ studentName }}</h2>\n\
 return __p
 };
 
-this["JST"]["assets/templates/studentInfo.html"] = function(obj) {
-obj || (obj = {});
-var __t, __p = '', __e = _.escape;
-with (obj) {
-__p += '';
-
-}
-return __p
-};
-
 this["JST"]["assets/templates/studentLogIn.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<section class="student-login">\n\t<p> This process is designed to be as simple and painless for you as possible. All you need to do is enter the key that was emailed to you in the space below. Once in, you\'ll have some assessment tests to take. Don\'t stress over the questions or panic if you don\'t know the answers. No one expects you to be awesome at programing or be a computer whiz - that\'s why you are entering a code school! We are just here to help your school understand where you are in terms of your basic skills. </p>\n\t<section class="login-area"> \n\t\t<form ng-submit="studentLoginSubmit(uniqueKey)">\n\t\t\t<input ng-model="uniqueKey" type="text" placeholder="Key">\n\t\t\t<div>\n\t\t\t\t<button> Log In </button>\n\t\t\t</div>\n\t\t</form>\n\t\t<span ng-bind="errorMsg"> </span>\n\t</section>\n</section>';
+__p += '<section class="student-login">\n\t<p> This process is designed to be as simple and painless for you as possible. All you need to do is enter the key that was emailed to you in the space below. Once in, you\'ll have some assessment tests to take. Don\'t stress over the questions or panic if you don\'t know the answers. No one expects you to be awesome at programing or be a computer whiz. </p>\n\t<section class="login-area col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3"> \n\t\t<form ng-submit="studentLoginSubmit(uniqueKey)">\n\t\t\t<input class="form-control" ng-model="uniqueKey" type="text" placeholder="Key">\n\t\t\t<div>\n\t\t\t\t<button .blue> Log In </button>\n\t\t\t</div>\n\t\t</form>\n\t\t<span ng-bind="errorMsg"> </span>\n\t</section>\n</section>';
 
 }
 return __p
@@ -124,7 +114,7 @@ this["JST"]["assets/templates/studentResults.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<section class="student-results">\n\t<section class="header">\n\t\t<h1> Travis Czerw </h1>\n\t</section>\n\t<h2> Front End Development </h2>\n\t<section class="results">\n\t\t<div class="results-row">\n\t\t\t<div class="test-name"></div>\n\t\t\t<div>\n\t\t\t\t<p class="category weak" title="Weak means a score of 25% or less"> Weak </p>\n\t\t\t\t<p class="category moderate" title="Moderate means a score between 25% and 75%"> Moderate </p>\n\t\t\t\t<p class="category last strong" title="Strong means a score of 75% or more"> Strong </p>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class="results-row">\n\t\t\t<div class="test-name"> JavaScript Assessment: </div>\n\t\t\t<div class="stretchRight box">  </div>\n\t\t</div>\n\t\t<div class="results-row">\n\t\t\t<div class="test-name"> Mac OSX Command Line: </div>\n\t\t\t<div class="stretchRight box two"> </div>\n\t\t</div>\n\t\t<div class="results-row">\n\t\t\t<div class="test-name"> Basic Networking: </div>\n\t\t\t<div class="stretchRight box three">  </div>\n\t\t</div>\n</section>';
+__p += '<section class="student-results">\n\t<section class="header">\n\t\t<h1> Travis Czerw </h1>\n\t</section>\n\t<h2> Front End Development </h2>\n\t<div class="col-md-10 col-md-offset-1 progress-box">\n\t\t<p> JavaScript Assessment </p>\n\t\t<div class="progress">\n\t\t\t<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">\n\t\t\t60%\n\t\t\t</div>\n\t\t</div>\n\t\t<p> Mac OSX Command Line </p>\n\t\t<div class="progress">\n\t\t\t<div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%;">\n\t\t\t40%\n\t\t\t</div>\n\t\t</div>\n\t\t<p> Basics of Networking </p>\n\t\t<div class="progress">\n\t\t\t<div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%;">\n\t\t\t90%\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<!-- <section class="results">\n\t\t<div class="results-row">\n\t\t\t<div class="test-name"></div>\n\t\t\t<div>\n\t\t\t\t<p class="category weak" title="Weak means a score of 25% or less"> Weak </p>\n\t\t\t\t<p class="category moderate" title="Moderate means a score between 25% and 75%"> Moderate </p>\n\t\t\t\t<p class="category last strong" title="Strong means a score of 75% or more"> Strong </p>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class="results-row">\n\t\t\t<div class="test-name"> JavaScript Assessment: </div>\n\t\t\t<div class="stretchRight box">  </div>\n\t\t</div>\n\t\t<div class="results-row">\n\t\t\t<div class="test-name"> Mac OSX Command Line: </div>\n\t\t\t<div class="stretchRight box two"> </div>\n\t\t</div>\n\t\t<div class="results-row">\n\t\t\t<div class="test-name"> Basic Networking: </div>\n\t\t\t<div class="stretchRight box three">  </div>\n\t\t</div>\n\t</section> -->\n</section>';
 
 }
 return __p
@@ -134,7 +124,7 @@ this["JST"]["assets/templates/test.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<section class="test">\n\t<h1 ng-bind="title"> [Test Name] </h1>\n\t<h2> <i class="fa fa-question-circle"></i> {{question}}</h2>\n\t<div class="choice-box">\n\t\t<div ng-repeat="choice in choices" class="col-xs-12 push_button blue" ng-click="choiceClick(choice.answer)"> {{ choice.displayText }} </div>\n\t</div>\n</section>';
+__p += '<section class="test">\n\t<h1 ng-bind="title"> [Test Name] </h1>\n\t<h2> Question {{ questionNum}} : {{question}}</h2>\n\t<div class="choice-box">\n\t\t<div ng-repeat="choice in choices" class="col-xs-12 push_button blue" ng-click="choiceClick(choice.answer)"> {{ choice.displayText }} </div>\n\t</div>\n</section>';
 
 }
 return __p
@@ -144,7 +134,7 @@ this["JST"]["assets/templates/testEnd.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<section class="test-end">\n\t<h1> Test Finished! </h1>\n\t<p> First off - don\'t stress about how well you did. These questions are for your instructors to have a better grasp on your skills coming into program, not to disqualify or worry you.\n\tIf there are more assessements assigned to you, you can return to the dashboard to complete them.\n\tIf not, we wish you the best of luck on your journey as you enter your program. We look forward to seeing all the awesome things you come up with and build! </p>\n\t<div>\n\t\t<button ng-click="buttonClick()"> Back to Dashboard </button>\n\t</div>\n</section>';
+__p += '<section class="test-end">\n\t<h1> Test Finished! </h1>\n\t<p> First off - don\'t stress about how well you did. These questions are for your instructors to have a better grasp on your skills coming into program, not to disqualify or worry you.\n\tIf there are more assessements assigned to you, you can return to the dashboard to complete them.\n\tIf not, we wish you the best of luck on your journey as you enter your program. We look forward to seeing all the awesome things you come up with and build! </p>\n\t<div>\n\t\t<button ng-click="buttonClick()"> Dashboard </button>\n\t</div>\n</section>';
 
 }
 return __p

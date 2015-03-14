@@ -29,26 +29,35 @@ angular.module('app.controllers', ['app.services'])
 		})
 		.error(function(err) {
 			console.log(err);
-		});
-
-		// if(validator.isNull(key)) {
-		// 	$scope.errorMsg = 'Please enter a valid key';
-		// }
-		// else if (key.length === 0) {
-		// 	$scope.errorMsg = 'Please enter a valid key';
-		// }
-		// else if(correctKey) {
-			
-		// }
-		
+		});		
 	};
 })
 .controller('schoolLogInCtrl', function($scope, $state, $http) {
 
-	$scope.schoolLogin = function(user) {
-		loginObject = {
-			identifier: user.email,
-			password: user.password
+	$scope.schoolLogin = function(email, pass) {
+
+		var loginObject = {
+			identifier: '',
+			password: ''
+		}
+
+		if(validator.isNull(email)) {
+			$scope.emailErrorMsg = "Please enter an email";
+		}
+		else if(!validator.isEmail(email)) {
+			$scope.emailErrorMsg = "Email is not valid";
+		}
+		else {
+			$scope.emailErrorMsg = '';
+			loginObject.identifier = email;
+		}
+
+		if(validator.isNull(pass)) {
+			$scope.passErrorMsg = "Password is incorrect";
+		}
+		else {
+			$scope.passErrorMsg = '';
+			loginObject.password = pass;
 		}
 
 		$http.post('/auth/local', loginObject)
@@ -189,6 +198,7 @@ angular.module('app.controllers', ['app.services'])
 	var test = $stateParams.id;
 	var question = 0;
 	var numberCorrect = 0;
+	$scope.questionNum = 1;
 	
 	function getTestData(question) {
 		if(question < 2) {
@@ -213,6 +223,7 @@ angular.module('app.controllers', ['app.services'])
 		else {
 			console.log('No more questions. End of test');
 			console.log('Student got '+numberCorrect+' answers correct');
+
 			$state.go('testEnd');
 		}
 	}
@@ -221,6 +232,7 @@ angular.module('app.controllers', ['app.services'])
 
 	$scope.choiceClick = function(choice) {
 
+		$scope.questionNum++;
 		if(choice === correctAnswer) {
 			console.log('Correct answer was selected');
 			question++;
@@ -328,13 +340,19 @@ angular.module('app.controllers', ['app.services'])
 	}
 
 })
-.controller('manageStudentsCtrl', function($scope) {
+.controller('manageStudentsCtrl', function($scope, $state) {
 
 	$scope.programName = "No Program Selected";
 
 	$scope.changeName = function(programSelected) {
 		$scope.programName = programSelected;
 	}
+
+	$scope.studentResults = function(studentName) {
+		console.log('Student '+studentName+' was chosen');
+		$state.go('studentResults',{id:studentName});
+	};
+
 })
 .controller('manageProgramsCtrl', function($scope, $http) {
 
@@ -365,8 +383,10 @@ angular.module('app.controllers', ['app.services'])
 				console.log(err);
 			});	
 		}
-	}
+	};
 })
-.controller('studentResultsCtrl', function() {
-
+.controller('studentResultsCtrl', function($stateParams, $scope) {
+	$scope.name = $stateParams.id;
+	console.log($stateParams);
+	console.log($scope.name);
 });

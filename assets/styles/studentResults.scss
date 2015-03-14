@@ -5,9 +5,16 @@
 			text-align: center;
 			font-size:2em;
 			font-weight:700;
-			border-bottom:1px solid black;
+			border-bottom:1px solid rgb(66,66,66);
 			margin:1em 0;
 		}
+	}
+
+	.progress-box {
+		border:1px solid rgb(66,66,66);
+		padding:1em 1em;
+		padding-top:1.5em;
+		border-radius:5px;
 	}
 
 	h2 {
@@ -20,7 +27,7 @@
 		margin:1em 2em;
 		font-size:2em;
 		padding:1em 1em;
-		border:1px solid black;
+		border:1px solid rgb(66,66,66);
 		border-radius:5px;
 	}
 
@@ -56,7 +63,7 @@
 		padding:0.4em 2em;
 		width:32%;
 		box-sizing:border-box;
-		border-left:1px solid black;
+		border-left:1px solid rgb(66,66,66);
 	}
 
 	.category:hover {
@@ -64,7 +71,7 @@
 	}
 
 	.last {
-		border-right:1px solid black;
+		border-right:1px solid rgb(66,66,66);
 	}
 
 	.weak:hover {
