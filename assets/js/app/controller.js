@@ -155,13 +155,9 @@ angular.module('app.controllers', ['app.services'])
 		// }
 
 		if(errorObject.userPass && errorObject.emailPass && errorObject.passPass) {
-			console.log('All pass, can post');
 			$http.post('/auth/local/register', loginObject)
 			.success(function(res) {
-				console.log(res);
-				if(res.success) {
-					$state.go('schoolDashboard');
-				}
+				$state.go('schoolDashboard');
 			})
 			.error(function(err) {
 				console.log('Error!');
