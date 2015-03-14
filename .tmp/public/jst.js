@@ -104,7 +104,7 @@ this["JST"]["assets/templates/studentLogIn.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<section class="student-login">\n\t<p> This process is designed to be as simple and painless for you as possible. All you need to do is enter the key that was emailed to you in the space below. Once in, you\'ll have some assessment tests to take. Don\'t stress over the questions or panic if you don\'t know the answers. No one expects you to be awesome at programing or be a computer whiz. </p>\n\t<section class="login-area col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3"> \n\t\t<form ng-submit="studentLoginSubmit(uniqueKey)">\n\t\t\t<input class="form-control" ng-model="uniqueKey" type="text" placeholder="Key">\n\t\t\t<div>\n\t\t\t\t<button .blue> Log In </button>\n\t\t\t</div>\n\t\t</form>\n\t\t<span ng-bind="errorMsg"> </span>\n\t</section>\n</section>';
+__p += '<section class="student-login">\n\t<p> This process is designed to be as simple and painless for you as possible. All you need to do is enter the key that was emailed to you in the space below. Once in, you\'ll have some assessment tests to take. Don\'t stress over the questions or panic if you don\'t know the answers. No one expects you to be awesome at programing or be a computer whiz. </p>\n\t<section class="login-area col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3"> \n\t\t<form ng-submit="studentLoginSubmit(uniqueKey)">\n\t\t\t<input class="form-control" ng-model="uniqueKey" type="text" placeholder="Key">\n\t\t\t<div>\n\t\t\t\t<button class="blue"> Log In </button>\n\t\t\t</div>\n\t\t</form>\n\t\t<span ng-bind="errorMsg"> </span>\n\t</section>\n</section>';
 
 }
 return __p

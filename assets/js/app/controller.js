@@ -18,7 +18,6 @@ angular.module('app.controllers', ['app.services'])
 
 		$http.get('/Student?loginKey='+key)
 		.success(function(recieved) {
-			console.log('Grabbing student data...');
 			if(recieved.length > 0) {
 				student.info = recieved[0];
 				$state.go('studentDashboard');
@@ -167,12 +166,9 @@ angular.module('app.controllers', ['app.services'])
 	}
 })
 .controller('studentDashboardCtrl', function($scope, $http, $state, student) {
-	console.log(student);
+
 	$scope.studentName = student.info.name;
 	$scope.studentProgram = student.info.studentID.name;
-
-	console.log($scope.studentName);
-	console.log($scope.studentProgram);
 
 	$http.get('/Suite')
 	.success(function(testData) {
@@ -183,7 +179,6 @@ angular.module('app.controllers', ['app.services'])
 	})
 
 	$scope.testClick = function(testID) {
-		console.log('Test '+testID+' was chosen');
 		$state.go('test',{id:testID});
 	};
 })
@@ -194,14 +189,16 @@ angular.module('app.controllers', ['app.services'])
 	var test = $stateParams.id;
 	var question = 0;
 	var numberCorrect = 0;
+	var numberOfQuestions = 5;
 	$scope.questionNum = 1;
 	
 	function getTestData(question) {
-		if(question < 2) {
+		if(question < numberOfQuestions) {
 			$http.get('/Suite?id='+test)
 			.success(function(testAndQuestions) {
 				$scope.title = testAndQuestions.name;
 				$scope.question = testAndQuestions.questions[question].title;
+				numberOfQuestions = testAndQuestions.questions.length;
 
 				$http.get('/SuiteAnswers?SuiteQuestionID='+testAndQuestions.questions[question].id)
 					.success(function(answers) {
@@ -219,7 +216,6 @@ angular.module('app.controllers', ['app.services'])
 		else {
 			console.log('No more questions. End of test');
 			console.log('Student got '+numberCorrect+' answers correct');
-
 			$state.go('testEnd');
 		}
 	}
