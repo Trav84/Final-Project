@@ -349,6 +349,7 @@ angular.module('app.controllers', ['app.services'])
 .controller('manageProgramsCtrl', function($scope, $http) {
 
 	$scope.programs = [];
+	$scope.confirmMsg = '';
 
 	$http.get('/auth/user')
 		.success(function(response) {
@@ -362,6 +363,7 @@ angular.module('app.controllers', ['app.services'])
 		$scope.programs.push(programAdded);
 		$scope.programAdded = '';
 		console.log($scope.programs);
+		$scope.confirmMsg = '';
 	};
 
 	$scope.saveClick = function() {
@@ -370,6 +372,8 @@ angular.module('app.controllers', ['app.services'])
 			.success(function(res) {
 				console.log(res);
 				console.log('Posted program model');
+				$scope.programs = [];
+				$scope.confirmMsg = 'Programs Updated';
 			})
 			.error(function(err) {
 				console.log(err);

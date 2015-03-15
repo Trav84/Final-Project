@@ -1,0 +1,64 @@
+.manage-programs {
+	margin:1em 0;
+
+	h1 {
+		text-align:center;
+		font-size:1.5em;
+		margin-bottom:1em;
+	}
+
+	p {
+		text-indent: 50px;
+		line-height:1.6em;
+		margin-bottom:1em;
+	}
+
+	input, button {
+		margin-top:1.6em;
+	}
+
+	label {
+		font-size:1.2em;
+		font-weight:700;
+	}
+
+	.save {
+		padding:0.4em 0.8em;
+		margin-top:1em;
+	}
+
+	button {
+		padding:0;
+		font-size:1.5em;
+		background: #ffaf4b; /* Old browsers */
+		background: -moz-linear-gradient(top,  #ffaf4b 0%, #ff920a 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffaf4b), color-stop(100%,#ff920a)); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top,  #ffaf4b 0%,#ff920a 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top,  #ffaf4b 0%,#ff920a 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(top,  #ffaf4b 0%,#ff920a 100%); /* IE10+ */
+		background: linear-gradient(to bottom,  #ffaf4b 0%,#ff920a 100%); /* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffaf4b', endColorstr='#ff920a',GradientType=0 ); /* IE6-9 */
+	}
+
+	button:hover {
+		color:white;
+	}
+
+	.centered {
+		text-align:center;
+	}
+
+	.program-display {
+		text-align:center;
+		padding:1em 1em;
+		margin:0.4em 0;
+		font-size:1.5em;
+		font-weight:700;
+	}
+
+	.message {
+		font-size:1.4em;
+		color: #c9462c;
+		margin-top:0.5em;
+	}
+}

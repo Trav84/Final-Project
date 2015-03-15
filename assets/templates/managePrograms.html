@@ -2,15 +2,17 @@
 	<h1> Program Management </h1>
 	<div>
 		<p> Here you can manage the programs that your school offers. Just enter the different programs or tracks you offer and click add. For example, you might add "Front End Development", "Web Design", "Python" or "iOS Development". </p>
-		<div>
-			<input ng-model="programAdded" type="text" placeholder="Program You Offer"> 
-			<button ng-click="addProgram(programAdded)"> 
-				<i class="fa fa-plus"></i> Add Program
-			</button>
-			<p class="program-display" ng-repeat="program in programs track by $index"> {{ program }} </p>
-			<div>
-				<button ng-click="saveClick()"> Save </button>
+		<form class="col-xs-9 col-sm-11 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+			<label for="programOffered"> Program Name </label>
+			<input ng-model="programAdded" type="text" id="programOffered" class="form-control" placeholder="Program You Offer">  
+			<div class="program-display blue" ng-repeat="program in programs track by $index"> {{ program }} </div>
+			<div class="centered">
+				<button ng-click="saveClick()" class="save btn btn-default"> Save </button>
+				<div class="message" ng-bind="confirmMsg"> </div>
 			</div>
-		</div>
+		</form>
+		<button ng-click="addProgram(programAdded)" class="btn btn-default col-xs-2 col-sm-1"> 
+			<i class="fa fa-plus"></i> 
+		</button>
 	</div>
 </section>
