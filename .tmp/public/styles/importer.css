@@ -427,6 +427,18 @@ header {
   background-size: contain;
   background-repeat: no-repeat;
   background-image: url("../images/logo@2x.png"); }
+.code-schools .think {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url("../images/think.png"); }
+.code-schools .launch {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url("../images/launch.png"); }
+.code-schools .anyone {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url("../images/anyone.png"); }
 
 .about h1 {
   font-size: 2em;
