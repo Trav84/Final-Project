@@ -9,7 +9,7 @@ angular.module('app.controllers', ['app.services'])
 		.error(function(err) {
 			console.log(err);
 		});
-	}
+	};
 })
 .controller('studentLogInCtrl', function($scope, $state, $http, student) {
 
@@ -37,7 +37,7 @@ angular.module('app.controllers', ['app.services'])
 		var loginObject = {
 			identifier: '',
 			password: ''
-		}
+		};
 
 		if(validator.isNull(email)) {
 			$scope.emailErrorMsg = "Please enter an email";
@@ -74,7 +74,7 @@ angular.module('app.controllers', ['app.services'])
 				console.log('Error!');
 				console.log(err);
 			});
-	}
+	};
 
 	$scope.schoolRegisterClick = function() {
 		$state.go('schoolRegister');
@@ -88,19 +88,19 @@ angular.module('app.controllers', ['app.services'])
 	$scope.addProgram = function(programAdded) {
 		$scope.programs.push(programAdded);
 		$scope.programAdded = '';
-	}
+	};
 
 	$scope.schoolRegister = function(username, email, password) {
 		var errorObject = {
 			userPass: false,
 			emailPass: false,
 			passPass: false
-		}
+		};
 		var loginObject = {
 			username: '',
 			email: '',
 			password: ''
-		}
+		};
 
 		if(validator.isNull(username)) {
 			console.log('Username is null');
@@ -148,7 +148,7 @@ angular.module('app.controllers', ['app.services'])
 				console.log(err);
 			});
 		}
-	}
+	};
 })
 .controller('studentDashboardCtrl', function($scope, $http, $state, student, completeTest) {
 
@@ -171,7 +171,7 @@ angular.module('app.controllers', ['app.services'])
 	})
 	.error(function(err){
 		console.log(err);
-	})
+	});
 
 	$scope.testClick = function(testID) {
 		$state.go('test',{id:testID});
@@ -242,7 +242,7 @@ angular.module('app.controllers', ['app.services'])
 .controller('testEndCtrl', function($state, $scope) {
 	$scope.buttonClick = function() {
 		$state.go('studentDashboard');
-	}
+	};
 })
 .controller('codeSchoolsCtrl', function() {
 
@@ -309,7 +309,7 @@ angular.module('app.controllers', ['app.services'])
 
 	$scope.testChanged = function(testSelected) {
 		$scope.testName = testSelected;
-	}
+	};
 
 	$scope.buttonClick = function(button) {
 		if(button === 'Add') {
@@ -325,11 +325,11 @@ angular.module('app.controllers', ['app.services'])
 			$scope.Create = !$scope.Create;
 			console.log('Create test button clicked');
 		}
-	}
+	};
 
 	$scope.testClick = function(test) {
 		
-	}
+	};
 
 })
 .controller('manageStudentsCtrl', function($scope, $state) {
@@ -338,7 +338,7 @@ angular.module('app.controllers', ['app.services'])
 
 	$scope.changeName = function(programSelected) {
 		$scope.programName = programSelected;
-	}
+	};
 
 	$scope.studentResults = function(studentName) {
 		console.log('Student '+studentName+' was chosen');
@@ -362,7 +362,7 @@ angular.module('app.controllers', ['app.services'])
 		$scope.programs.push(programAdded);
 		$scope.programAdded = '';
 		console.log($scope.programs);
-	}
+	};
 
 	$scope.saveClick = function() {
 		for(var key in $scope.programs) {
@@ -381,4 +381,7 @@ angular.module('app.controllers', ['app.services'])
 	$scope.name = $stateParams.id;
 	console.log($stateParams);
 	console.log($scope.name);
+})
+.controller('addStudentCtrl', function() {
+
 });

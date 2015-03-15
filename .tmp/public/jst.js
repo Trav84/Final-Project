@@ -10,6 +10,16 @@ __p += '<section class="about">\n\t<h1> Why Codify? </h1>\n\t<p> Codify exists b
 return __p
 };
 
+this["JST"]["assets/templates/addStudent.html"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __e = _.escape;
+with (obj) {
+__p += '<section class="add-student">\n\t<h1> Add Student </h2>\n\t<form class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">\n\t\t<div class="form-group">\n\t\t\t<label for="student-name">Student\'s Name </label>\n\t\t\t<input type="text" class="form-control" id="student-name" placeholder="Student Name">\n\t\t</div>\n\t\t<div class="form-group">\n\t\t\t<label for="student-email">Student\'s Email </label>\n\t\t\t<input type="text" class="form-control" id="student-email" placeholder="Email">\n\t\t</div>\n\t\t<div class="dropdown">\n\t\t\t<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" \taria-expanded="true">\n\t\t\t\tProgram Enrolled\n\t\t\t\t<span class="caret"></span>\n\t\t\t</button>\n\t\t\t<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">\n\t\t\t\t<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>\n\t\t\t\t<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>\n\t\t\t\t<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>\n\t\t\t\t<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>\n\t\t\t</ul>\n\t\t</div>\n\t\t<div class="centered">\n\t\t\t<button type="submit" class="btn btn-default add-student-btn"> Add Student </button>\n\t\t</div>\n\t</form>\n</section>';
+
+}
+return __p
+};
+
 this["JST"]["assets/templates/codeSchools.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
@@ -64,7 +74,7 @@ this["JST"]["assets/templates/schoolDashboard.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<section class="school-dashboard">\n\t<h1> Welcome {{ currentUser }} </h1>\n\t<nav>\n\t\t<a ui-sref="manageTests"> Manage Test Suites </a>\n\t\t<a ui-sref="managePrograms"> Manage School Programs </a>\n\t\t<a ui-sref="addStudents"> Add Student </a>\n\t\t<a ui-sref="manageStudents"> Manage Students </a>\n\t</nav>\n</section>';
+__p += '<section class="school-dashboard">\n\t<h1> Welcome {{ currentUser }} </h1>\n\t<nav>\n\t\t<a ui-sref="manageTests"> Manage Test Suites </a>\n\t\t<a ui-sref="managePrograms"> Manage School Programs </a>\n\t\t<a ui-sref="addStudent"> Add Student </a>\n\t\t<a ui-sref="manageStudents"> Manage Students </a>\n\t</nav>\n</section>';
 
 }
 return __p
