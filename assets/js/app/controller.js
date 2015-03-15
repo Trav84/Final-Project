@@ -84,6 +84,10 @@ angular.module('app.controllers', ['app.services'])
 
 	$scope.programs = [];
 	$scope.userID = null;
+	$scope.nameErrorMsg = '';
+	$scope.emailErrorMsg = '';
+	$scope.passErrorMsg = '';
+	$scope.registerErrorMsg = '';
 
 	$scope.addProgram = function(programAdded) {
 		$scope.programs.push(programAdded);
@@ -103,39 +107,42 @@ angular.module('app.controllers', ['app.services'])
 		};
 
 		if(validator.isNull(username)) {
-			console.log('Username is null');
+			$scope.nameErrorMsg = 'Please enter a name';
 		}
 		else if(username.length === 0) {
-			console.log('Username is an empty string');
+			$scope.nameErrorMsg = 'Please enter a name';
 		}
 		else {
 			errorObject.userPass = true;
 			loginObject.username = username;
+			$scope.nameErrorMsg = '';
 		}
 
 		if(!validator.isEmail(email)) {
-			console.log('Email is not a valid email');
+			$scope.emailErrorMsg = 'Enter a valid email'
 		}
 		else if(email.length === 0) {
-			console.log('Email is an empty string');
+			$scope.emailErrorMsg = 'Enter a valid email'
 		}
 		else {
 			errorObject.emailPass = true;
 			loginObject.email = email;
+			$scope.emailErrorMsg = '';
 		}
 
 		if(validator.isNull(password)) {
-			console.log('Password is null');
+			$scope.passErrorMsg = 'Enter a password';
 		}
 		else if(password.length === 0) {
-			console.log('Password is an empty string');
+			$scope.passErrorMsg = 'Enter a password';
 		}
 		else if(password.length < 8) {
-			console.log('Password is too short');
+			$scope.passErrorMsg = 'Your password must be at least 8 characters long';
 		}
 		else {
 			errorObject.passPass = true;
 			loginObject.password = password;
+			$scope.passErrorMsg = '';
 		}
 
 		if(errorObject.userPass && errorObject.emailPass && errorObject.passPass) {
@@ -144,8 +151,7 @@ angular.module('app.controllers', ['app.services'])
 				$state.go('schoolDashboard');
 			})
 			.error(function(err) {
-				console.log('Error!');
-				console.log(err);
+				$scope.registerErrorMsg = err.summary;
 			});
 		}
 	};
@@ -315,7 +321,6 @@ angular.module('app.controllers', ['app.services'])
 		if(button === 'Add') {
 			$scope.Add = !$scope.Add;
 			console.log('Add test button clicked');
-
 		}
 		else if (button === "Remove") {
 			$scope.Remove = !$scope.Remove;

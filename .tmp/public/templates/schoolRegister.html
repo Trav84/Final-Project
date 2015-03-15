@@ -1,17 +1,18 @@
 <section class="school-register">
-	<form ng-submit="schoolRegister(username, email, password)">
-		<div>
-			<h3> Enter your instution's name </h3>
-			<input ng-model="username" type="text" placeholder="School Name">
+	<h1> Register A New School </h1>
+	<form ng-submit="schoolRegister(username, email, password)" class="col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+		<label for="user-name"> School Name </label>
+		<input class="form-control" ng-model="username" id="user-name" type="text" placeholder="School Name">
+		<p ng-bind="nameErrorMsg"> </p>
+		<label for="email-input"> Email </label>
+		<input class="form-control" ng-model="email" type="text" id="email-input" placeholder="Email">
+		<p ng-bind="emailErrorMsg"> </p>
+		<label for="password-input"> Password </label>
+		<input class="form-control" ng-model="password" type="password" id="password-input" placeholder="Must be at least 8 characters">
+		<p ng-bind="passErrorMsg"> </p>
+		<div class="centered">
+			<button class="btn btn-default centered"> Register New Code School </button>
+			<p ng-bind="registerErrorMsg"> </p>
 		</div>
-		<div>
-			<h3> Enter your email </h3>
-			<input ng-model="email" type="text" placeholder="Email">
-		</div>
-		<div>
-			<h3> Enter a password. It must be at least 8 characters long. </h3>
-			<input ng-model="password" type="password" placeholder="Password">
-		</div>
-		<button> Register New Code School </button>
 	</form>
 </section>

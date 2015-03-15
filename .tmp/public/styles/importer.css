@@ -213,13 +213,27 @@ header {
 
 .school-register {
   margin: 0 auto;
-  margin: 1em 1em;
-  text-align: center; }
+  margin: 1em 1em; }
+  .school-register h1 {
+    font-size: 1.5em;
+    font-weight: 500;
+    margin: 1em 0;
+    text-align: center; }
   .school-register .program-display {
     margin: 0.4em auto;
     border-radius: 5px;
     border: 1px solid black;
     width: 20%; }
+  .school-register label {
+    font-weight: 700;
+    margin: 0.5em 0; }
+  .school-register button {
+    margin-top: 1em; }
+  .school-register .centered {
+    text-align: center; }
+  .school-register p {
+    margin-top: 0.5em;
+    color: #c9462c; }
 
 .student-dash {
   margin-bottom: 2em; }
