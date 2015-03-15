@@ -71,8 +71,8 @@ angular.module('app.controllers', ['app.services'])
 				});					
 			})
 			.error(function(err) {
-				console.log('Error!');
 				console.log(err);
+				$scope.loginErrorMsg = err.summary;
 			});
 	};
 
