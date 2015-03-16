@@ -23,6 +23,7 @@ angular.module('app.controllers', ['app.services'])
 			}
 			else {
 				$scope.errorMsg = 'Key is not valid.';
+				$scope.uniqueKey = '';
 			}
 		})
 		.error(function(err) {
