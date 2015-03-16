@@ -3,9 +3,9 @@
 		<h1> Student Management </h1>
 		<h2 ng-bind="programName"> No Program Selected </h2>
 		<select ng-change="changeName(programSelected)" ng-model="programSelected">
-			<option> Front End Development </option>
-			<option> Ruby on Rails </option>
-			<option> Web Development & Design </option>
+			<option>Front End Development</option>
+			<option>Ruby on Rails</option>
+			<option>Web Development & Design</option>
 		</select>
 	</section>
 	<table>
@@ -16,28 +16,42 @@
 			<th> Networking Basics </th>
 			<th> Finished </th>
 		</tr>
-		<tr>
+		<tr ng-show="showTable">
 			<td class="student" ng-click="studentResults('Travis Czerw')"> Travis Czerw </td>
 			<td> <i class="fa fa-check-circle-o "></i> </td>
 			<td> <i class="fa fa-check-circle-o "></i> </td>
 			<td> <i class="fa fa-times-circle-o "></i> </td>
 			<td> <i class="fa fa-times-circle-o "></i> </td>
 		</tr>
-		<tr>
-			<td class="student" ui-sref="studentResults"> Jacob Burkhart </td>
+		<tr ng-show="showTable">
+			<td class="student" ui-sref="studentResults('Jacob Burkhart')"> Jacob Burkhart </td>
 			<td> <i class="fa fa-check-circle-o "></i> </td>
 			<td> <i class="fa fa-times-circle-o "></i> </td>
 			<td> <i class="fa fa-times-circle-o "></i> </td>
 			<td> <i class="fa fa-times-circle-o "></i> </td>
 		</tr>
-		<tr>
+		<tr ng-show="showTable">
 			<td class="student" ui-sref="studentResults"> Student McStudent </td>
 			<td> <i class="fa fa-check-circle-o "></i> </td>
 			<td> <i class="fa fa-check-circle-o "></i> </td>
 			<td> <i class="fa fa-check-circle-o "></i> </td>
 			<td> <i class="fa fa-check-circle-o "></i> </td>
 		</tr>
-		<tr>
+		<tr ng-show="showTable">
+			<td class="student" ui-sref="studentResults"> Student McClassFace </td>
+			<td> <i class="fa fa-times-circle-o "></i> </td>
+			<td> <i class="fa fa-times-circle-o "></i></td>
+			<td> <i class="fa fa-check-circle-o "></i> </td>
+			<td> <i class="fa fa-times-circle-o "></i> </td>
+		</tr>
+		<tr ng-show="showTable1">
+			<td class="student" ui-sref="studentResults"> Student McStudent </td>
+			<td> <i class="fa fa-check-circle-o "></i> </td>
+			<td> <i class="fa fa-check-circle-o "></i> </td>
+			<td> <i class="fa fa-check-circle-o "></i> </td>
+			<td> <i class="fa fa-check-circle-o "></i> </td>
+		</tr>
+		<tr ng-show="showTable1">
 			<td class="student" ui-sref="studentResults"> Student McClassFace </td>
 			<td> <i class="fa fa-times-circle-o "></i> </td>
 			<td> <i class="fa fa-times-circle-o "></i></td>
@@ -45,4 +59,7 @@
 			<td> <i class="fa fa-times-circle-o "></i> </td>
 		</tr>
 	</table>
+	<div>
+		<div ng-bind="message"> </div>
+	</div>
 </section>

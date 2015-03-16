@@ -119,10 +119,10 @@ angular.module('app.controllers', ['app.services'])
 		}
 
 		if(!validator.isEmail(email)) {
-			$scope.emailErrorMsg = 'Enter a valid email'
+			$scope.emailErrorMsg = 'Enter a valid email';
 		}
 		else if(email.length === 0) {
-			$scope.emailErrorMsg = 'Enter a valid email'
+			$scope.emailErrorMsg = 'Enter a valid email';
 		}
 		else {
 			errorObject.emailPass = true;
@@ -340,9 +340,28 @@ angular.module('app.controllers', ['app.services'])
 .controller('manageStudentsCtrl', function($scope, $state) {
 
 	$scope.programName = "No Program Selected";
+	$scope.message = '';
+	$scope.showTable = false;
+	$scope.showTable1 = false;
 
 	$scope.changeName = function(programSelected) {
 		$scope.programName = programSelected;
+
+		if(programSelected === 'Front End Development') {
+			$scope.message = '';
+			$scope.showTable = true;
+			$scope.showTable1 = false;
+		} 
+		else if(programSelected === 'Ruby on Rails') {
+			$scope.message = '';
+			$scope.showTable = false;
+			$scope.showTable1 = true;
+		}
+		else {
+			$scope.showTable = false;
+			$scope.showTable1 = false;
+			$scope.message = 'No students in program';
+		}
 	};
 
 	$scope.studentResults = function(studentName) {

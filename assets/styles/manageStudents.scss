@@ -57,8 +57,19 @@
 		border:1px solid black;
 	}
 
+	th {
+		text-align:center;
+	}
+
 	.student {
 		cursor: pointer;
+	}
+
+	div {
+		text-align:center;
+		color: #c9462c;
+		font-weight:700;
+		font-size: 1.4em;
 	}
 
 	// button {

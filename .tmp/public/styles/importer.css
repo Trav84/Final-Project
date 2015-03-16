@@ -558,8 +558,15 @@ header {
     text-align: center;
     vertical-align: middle;
     border: 1px solid black; }
+  .manage-students th {
+    text-align: center; }
   .manage-students .student {
     cursor: pointer; }
+  .manage-students div {
+    text-align: center;
+    color: #c9462c;
+    font-weight: 700;
+    font-size: 1.4em; }
 
 .manage-programs {
   margin: 1em 0; }
