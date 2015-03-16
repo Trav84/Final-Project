@@ -389,7 +389,7 @@ angular.module('app.controllers', ['app.services'])
 .controller('studentResultsCtrl', function($stateParams, $scope) {
 	$scope.name = $stateParams.id;
 	console.log($stateParams);
-	console.log($scope.name);
+	console.log($scope.name);	
 })
 .controller('addStudentCtrl', function() {
 
