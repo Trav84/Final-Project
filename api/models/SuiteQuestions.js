@@ -16,6 +16,10 @@ module.exports = {
     choices: {
     	collection: 'SuiteAnswers',
     	via: 'SuiteQuestionID'
+    },
+    studentAnswers: {
+      collection: 'studentAnswer',
+      via: 'questionID'
     }
 
   }

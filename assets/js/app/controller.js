@@ -184,7 +184,7 @@ angular.module('app.controllers', ['app.services'])
 		$state.go('test',{id:testID});
 	};
 })
-.controller('testCtrl', function($scope, $http, $state, $stateParams, completeTest) {
+.controller('testCtrl', function($scope, $http, $state, $stateParams, completeTest, student) {
 
 	var correctAnswer = null;
 	var position = 0;
@@ -192,10 +192,22 @@ angular.module('app.controllers', ['app.services'])
 	var question = 0;
 	var numberCorrect = 0;
 	var numberOfQuestions = 5;
+	var answerObject = {
+		questionID: '',
+		studentID: '',
+		answer: '',
+		correct: false
+	};
 	$scope.questionNum = 1;
 	console.log(completeTest);
 	
 	function getTestData(question) {
+		answerObject = {
+			questionID: '',
+			studentID: '',
+			answer: '',
+			correct: false
+		};
 		if(question < numberOfQuestions) {
 			$http.get('/Suite?id='+test)
 			.success(function(testAndQuestions) {
@@ -205,6 +217,7 @@ angular.module('app.controllers', ['app.services'])
 				numberOfQuestions = testAndQuestions.questions.length;
 				console.log(testAndQuestions.id);
 				completeTest.id = testAndQuestions.id;
+				answerObject.questionID = completeTest.id;
 
 				$http.get('/SuiteAnswers?SuiteQuestionID='+testAndQuestions.questions[question].id)
 					.success(function(answers) {
@@ -231,12 +244,26 @@ angular.module('app.controllers', ['app.services'])
 
 	$scope.choiceClick = function(choice) {
 
+		answerObject.studentID = student.info.id;
+		answerObject.answer = choice;
+		console.log(answerObject);
+
 		$scope.questionNum++;
 		if(choice === correctAnswer) {
 			console.log('Correct answer was selected');
 			question++;
 			numberCorrect++;
-			getTestData(question);
+			getTestData(question);			
+			answerObject.correct = true;
+			console.log(answerObject);
+
+			$http.post('/StudentAnswer', answerObject)
+			.success(function(res) {
+				console.log('Answer posted');
+			})
+			.error(function(err) {
+				console.log(err);
+			});
 
 		} 
 		else {
@@ -410,6 +437,14 @@ angular.module('app.controllers', ['app.services'])
 	$scope.name = $stateParams.id;
 	console.log($stateParams);
 	console.log($scope.name);	
+
+	var bar = $('.progress-bar');
+	$(function(){
+		$(bar).each(function(){
+			bar_width = $(this).attr('aria-valuenow');
+			$(this).width(bar_width + '%');
+		});
+	});
 })
 .controller('addStudentCtrl', function() {
 

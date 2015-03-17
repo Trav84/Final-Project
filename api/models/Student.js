@@ -13,6 +13,10 @@ module.exports = {
   	loginKey: { type: 'string', required: true, unique: true},
   	studentID: {
   		model: 'Program'
+  	},
+  	studentAnswers: {
+  		collection: 'StudentAnswer',
+  		via: 'studentID'
   	}
   }
 };

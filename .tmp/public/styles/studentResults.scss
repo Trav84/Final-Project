@@ -1,5 +1,10 @@
 .student-results {
 
+	.progress-bar {
+		-webkit-transition: width 1.5s ease-in-out;
+		transition: width 1.5s ease-in-out;
+	}
+
 	.header {
 		h1 {
 			text-align: center;
@@ -72,17 +77,5 @@
 
 	.last {
 		border-right:1px solid rgb(66,66,66);
-	}
-
-	.weak:hover {
-		
-	}
-
-	.moderate {
-
-	}
-
-	.strong {
-
 	}
 }
