@@ -300,11 +300,12 @@ angular.module('app.controllers', ['app.services'])
 	$scope.testName = "Test Suite Management";
 	$scope.retrievedPrograms = [];
 	$scope.test = "test";
+	$scope.noTestsInProgram = '';
+	$scope.errorMsg = false;
 
 	$http.get('/auth/user')
 		.success(function(response) {
 			$scope.userID = response.id;
-			console.log(response);
 			getPrograms();
 		})
 		.error(function(err) {
@@ -314,56 +315,61 @@ angular.module('app.controllers', ['app.services'])
 	function getPrograms() {	
 
 		$http.get('/Program?programID='+$scope.userID)
-			.success(function(response) {
-				console.log(response);
-				$scope.retrievedPrograms = response;
-			})
-			.error(function(err) {
-				console.log(err);
-			});
-	}
-
-	$http.get('/Suite')
 		.success(function(response) {
 			console.log(response);
+			$scope.retrievedPrograms = response;
+		})
+		.error(function(err) {
+			console.log(err);
+		});
+	}
+
+	function removeTest(testName) {
+
+		for(var key in $scope.retrievedPrograms) {
+			if($scope.retrievedPrograms[key].name === testName) {
+				$scope.programTests = $scope.retrievedPrograms[key].suites;
+				$scope.programID = $scope.retrievedPrograms[key].id;
+			}
+		}
+	}
+
+	$scope.addTest = function(testId) {
+		console.log(testId);
+		//POST /:model/:record/:association/:record_to_add?
+		$http.post('/Program/'+$scope.programID+'/suites/'+testId)
+		.success(function(res) {
+			console.log(response);
+		})
+		.error(function(err) {
+			console.log(err);
+		});	
+	};
+
+	$http.get('/Suite')
+	.success(function(response) {
 			$scope.retrievedTests = response;
 		})
 		.error(function(err) {
 			console.log(err);
 		});
 
-	//POST /:model/:record/:association/:record_to_add?
-	// $http.post('/Program/22/Suite/1')
-	// .success(function(res) {
-	// 	console.log(response);
-	// })
-	// .error(function(err) {
-	// 	console.log(err);
-	// });	
-
 	$scope.testChanged = function(testSelected) {
 		$scope.testName = testSelected;
+		removeTest(testSelected);
 	};
 
 	$scope.buttonClick = function(button) {
 		if(button === 'Add') {
 			$scope.Add = !$scope.Add;
-			console.log('Add test button clicked');
 		}
 		else if (button === "Remove") {
 			$scope.Remove = !$scope.Remove;
-			console.log('Remove test button clicked');
 		} 
 		else if(button === "Create") {
 			$scope.Create = !$scope.Create;
-			console.log('Create test button clicked');
 		}
 	};
-
-	$scope.testClick = function(test) {
-		
-	};
-
 })
 .controller('manageStudentsCtrl', function($scope, $state) {
 
@@ -446,6 +452,8 @@ angular.module('app.controllers', ['app.services'])
 		});
 	});
 })
-.controller('addStudentCtrl', function() {
-
+.controller('addStudentCtrl', function($scope) {
+	$scope.programClick = function() {
+		console.log('click');
+	};
 });

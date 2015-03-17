@@ -163,6 +163,8 @@ header {
 .school-login p {
   margin-top: 0.5em;
   color: #c9462c; }
+.school-login button {
+  font-size: 1.2em; }
 
 .student-login {
   margin: 1em 0; }
@@ -228,7 +230,8 @@ header {
     font-weight: 700;
     margin: 0.5em 0; }
   .school-register button {
-    margin-top: 1em; }
+    margin-top: 1em;
+    font-size: 1.2em; }
   .school-register .centered {
     text-align: center; }
   .school-register p {
@@ -464,11 +467,13 @@ header {
   margin: 1em 0; }
 
 .school-dashboard h1 {
-  margin-top: 1em;
+  margin: 1em 0;
   text-align: center;
   font-size: 2em;
-  font-style: bold; }
+  font-style: bold;
+  text-decoration: underline; }
 .school-dashboard a {
+  border-radius: 10px;
   font-size: 1.2em;
   display: block;
   padding: 1em 1em;
@@ -495,6 +500,10 @@ header {
   /* IE6-9 */ }
 .school-dashboard a:hover {
   color: white; }
+.school-dashboard .centered {
+  text-align: center;
+  overflow: hidden;
+  margin: 0 auto; }
 
 .manage-tests .header {
   border-bottom: 1px solid black; }
@@ -510,6 +519,10 @@ header {
 .manage-tests .test-clicked {
   display: inline-block;
   background-color: green; }
+.manage-tests h2 {
+  color: #c9462c;
+  font-size: 1.4em;
+  font-weight: 500; }
 .manage-tests p {
   margin: 1em 1em; }
 .manage-tests span {
@@ -562,6 +575,8 @@ header {
     text-align: center; }
   .manage-students .student {
     cursor: pointer; }
+  .manage-students .student:hover {
+    color: #ff9900; }
   .manage-students div {
     text-align: center;
     color: #c9462c;

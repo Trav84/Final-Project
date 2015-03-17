@@ -3,22 +3,26 @@
 		<h1 ng-bind="testName"> Test Suite Management </j1>
 	</section>
 	<p> Here you can manage which tests you have in each of your schools specific programs. First select the program you wish to manage, then select to either add or remove a test to that suite. </p>
-	<span> Select a Program To Manage </span>
-	<select ng-change="testChanged(testSelected)" ng-model="testSelected">
-  		<option ng-repeat="program in retrievedPrograms"> {{ program.name }}</option>
-	</select>
-	<ul>
+	<div class="row">
+		<span> Select a Program To Manage </span> 
+		<select ng-change="testChanged(testSelected)" ng-model="testSelected">
+	  		<option ng-repeat="program in retrievedPrograms">{{ program.name }}</option>
+		</select>
+		<span> Tests Associated With Program: </span>
+		<span ng-repeat="test in programTests"> {{ test.name }} </span>
+	</div>
+	<section clas="row">
 		<button ng-click="buttonClick('Add')"> 
 			<i ng-hide="Add" class="fa fa-caret-right"></i> <i ng-show="Add" class="fa fa-caret-down"></i> Add Test
 		</button>
-		<button ng-repeat="test in retrievedTests" class="test" ng-show="Add"> {{ test.name }} </button>
+		<button ng-repeat="test in retrievedTests" ng-click="addTest(test.id)" class="test" ng-show="Add"> {{ test.name }} </button>
 		<button ng-click="buttonClick('Remove')">
 			<i ng-hide="visible" class="fa fa-caret-right"></i> <i ng-show="visible" class="fa fa-caret-down"></i> Remove Test 
 		</button>
-		<button class="test" ng-show="Remove"> Coming Soon! </button>
+		<button ng-repeat="test in programTests" class="test" ng-show="Remove"> {{ test.name }} </button>
 		<button ng-click="buttonClick('Create')"> 
 			<i ng-hide="visible" class="fa fa-caret-right"></i> <i ng-show="visible" class="fa fa-caret-down"></i> Create Custom Test 
 		</button>
 		<button class="test" ng-show="Create"> Coming Soon! </button>
-	</ul>
+	</section>
 </section>
