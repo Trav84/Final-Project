@@ -14,11 +14,11 @@
 		<button ng-click="buttonClick('Add')"> 
 			<i ng-hide="Add" class="fa fa-caret-right"></i> <i ng-show="Add" class="fa fa-caret-down"></i> Add Test
 		</button>
-		<button ng-repeat="test in retrievedTests" ng-click="addTest(test.id)" class="test" ng-show="Add"> {{ test.name }} </button>
+		<button id="test-button" ng-repeat="test in retrievedTests" ng-click="addTest(test.id)" ng-show="Add"> {{ test.name }} </button>
 		<button ng-click="buttonClick('Remove')">
 			<i ng-hide="visible" class="fa fa-caret-right"></i> <i ng-show="visible" class="fa fa-caret-down"></i> Remove Test 
 		</button>
-		<button ng-repeat="test in programTests" class="test" ng-show="Remove"> {{ test.name }} </button>
+		<button id="test-button" ng-repeat="test in programTests" ng-show="Remove"> {{ test.name }} </button>
 		<button ng-click="buttonClick('Create')"> 
 			<i ng-hide="visible" class="fa fa-caret-right"></i> <i ng-show="visible" class="fa fa-caret-down"></i> Create Custom Test 
 		</button>

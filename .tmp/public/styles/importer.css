@@ -413,6 +413,8 @@ header {
   margin: 0.4em 0; }
 .code-schools div {
   margin-top: 2em;
+  margin-right: 1em;
+  margin-left: 1em;
   width: 10em;
   height: 10em;
   display: inline-block; }
@@ -561,6 +563,8 @@ header {
 .manage-tests .errorMsg {
   color: #c9462c;
   font-weight: 700; }
+.manage-tests #test-button {
+  background-color: #3299BB; }
 
 .manage-students {
   font-size: 16px; }
