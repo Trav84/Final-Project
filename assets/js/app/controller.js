@@ -300,9 +300,8 @@ angular.module('app.controllers', ['app.services'])
 	$scope.testName = "Test Suite Management";
 	$scope.retrievedPrograms = [];
 	$scope.test = "test";
-	$scope.noTestsInProgram = '';
+	$scope.noTestMsg = '';
 	$scope.errorMsg = false;
-	$scope.example1model = []; $scope.example1data = [ {id: 1, label: "David"}, {id: 2, label: "Jhon"}, {id: 3, label: "Danny"}];
 
 	$http.get('/auth/user')
 		.success(function(response) {
@@ -331,8 +330,16 @@ angular.module('app.controllers', ['app.services'])
 			if($scope.retrievedPrograms[key].name === testName) {
 				$scope.programTests = $scope.retrievedPrograms[key].suites;
 				$scope.programID = $scope.retrievedPrograms[key].id;
+				$scope.noTestMsg = '';
 			}
 		}
+
+		if($scope.programTests.length === 0) {
+			console.log(' No tests');
+			$scope.noTestMsg = 'No Tests Associated';
+		}
+
+		getPrograms();
 	}
 
 	$scope.addTest = function(testId) {

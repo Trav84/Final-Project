@@ -42,5 +42,33 @@
 		margin:0.5em 1em;
 		font-size:1.5em;
 		border-radius:5px;
+		color:black;
+		background: #ffaf4b; /* Old browsers */
+		background: -moz-linear-gradient(top,  #ffaf4b 0%, #ff920a 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffaf4b), color-stop(100%,#ff920a)); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top,  #ffaf4b 0%,#ff920a 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top,  #ffaf4b 0%,#ff920a 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(top,  #ffaf4b 0%,#ff920a 100%); /* IE10+ */
+		background: linear-gradient(to bottom,  #ffaf4b 0%,#ff920a 100%); /* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffaf4b', endColorstr='#ff920a',GradientType=0 ); /* IE6-9 */
+	}
+
+	button:hover {
+		color:white;
+	}
+
+	.info {
+		margin-top:0.4em;
+		border-top:1px solid rgb(66,66,66);
+	}
+
+	.currentTests {
+		color:#379AA4;
+		font-weight: 700;
+	}
+
+	.errorMsg {
+		color: #c9462c;
+		font-weight:700;
 	}
 }

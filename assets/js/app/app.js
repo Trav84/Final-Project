@@ -75,6 +75,10 @@ angular.module('app', ['app.controllers','ui.router','ng-dropdown'])
 		url: '/addStudent',
 		templateUrl: 'templates/addStudent.html',
 		controller: 'addStudentCtrl'
+	})
+	.state('contact', {
+		url: '/contact',
+		templateUrl: 'templates/contact.html'
 	});
 
 	$urlRouterProvider.otherwise('/landing');

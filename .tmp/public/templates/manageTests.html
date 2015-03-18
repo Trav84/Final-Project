@@ -3,15 +3,14 @@
 		<h1 ng-bind="testName"> Test Suite Management </j1>
 	</section>
 	<p> Here you can manage which tests you have in each of your schools specific programs. First select the program you wish to manage, then select to either add or remove a test to that suite. </p>
-	<!-- <div class="row">
-		<span> Select a Program To Manage </span> 
-		<select ng-change="testChanged(testSelected)" ng-model="testSelected">
-	  		<option ng-repeat="program in retrievedPrograms">{{ program.name }}</option>
-		</select>
-		<span> Tests Associated With Program: </span>
-		<span ng-repeat="test in programTests"> {{ test.name }} </span>
-	</div> -->
-	<section clas="row">
+	<span> Select a Program To Manage </span> 
+	<select ng-change="testChanged(testSelected)" ng-model="testSelected">
+  		<option ng-repeat="program in retrievedPrograms">{{ program.name }}</option>
+	</select>
+	<span> Tests Associated With Program: </span>
+	<span class="errorMsg" ng-bind="noTestMsg"> </span>
+	<span class="currentTests" ng-repeat="test in programTests"> {{ test.name }} </span>
+	<section class="row info">
 		<button ng-click="buttonClick('Add')"> 
 			<i ng-hide="Add" class="fa fa-caret-right"></i> <i ng-show="Add" class="fa fa-caret-down"></i> Add Test
 		</button>
