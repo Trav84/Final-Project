@@ -1,17 +1,4 @@
 angular.module('app.services', []) 
-.factory('getUserInfo', function($http) {
-
-	return function(cb) {
-
-		$http.get('/auth/user')
-		.success(function(response) {
-			cb(null, response.username);
-		})
-		.error(function(err) {
-			cb(err);
-		});
-	};
-})
 .factory('student', function() {
 	return {};
 })
@@ -21,3 +8,4 @@ angular.module('app.services', [])
 		noTestFinished: true
 	};
 });
+

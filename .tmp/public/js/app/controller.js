@@ -1,4 +1,4 @@
-angular.module('app.controllers', ['app.services'])
+angular.module('app.controllers', ['app.services', 'ui.router'])
 .controller('landingCtrl', function($scope, $http, $state) {
 
 	$scope.logoutClick = function() {
@@ -32,6 +32,9 @@ angular.module('app.controllers', ['app.services'])
 	};
 })
 .controller('schoolLogInCtrl', function($scope, $state, $http) {
+
+	$scope.email = '';
+	$scope.password = '';
 
 	$scope.schoolLogin = function(email, pass) {
 
@@ -89,11 +92,6 @@ angular.module('app.controllers', ['app.services'])
 	$scope.emailErrorMsg = '';
 	$scope.passErrorMsg = '';
 	$scope.registerErrorMsg = '';
-
-	$scope.addProgram = function(programAdded) {
-		$scope.programs.push(programAdded);
-		$scope.programAdded = '';
-	};
 
 	$scope.schoolRegister = function(username, email, password) {
 		var errorObject = {
