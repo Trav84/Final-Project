@@ -1,4 +1,4 @@
-angular.module('app', ['app.controllers','ui.router'])
+angular.module('app', ['app.controllers','ui.router','ng-dropdown'])
 .config(function($stateProvider, $urlRouterProvider, $locationProvider) {
 	$stateProvider
 	.state('landing', {

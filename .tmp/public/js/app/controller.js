@@ -302,6 +302,7 @@ angular.module('app.controllers', ['app.services'])
 	$scope.test = "test";
 	$scope.noTestsInProgram = '';
 	$scope.errorMsg = false;
+	$scope.example1model = []; $scope.example1data = [ {id: 1, label: "David"}, {id: 2, label: "Jhon"}, {id: 3, label: "Danny"}];
 
 	$http.get('/auth/user')
 		.success(function(response) {
@@ -355,6 +356,7 @@ angular.module('app.controllers', ['app.services'])
 		});
 
 	$scope.testChanged = function(testSelected) {
+		console.log(testSelected);
 		$scope.testName = testSelected;
 		removeTest(testSelected);
 	};
