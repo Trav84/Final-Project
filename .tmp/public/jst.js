@@ -74,7 +74,7 @@ this["JST"]["assets/templates/schoolDashboard.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<section class="school-dashboard">\n\t<h1> Welcome {{ currentUser }} </h1>\n\t<nav class="col-lg-12">\n\t\t<a class="col-lg-5" ui-sref="manageTests"> Manage Test Suites </a>\n\t\t<a class="col-lg-5" ui-sref="managePrograms"> Manage School Programs </a>\n\t\t<a class="col-lg-5" ui-sref="addStudent"> Add Student </a>\n\t\t<a class="col-lg-5" ui-sref="manageStudents"> Manage Students </a>\n\t</nav>\n</section>';
+__p += '<section class="school-dashboard">\n\t<h1> Welcome {{ currentUser }} </h1>\n\t<nav class="centered">\n\t\t<a ui-sref="manageTests"> Manage Test Suites </a>\n\t\t<a ui-sref="managePrograms"> Manage School Programs </a>\n\t\t<a ui-sref="addStudent"> Add Student </a>\n\t\t<a ui-sref="manageStudents"> Manage Students </a>\n\t</nav\n</section>';
 
 }
 return __p

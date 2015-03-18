@@ -474,7 +474,7 @@ header {
   text-decoration: underline; }
 .school-dashboard a {
   border-radius: 10px;
-  font-size: 1.2em;
+  font-size: 1.5em;
   display: block;
   padding: 1em 1em;
   margin: 0.5em 1em;
@@ -638,6 +638,9 @@ header {
 .student-results .progress-bar {
   -webkit-transition: width 1.5s ease-in-out;
   transition: width 1.5s ease-in-out; }
+.student-results p {
+  margin-bottom: 0.5em;
+  font-weight: 700; }
 .student-results .header h1 {
   text-align: center;
   font-size: 2em;
