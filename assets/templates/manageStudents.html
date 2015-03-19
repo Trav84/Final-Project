@@ -1,24 +1,28 @@
 <section class="manage-students">
 	<section class="header">
 		<h1> Student Management </h1>
-		<h2 ng-bind="programName"> No Program Selected </h2>
+		<h2 ng-bind="programName"></h2>
 		<select ng-change="changeName(programSelected)" ng-model="programSelected">
-			<option>Front End Development</option>
+			<option ng-repeat="program in schoolPrograms track by $index">{{ program }}</option>
+		<!-- 	<option>Front End Development</option>
 			<option>Ruby on Rails</option>
-			<option>Web Development & Design</option>
+			<option>Web Development & Design</option> -->
 		</select>
 	</section>
-	<table>
+	<table ng-show="allTableShow" class="table table-hover table-bordered">
 		<tr>
-			<th> Student</th>
-			<th> Javascript </th>
-			<th> Mac OSX Command Line </th>
-			<th> Networking Basics </th>
+			<th> Student </th>
+			<th ng-repeat="suites in suitesInProgram">{{ suites.name }}</th>
 			<th> Finished </th>
+		</tr>
+		<tr ng-repeat="student in studentsInProgram">
+			<td class="student" ng-click="studentResults('Travis Czerw')"> {{ student }} </td>
+			<td> <i class="fa fa-check-circle-o "></i> </td>
+			<td> <i class="fa fa-check-circle-o "></i> </td>
+			<td> <i class="fa fa-check-circle-o "></i> </td>
 		</tr>
 		<tr ng-show="showTable">
 			<td class="student" ng-click="studentResults('Travis Czerw')"> Travis Czerw </td>
-			<td> <i class="fa fa-check-circle-o "></i> </td>
 			<td> <i class="fa fa-check-circle-o "></i> </td>
 			<td> <i class="fa fa-check-circle-o "></i> </td>
 			<td> <i class="fa fa-check-circle-o "></i> </td>
@@ -28,30 +32,14 @@
 			<td> <i class="fa fa-check-circle-o "></i> </td>
 			<td> <i class="fa fa-times-circle-o "></i> </td>
 			<td> <i class="fa fa-times-circle-o "></i> </td>
-			<td> <i class="fa fa-times-circle-o "></i> </td>
 		</tr>
 		<tr ng-show="showTable">
 			<td class="student" ui-sref="studentResults"> Student McStudent </td>
 			<td> <i class="fa fa-check-circle-o "></i> </td>
 			<td> <i class="fa fa-check-circle-o "></i> </td>
 			<td> <i class="fa fa-check-circle-o "></i> </td>
-			<td> <i class="fa fa-check-circle-o "></i> </td>
 		</tr>
 		<tr ng-show="showTable">
-			<td class="student" ui-sref="studentResults"> Student McClassFace </td>
-			<td> <i class="fa fa-times-circle-o "></i> </td>
-			<td> <i class="fa fa-times-circle-o "></i></td>
-			<td> <i class="fa fa-check-circle-o "></i> </td>
-			<td> <i class="fa fa-times-circle-o "></i> </td>
-		</tr>
-		<tr ng-show="showTable1">
-			<td class="student" ui-sref="studentResults"> Student McStudent </td>
-			<td> <i class="fa fa-check-circle-o "></i> </td>
-			<td> <i class="fa fa-check-circle-o "></i> </td>
-			<td> <i class="fa fa-check-circle-o "></i> </td>
-			<td> <i class="fa fa-check-circle-o "></i> </td>
-		</tr>
-		<tr ng-show="showTable1">
 			<td class="student" ui-sref="studentResults"> Student McClassFace </td>
 			<td> <i class="fa fa-times-circle-o "></i> </td>
 			<td> <i class="fa fa-times-circle-o "></i></td>
@@ -60,6 +48,6 @@
 		</tr>
 	</table>
 	<div>
-		<div ng-bind="message"> </div>
+		<div class="error-message" ng-bind="message"> </div>
 	</div>
 </section>

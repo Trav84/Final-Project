@@ -194,7 +194,8 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 		questionID: '',
 		studentID: '',
 		answer: '',
-		correct: false
+		correct: false,
+		suiteID: test
 	};
 	$scope.questionNum = 1;
 	console.log(completeTest);
@@ -204,7 +205,8 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 			questionID: '',
 			studentID: '',
 			answer: '',
-			correct: false
+			correct: false,
+			suiteID: test
 		};
 		if(question < numberOfQuestions) {
 			$http.get('/Suite?id='+test)
@@ -213,7 +215,6 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 				console.log(testAndQuestions);
 				$scope.question = testAndQuestions.questions[question].title;
 				numberOfQuestions = testAndQuestions.questions.length;
-				console.log(testAndQuestions.id);
 				completeTest.id = testAndQuestions.id;
 				answerObject.questionID = completeTest.id;
 
@@ -250,8 +251,7 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 		if(choice === correctAnswer) {
 			console.log('Correct answer was selected');
 			question++;
-			numberCorrect++;
-			getTestData(question);			
+			numberCorrect++;	
 			answerObject.correct = true;
 			console.log(answerObject);
 
@@ -263,9 +263,19 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 				console.log(err);
 			});
 
+			getTestData(question);		
 		} 
 		else {
 			console.log('Wrong answer was selected');
+			answerObject.correct = false;
+			$http.post('/StudentAnswer', answerObject)
+			.success(function(res) {
+				console.log('Answer posted');
+			})
+			.error(function(err) {
+				console.log(err);
+			});
+
 			question++;
 			getTestData(question);
 		}
@@ -378,31 +388,118 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 		}
 	};
 })
-.controller('manageStudentsCtrl', function($scope, $state) {
+.controller('manageStudentsCtrl', function($scope, $state, $http) {
 
-	$scope.programName = "No Program Selected";
+	$scope.programName = "Select A Program";
+	$scope.studentArray = [];
+	$scope.answerArray = [];
+	$scope.schoolPrograms = [];
+	$scope.suitesInProgram = [];
+	$scope.studentsInProgram = [];
 	$scope.message = '';
 	$scope.showTable = false;
 	$scope.showTable1 = false;
+	$scope.allTableShow = false;
+	var loggedInSchool = '';
+
+	function getUser() {
+		$http.get('/auth/user')
+		.success(function(response) {
+			loggedInSchool = response.username;
+			console.log(loggedInSchool);
+			getPrograms();
+		})
+		.error(function(err) {
+			console.log(err);
+		});
+	}
+
+	function getStudents() {
+		$http.get('/Student')
+		.success(function(response) {
+			$scope.studentArray = response;
+			console.log($scope.studentArray);
+		})
+		.error(function(err) {
+			console.log(err);
+		});
+	}
+
+	getUser();
+	getStudents();
+
+	// $http.get('/StudentAnswer')
+	// .success(function(response) {
+	// 	$scope.answerArray = response;
+	// 	console.log($scope.answerArray);
+	// })
+	// .error(function(err) {
+	// 	console.log(err);
+	// });
+
+	function getPrograms() {
+		$http.get('/Program')
+		.success(function(response) {
+			$scope.programArray = response;
+			console.log($scope.programArray);
+			for(var key in $scope.programArray) {
+				if(loggedInSchool === $scope.programArray[key].programID.username) {
+					$scope.schoolPrograms.push($scope.programArray[key].name);
+				}
+			}
+		})
+		.error(function(err) {
+			console.log(err);
+		});
+	}
+
+	function getSuitesInProgram(programSelected) {
+		for(var key in $scope.programArray) {
+			if(programSelected === $scope.programArray[key].name) {
+				$scope.suitesInProgram = $scope.programArray[key].suites;
+				console.log($scope.suitesInProgram);
+			}
+		}
+	}
 
 	$scope.changeName = function(programSelected) {
+		console.log(programSelected);
+		getSuitesInProgram(programSelected);
 		$scope.programName = programSelected;
+		$scope.studentsInProgram = [];
 
-		if(programSelected === 'Front End Development') {
-			$scope.message = '';
-			$scope.showTable = true;
-			$scope.showTable1 = false;
-		} 
-		else if(programSelected === 'Ruby on Rails') {
-			$scope.message = '';
-			$scope.showTable = false;
-			$scope.showTable1 = true;
+		for(var key in $scope.studentArray) {
+			if($scope.studentArray[key].studentID.name === programSelected) {
+				console.log('Student '+$scope.studentArray[key].name+" is in this program");
+				$scope.studentsInProgram.push($scope.studentArray[key].name);
+			}
+		}
+
+		if($scope.studentsInProgram.length === 0) {
+			console.log('no students');
+			$scope.message = "No Students In Program";
 		}
 		else {
-			$scope.showTable = false;
-			$scope.showTable1 = false;
-			$scope.message = 'No students in program';
+			$scope.message = "";
+			$scope.allTableShow = true;
 		}
+		
+
+		// if(programSelected === 'Front End Development') {
+		// 	$scope.message = '';
+		// 	$scope.showTable = true;
+		// 	$scope.showTable1 = false;
+		// } 
+		// else if(programSelected === 'Ruby on Rails') {
+		// 	$scope.message = '';
+		// 	$scope.showTable = false;
+		// 	$scope.showTable1 = true;
+		// }
+		// else {
+		// 	$scope.showTable = false;
+		// 	$scope.showTable1 = false;
+		// 	$scope.message = 'No students in program';
+		// }
 	};
 
 	$scope.studentResults = function(studentName) {
@@ -417,12 +514,12 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 	$scope.confirmMsg = '';
 
 	$http.get('/auth/user')
-		.success(function(response) {
-			$scope.userID = response.id;
-		})
-		.error(function(err) {
-			console.log(err);
-		});
+	.success(function(response) {
+		$scope.userID = response.id;
+	})
+	.error(function(err) {
+		console.log(err);
+	});
 
 	$scope.addProgram = function(programAdded) {
 		$scope.programs.push(programAdded);
@@ -446,10 +543,10 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 		}
 	};
 })
-.controller('studentResultsCtrl', function($stateParams, $scope) {
+.controller('studentResultsCtrl', function($stateParams, $scope, $http) {
 	$scope.name = $stateParams.id;
 	console.log($stateParams);
-	console.log($scope.name);	
+	$scope.numberCorrect = 0;	
 
 	var bar = $('.progress-bar');
 	$(function(){
@@ -457,6 +554,14 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 			bar_width = $(this).attr('aria-valuenow');
 			$(this).width(bar_width + '%');
 		});
+	});
+
+	$http.get('/Student?name='+$scope.name)
+	.success(function(response) {
+		console.log(response);
+	})
+	.error(function(err) {
+		console.log(err);
 	});
 })
 .controller('addStudentCtrl', function($scope) {

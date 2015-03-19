@@ -15,7 +15,10 @@ module.exports = {
   	},
   	questionID: {
   		model: 'SuiteQuestions'
-  	}
+  	},
+    suiteID: {
+      model: "Suite"
+    }
   }
 };
 

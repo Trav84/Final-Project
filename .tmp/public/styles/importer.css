@@ -165,6 +165,8 @@ header {
   color: #c9462c; }
 .school-login button {
   font-size: 1.2em; }
+.school-login #noShadowBtn {
+  text-shadow: none; }
 
 .student-login {
   margin: 1em 0; }
@@ -198,7 +200,6 @@ header {
     font-size: 1.5em;
     color: #c9462c; }
   .student-login .blue {
-    text-shadow: -1px -1px 0 #2C7982;
     background-color: #32b7bb;
     border: 1px solid #379AA4;
     background-image: -webkit-linear-gradient(top, #48C6D4, #3EACBA);
@@ -212,6 +213,8 @@ header {
     -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset, 0 -1px 0 rgba(255, 255, 255, 0.1) inset, 0 4px 0 #338A94, 0 4px 2px rgba(0, 0, 0, 0.5);
     -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset, 0 -1px 0 rgba(255, 255, 255, 0.1) inset, 0 4px 0 #338A94, 0 4px 2px rgba(0, 0, 0, 0.5);
     box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset, 0 -1px 0 rgba(255, 255, 255, 0.1) inset, 0 4px 0 #338A94, 0 4px 2px rgba(0, 0, 0, 0.5); }
+  .student-login #noShadowBtn {
+    text-shadow: none; }
 
 .school-register {
   margin: 0 auto;
@@ -469,11 +472,12 @@ header {
   margin: 1em 0; }
 
 .school-dashboard h1 {
-  margin: 1em 0;
+  margin: 0.4em 0;
   text-align: center;
-  font-size: 2em;
+  font-size: 2.4em;
   font-style: bold;
-  text-decoration: underline; }
+  color: #379AA4;
+  font-weight: 700; }
 .school-dashboard a {
   border-radius: 10px;
   font-size: 1.5em;
@@ -504,8 +508,14 @@ header {
   color: white; }
 .school-dashboard .centered {
   text-align: center;
-  overflow: hidden;
-  margin: 0 auto; }
+  overflow: hidden; }
+@media (min-width: 992px) {
+  .school-dashboard .school-dashboard {
+    max-width: 1000px; }
+  .school-dashboard a {
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 600px; } }
 
 .manage-tests .header {
   border-bottom: 1px solid black; }
@@ -563,8 +573,6 @@ header {
 .manage-tests .errorMsg {
   color: #c9462c;
   font-weight: 700; }
-.manage-tests #test-button {
-  background-color: #3299BB; }
 
 .manage-students {
   font-size: 16px; }
@@ -574,7 +582,6 @@ header {
   .manage-students .fa-times-circle-o {
     color: #b11623; }
   .manage-students .header {
-    border-bottom: 1px solid black;
     text-align: center; }
     .manage-students .header h1 {
       margin-top: 0.5em;
@@ -586,25 +593,21 @@ header {
       margin-bottom: 0.5em; }
     .manage-students .header select {
       margin-bottom: 0.5em; }
-  .manage-students table {
-    width: 95%;
-    margin: 1em 2em; }
   .manage-students table tr {
     border: 1px solid black; }
   .manage-students table th {
-    border: 1px solid black;
+    border-top: none;
     padding: 0.6em 0.6em;
     font-weight: 500;
-    background-color: #333333;
-    color: white; }
+    background-color: #424242;
+    color: white;
+    text-align: center; }
   .manage-students td {
     font-size: 1.5em;
     padding: 0.4em 0.4em;
     text-align: center;
     vertical-align: middle;
     border: 1px solid black; }
-  .manage-students th {
-    text-align: center; }
   .manage-students .student {
     cursor: pointer; }
   .manage-students .student:hover {
@@ -614,6 +617,8 @@ header {
     color: #c9462c;
     font-weight: 700;
     font-size: 1.4em; }
+  .manage-students .error-message {
+    margin-top: 0.4em; }
 
 .manage-programs {
   margin: 1em 0; }
