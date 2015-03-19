@@ -437,6 +437,12 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 	// 	console.log(err);
 	// });
 
+	function getStudentResults() {
+		for(var key in $scope.studentsInProgram) {
+			
+		}
+	}
+
 	function getPrograms() {
 		$http.get('/Program')
 		.success(function(response) {
@@ -457,9 +463,9 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 		for(var key in $scope.programArray) {
 			if(programSelected === $scope.programArray[key].name) {
 				$scope.suitesInProgram = $scope.programArray[key].suites;
-				console.log($scope.suitesInProgram);
 			}
 		}
+		getStudentResults();
 	}
 
 	$scope.changeName = function(programSelected) {
@@ -483,23 +489,6 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 			$scope.message = "";
 			$scope.allTableShow = true;
 		}
-		
-
-		// if(programSelected === 'Front End Development') {
-		// 	$scope.message = '';
-		// 	$scope.showTable = true;
-		// 	$scope.showTable1 = false;
-		// } 
-		// else if(programSelected === 'Ruby on Rails') {
-		// 	$scope.message = '';
-		// 	$scope.showTable = false;
-		// 	$scope.showTable1 = true;
-		// }
-		// else {
-		// 	$scope.showTable = false;
-		// 	$scope.showTable1 = false;
-		// 	$scope.message = 'No students in program';
-		// }
 	};
 
 	$scope.studentResults = function(studentName) {
