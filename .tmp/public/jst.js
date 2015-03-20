@@ -94,7 +94,7 @@ this["JST"]["assets/templates/schoolRegister.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<section class="school-register">\n\t<h1> Register A New School </h1>\n\t<form ng-submit="schoolRegister(username, email, password)" class="col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">\n\t\t<label for="user-name"> School Name </label>\n\t\t<input class="form-control" ng-model="username" id="user-name" type="text" placeholder="School Name">\n\t\t<p ng-bind="nameErrorMsg"> </p>\n\t\t<label for="email-input"> Email </label>\n\t\t<input class="form-control" ng-model="email" type="text" id="email-input" placeholder="Email">\n\t\t<p ng-bind="emailErrorMsg"> </p>\n\t\t<label for="password-input"> Password </label>\n\t\t<input class="form-control" ng-model="password" type="password" id="password-input" placeholder="Must be at least 8 characters">\n\t\t<p ng-bind="passErrorMsg"> </p>\n\t\t<div class="centered">\n\t\t\t<button class="btn btn-default centered blue"> Register New Code School </button>\n\t\t\t<p ng-bind="registerErrorMsg"> </p>\n\t\t</div>\n\t</form>\n</section>\n';
+__p += '<section class="school-register">\n\t<h1> Register A New School </h1>\n\t<form ng-submit="schoolRegister(username, email, password)" class="col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">\n\t\t<label for="user-name"> School Name </label>\n\t\t<input class="form-control" ng-model="username" id="user-name" type="text" placeholder="School Name">\n\t\t<p ng-bind="nameErrorMsg"> </p>\n\t\t<label for="email-input"> Email </label>\n\t\t<input class="form-control" ng-model="email" type="text" id="email-input" placeholder="Email">\n\t\t<p ng-bind="emailErrorMsg"> </p>\n\t\t<label for="password-input"> Password </label>\n\t\t<input class="form-control" ng-model="password" type="password" id="password-input" placeholder="Must be at least 8 characters">\n\t\t<p ng-bind="passErrorMsg"> </p>\n\t\t<div class="centered">\n\t\t\t<button id="noShadowBtn" class="btn btn-default centered blue"> Register New Code School </button>\n\t\t\t<p ng-bind="registerErrorMsg"> </p>\n\t\t</div>\n\t</form>\n</section>\n';
 
 }
 return __p
@@ -104,7 +104,7 @@ this["JST"]["assets/templates/studentDashboard.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<section class="student-dash">\n\t<h2> Welcome {{ studentName }}</h2>\n\t<h3> A brand new student in {{ studentProgram }} </h3>\n\t<p> You are here because you\'ve been accepted into your code school and are about to embark on a new journey. Congratulations! Your school has selected a set of simple assessment tests for you to complete so they can better understand the basic skill set you are bringing into class. This helps them tailor their cirriculum and course work to better suit the needs of you and your fellow classmates. Just click on a test below to get started. </p> \n\t<div>\n\t\t<button ng-click="testClick(test.id)" class="col-xs-12 test-display" ng-repeat="test in tests"> {{ test.name }} </button>\n\t</div>\n</section>';
+__p += '<section class="student-dash">\n\t<h2> Welcome <span> {{ studentName }} </span> </h2>\n\t<h3> A brand new student in <span> {{ studentProgram }} </span> </h3>\n\t<p> You are here because you\'ve been accepted into your code school and are about to embark on a new journey. Congratulations! Your school has selected a set of simple assessment tests for you to complete so they can better understand the basic skill set you are bringing into class. This helps them tailor their cirriculum and course work to better suit the needs of you and your fellow classmates. Just click on a test below to get started. </p> \n\t<div>\n\t\t<button ng-click="testClick(test.id)" class="col-xs-12 test-display" ng-repeat="test in tests"> {{ test.name }} </button>\n\t</div>\n</section>';
 
 }
 return __p
@@ -134,7 +134,7 @@ this["JST"]["assets/templates/test.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<section class="test">\n\t<h1 ng-bind="title"> [Test Name] </h1>\n\t<h2> Question {{ questionNum}} : {{question}}</h2>\n\t<div class="choice-box">\n\t\t<div ng-repeat="choice in choices" class="col-xs-12 push_button blue" ng-click="choiceClick(choice.answer)"> {{ choice.displayText }} </div>\n\t</div>\n</section>';
+__p += '<section class="test">\n\t<h1 ng-bind="title"> [Test Name] </h1>\n\t<h2> <span> Question {{ questionNum}} </span>: {{question}}</h2>\n\t<div class="choice-box">\n\t\t<div ng-repeat="choice in choices" class="col-xs-12 push_button blue" ng-click="choiceClick(choice.answer)"> {{ choice.displayText }} </div>\n\t</div>\n</section>';
 
 }
 return __p

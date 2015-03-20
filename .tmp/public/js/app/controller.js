@@ -396,9 +396,8 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 	$scope.schoolPrograms = [];
 	$scope.suitesInProgram = [];
 	$scope.studentsInProgram = [];
+	$scope.testResults = [];
 	$scope.message = '';
-	$scope.showTable = false;
-	$scope.showTable1 = false;
 	$scope.allTableShow = false;
 	var loggedInSchool = '';
 
@@ -406,7 +405,6 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 		$http.get('/auth/user')
 		.success(function(response) {
 			loggedInSchool = response.username;
-			console.log(loggedInSchool);
 			getPrograms();
 		})
 		.error(function(err) {
@@ -419,6 +417,7 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 		.success(function(response) {
 			$scope.studentArray = response;
 			console.log($scope.studentArray);
+			getStudentResults();
 		})
 		.error(function(err) {
 			console.log(err);
@@ -428,18 +427,17 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 	getUser();
 	getStudents();
 
-	// $http.get('/StudentAnswer')
-	// .success(function(response) {
-	// 	$scope.answerArray = response;
-	// 	console.log($scope.answerArray);
-	// })
-	// .error(function(err) {
-	// 	console.log(err);
-	// });
-
 	function getStudentResults() {
-		for(var key in $scope.studentsInProgram) {
-			
+		var test1 = 0;
+		var test2 = 0;
+		for(var key in $scope.studentArray) {
+			for(var result in $scope.studentArray[key].studentAnswers) {
+				//console.log($scope.studentArray[key].studentAnswers[result].correct);
+				if($scope.studentArray[key].studentAnswers[result].correct) {
+					total++;
+				}
+			}
+			console.log(total);
 		}
 	}
 
@@ -447,7 +445,6 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 		$http.get('/Program')
 		.success(function(response) {
 			$scope.programArray = response;
-			console.log($scope.programArray);
 			for(var key in $scope.programArray) {
 				if(loggedInSchool === $scope.programArray[key].programID.username) {
 					$scope.schoolPrograms.push($scope.programArray[key].name);
@@ -465,11 +462,9 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 				$scope.suitesInProgram = $scope.programArray[key].suites;
 			}
 		}
-		getStudentResults();
 	}
 
 	$scope.changeName = function(programSelected) {
-		console.log(programSelected);
 		getSuitesInProgram(programSelected);
 		$scope.programName = programSelected;
 		$scope.studentsInProgram = [];
@@ -482,7 +477,6 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 		}
 
 		if($scope.studentsInProgram.length === 0) {
-			console.log('no students');
 			$scope.message = "No Students In Program";
 		}
 		else {

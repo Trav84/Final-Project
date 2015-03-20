@@ -1,6 +1,6 @@
 <section class="student-dash">
-	<h2> Welcome {{ studentName }}</h2>
-	<h3> A brand new student in {{ studentProgram }} </h3>
+	<h2> Welcome <span> {{ studentName }} </span> </h2>
+	<h3> A brand new student in <span> {{ studentProgram }} </span> </h3>
 	<p> You are here because you've been accepted into your code school and are about to embark on a new journey. Congratulations! Your school has selected a set of simple assessment tests for you to complete so they can better understand the basic skill set you are bringing into class. This helps them tailor their cirriculum and course work to better suit the needs of you and your fellow classmates. Just click on a test below to get started. </p> 
 	<div>
 		<button ng-click="testClick(test.id)" class="col-xs-12 test-display" ng-repeat="test in tests"> {{ test.name }} </button>

@@ -87,7 +87,8 @@ header {
   margin-top: 1em;
   text-align: center;
   font-size: 2.5em;
-  font-weight: 500px; }
+  font-weight: 500px;
+  color: #424242; }
 .landing div {
   font-size: 2em;
   padding-top: 1.4em; }
@@ -240,6 +241,8 @@ header {
   .school-register p {
     margin-top: 0.5em;
     color: #c9462c; }
+  .school-register #noShadowBtn {
+    text-shadow: none; }
 
 .student-dash {
   margin-bottom: 2em; }
@@ -289,6 +292,9 @@ header {
   .student-dash div {
     margin: 0 auto;
     width: 100%; }
+  .student-dash span {
+    color: #379AA4;
+    text-shadow: 1px 1px 1px black; }
 
 .test {
   text-align: center; }
@@ -298,8 +304,11 @@ header {
     font-weight: 700; }
   .test h2 {
     margin-top: 0.5em;
-    font-size: 2em;
-    text-decoration: underline; }
+    font-size: 2em; }
+  .test span {
+    color: #FF9900;
+    text-shadow: 1px 1px 1px black;
+    text-decoration: none; }
   .test .choice-box {
     margin: 1em 1em; }
   .test .option {
@@ -477,14 +486,15 @@ header {
   font-size: 2.4em;
   font-style: bold;
   color: #379AA4;
-  font-weight: 700; }
+  font-weight: 700;
+  text-shadow: 1px 1px 1px black; }
 .school-dashboard a {
-  border-radius: 10px;
   font-size: 1.5em;
   display: block;
   padding: 1em 1em;
   margin: 0.5em 1em;
   border: 1px solid black;
+  box-shadow: 1px 1px 1px black;
   text-align: center;
   text-decoration: none;
   color: black;
@@ -524,7 +534,11 @@ header {
     margin-bottom: 0.5em;
     text-align: center;
     font-size: 2em;
-    font-style: bold; }
+    font-size: 2.4em;
+    font-style: bold;
+    color: #379AA4;
+    font-weight: 700;
+    text-shadow: 1px 1px 1px black; }
 .manage-tests .test {
   display: inline-block;
   background-color: white; }
@@ -586,8 +600,10 @@ header {
     .manage-students .header h1 {
       margin-top: 0.5em;
       margin-bottom: 0.5em;
-      font-size: 2em;
-      font-style: bold; }
+      font-size: 2.4em;
+      font-style: bold;
+      color: #379AA4;
+      text-shadow: 1px 1px 1px black; }
     .manage-students .header h2 {
       font-size: 1.5em;
       margin-bottom: 0.5em; }
@@ -624,8 +640,12 @@ header {
   margin: 1em 0; }
   .manage-programs h1 {
     text-align: center;
-    font-size: 1.5em;
-    margin-bottom: 1em; }
+    margin-bottom: 1em;
+    font-size: 2.4em;
+    font-style: bold;
+    color: #379AA4;
+    font-weight: 700;
+    text-shadow: 1px 1px 1px black; }
   .manage-programs p {
     text-indent: 50px;
     line-height: 1.6em;
@@ -1463,8 +1483,12 @@ stretchRight
 .add-student {
   margin-top: 1em; }
   .add-student h1 {
-    font-size: 1.5em;
-    text-align: center; }
+    text-align: center;
+    font-size: 2.4em;
+    font-style: bold;
+    color: #379AA4;
+    font-weight: 700;
+    text-shadow: 1px 1px 1px black; }
   .add-student label {
     font-size: 1.2em;
     margin-bottom: 0.4em; }

@@ -7,15 +7,17 @@
 		font-style:bold;
 		color: #379AA4;
 		font-weight:700;
+		text-shadow: 1px 1px 1px black;
 	}
 
 	a {
-		border-radius:10px;
+		//border-radius:10px;
 		font-size:1.5em;
 		display:block;
 		padding:1em 1em;
 		margin:0.5em 1em;
 		border:1px solid black;
+		box-shadow: 1px 1px 1px black;
 		text-align:center;
 		text-decoration: none;
 		color:black;
