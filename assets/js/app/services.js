@@ -7,5 +7,8 @@ angular.module('app.services', [])
 		id: null,
 		noTestFinished: true
 	};
+})
+.factory('studentScore', function() {
+	return {};
 });
 

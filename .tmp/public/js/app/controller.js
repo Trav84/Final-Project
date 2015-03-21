@@ -383,7 +383,7 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 		}
 	};
 })
-.controller('manageStudentsCtrl', function($scope, $state, $http) {
+.controller('manageStudentsCtrl', function($scope, $state, $http, studentScore) {
 
 	$scope.programName = "Select A Program";
 	$scope.suitesArray = [];
@@ -455,8 +455,6 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 				+$scope.studentsInProgram[i].answerCount[x]+
 				' out of 5');
 
-				//console.log($scope.studentsInProgram[i].answerCount[x]);
-
 				if($scope.studentsInProgram[i].answerCount[x] >= 5) {
 					$scope.studentsInProgram[i][x] = true;
 				}
@@ -518,10 +516,10 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 		}
 	};
 
-	$scope.studentResults = function(studentName) {
-		$state.go('studentResults',{id:studentName});
+	$scope.studentResults = function(name) {
+		studentScore.name = name;
+		$state.go('studentResults');
 	};
-
 })
 .controller('manageProgramsCtrl', function($scope, $http) {
 
@@ -555,22 +553,41 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 		}
 	};
 })
-.controller('studentResultsCtrl', function($stateParams, $scope, $http) {
-	$scope.name = $stateParams.id;
-	console.log($stateParams);
+.controller('studentResultsCtrl', function($scope, $http, studentScore) {
 	$scope.numberCorrect = 0;	
+	$scope.studentName = studentScore.name;
+	var answerArray = [];
+	$scope.testTotal = null;
+	var test = 0;
 
-	var bar = $('.progress-bar');
-	$(function(){
-		$(bar).each(function(){
-			bar_width = $(this).attr('aria-valuenow');
-			$(this).width(bar_width + '%');
+	function calcScores() {
+		for(var i=0; i < answerArray.length; i++) {
+			if(answerArray[i].correct) {
+				test++;
+			}
+		}
+		$scope.testTotal = (test/5)*100;
+		console.log($scope.testTotal);
+		//$scope.testTotal = $scope.testTotal.toString();
+		//console.log($scope.testTotal);
+		runAnimation();
+	}
+
+	function runAnimation() {
+		var bar = $('.progress-bar');
+		$(function(){
+			$(bar).each(function(){
+				bar_width = $(this).attr('aria-valuenow');
+				$(this).width(bar_width + '%');
+			});
 		});
-	});
+	}
 
-	$http.get('/Student?name='+$scope.name)
+	$http.get('/Student?name='+$scope.studentName)
 	.success(function(response) {
-		console.log(response);
+		answerArray = response[0].studentAnswers;
+		console.log(answerArray);
+		calcScores();
 	})
 	.error(function(err) {
 		console.log(err);

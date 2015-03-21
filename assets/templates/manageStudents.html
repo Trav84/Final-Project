@@ -12,7 +12,7 @@
 			<th ng-repeat="suites in suitesInProgram">{{ suites.name }}</th>
 		</tr>
 		<tr ng-repeat="student in studentsInProgram">
-			<td class="student" ng-click="studentResults('Travis Czerw')"> {{ student.name }} </td>
+			<td class="student" ng-click="studentResults(student.name)"> {{ student.name }} </td>
 			<td ng-repeat="suite in suitesInProgram">
 				<i ng=show="student[suite.id] === true" ng-hide="student[suite.id] === false" class="fa fa-check-circle-o"> </i>
 				<i ng-show="student[suite.id] === false" ng-hide="student[suite.id] === true" class="fa fa-times-circle-o" > </i> 
