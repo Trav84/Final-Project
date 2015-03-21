@@ -4,25 +4,19 @@
 		<div class="form-group">
 			<label for="student-name">Student's Name </label>
 			<input ng-model="studentName" type="text" class="form-control" id="student-name" placeholder="Student Name">
-			<span ng-bind="nameErrorMsg"> </span>
+			<span class="error-text" ng-bind="nameErrorMsg"> </span>
 		</div>
 		<div class="form-group">
 			<label for="student-email">Student's Email </label>
 			<input ng-model="studentEmail" type="text" class="form-control" id="student-email" placeholder="Email">
+			<span class="error-text" ng-bind="emailErrorMsg"> </span>
 		</div>
-		<div class="dropdown">
-			<button ng-click="programClick()" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-			Program Enrolled
-				<span class="caret"></span>
-			</button>
-			<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-				<li role="presentation"><a role="menuitem" tabindex="-1">Front End Development</a></li>
-				<li role="presentation"><a role="menuitem" tabindex="-1">Ruby on Rails</a></li>
-				<li role="presentation"><a role="menuitem" tabindex="-1">Web Design</li>
-			</ul>
-		</div>
+		<select ng-change="getProgramID(programSelected)" ng-model="programSelected">
+  			<option ng-repeat="program in suitesInProgram">{{ program.name }}</option>
+		</select>
+		<p class="error-text" ng-bind="programErrorMsg"> </p>
 		<div class="centered">
-			<button ng-click="addStudent(studentName, studentEmail)" type="submit" class="btn btn-default add-student-btn"> Add Student </button>
+			<button ng-click="addStudent(studentName, studentEmail, programSelected)" type="submit" class="btn btn-default add-student-btn"> Add Student </button>
 		</div>
 	</form>
 </section>

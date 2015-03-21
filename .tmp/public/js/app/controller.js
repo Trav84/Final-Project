@@ -571,23 +571,55 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 		console.log(err);
 	});
 })
-.controller('addStudentCtrl', function($scope) {
+.controller('addStudentCtrl', function($scope, $http) {
 	var studentObj = {
 		name: '',
 		email: '',
-		program: '',
+		studentID: '',
 		loginKey: ''
 	};
+	var emailPass = false;
+	var namePass = false;
+	var programPass = false;
+	var programID = null;
+
+	function getUser() {
+		$http.get('/auth/user')
+		.success(function(response) {
+			getSuitesInProgram(response.id);
+		})
+		.error(function(err) {
+			console.log(err);
+		});
+	}
+
+	function getSuitesInProgram(schoolID) {
+
+		$http.get('Program?programID='+schoolID)
+		.success(function(response) {
+			$scope.suitesInProgram = response;
+		})
+		.error(function(err) {
+			console.log(err);
+		});
+	}
+
+	$scope.getProgramID = function(program) {	
+		for(var i = 0; i < $scope.suitesInProgram.length; i++) {
+			if(program === $scope.suitesInProgram[i].name) {
+				programID = $scope.suitesInProgram[i].id;
+				programPass = true;
+			}
+		}
+	};
+
+	getUser();
 
 	$scope.programClick = function() {
 		console.log('click');
 	};
 
-	$scope.addStudent = function(name, email) {
-		studentObj.name = student.name;
-		studentObj.email = student.email;
-		console.log('add student clicked');
-		console.log(student);
+	$scope.addStudent = function(name, email, program) {
 
 		if(validator.isNull(name)) {
 			$scope.nameErrorMsg = 'Please enter the student\'s name';
@@ -597,6 +629,42 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 		} 
 		else {
 			studentObj.name = name;
+			namePass = true;
+			$scope.nameErrorMsg = '';
+		}
+
+		if(validator.isNull(email)) {
+			$scope.emailErrorMsg = 'Please enter the student\s email';
+		}
+		else if(!validator.isEmail(email)) {
+			$scope.emailErrorMsg = 'Please enter a valid email';
+		}
+		else {
+			studentObj.email = email;
+			emailPass = true;
+			$scope.emailErrorMsg = '';
+		}
+
+		if(validator.isNull(program)) {
+			$scope.programErrorMsg = 'Please select which program this student is enrolled in';
+		}
+		else {
+			studentObj.studentID = programID;
+			$scope.programErrorMsg = '';
+		}
+
+		console.log(studentObj);
+
+		if(emailPass && namePass && programPass) {
+			studentObj.loginKey = studentObj.name+'key';
+
+			$http.post('/Student', studentObj)
+			.success(function(response) {
+				console.log(response);
+			})
+			.error(function(err) {
+
+			});
 		}
 	};
 });

@@ -1527,5 +1527,8 @@ stretchRight
     /* IE6-9 */ }
   .add-student .centered {
     text-align: center; }
+  .add-student .error-text {
+    margin-top: 0.5em;
+    color: #c9462c; }
 
 /*# sourceMappingURL=importer.css.map */
