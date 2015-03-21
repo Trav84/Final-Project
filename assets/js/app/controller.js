@@ -66,7 +66,6 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 			.success(function(res) {
 				$http.get('/auth/user')
 				.success(function(response) {
-					console.log(response);
 					$scope.currentUser = response.username;
 					$state.go('schoolDashboard');
 				})
@@ -324,7 +323,6 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 
 		$http.get('/Program?programID='+$scope.userID)
 		.success(function(response) {
-			console.log(response);
 			$scope.retrievedPrograms = response;
 		})
 		.error(function(err) {
@@ -343,7 +341,6 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 		}
 
 		if($scope.programTests.length === 0) {
-			console.log(' No tests');
 			$scope.noTestMsg = 'No Tests Associated';
 		}
 
@@ -351,11 +348,10 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 	}
 
 	$scope.addTest = function(testId) {
-		console.log(testId);
 		//POST /:model/:record/:association/:record_to_add?
 		$http.post('/Program/'+$scope.programID+'/suites/'+testId)
 		.success(function(res) {
-			console.log(response);
+			getPrograms();
 		})
 		.error(function(err) {
 			console.log(err);
@@ -371,7 +367,6 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 		});
 
 	$scope.testChanged = function(testSelected) {
-		console.log(testSelected);
 		$scope.testName = testSelected;
 		removeTest(testSelected);
 	};
@@ -391,6 +386,7 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 .controller('manageStudentsCtrl', function($scope, $state, $http) {
 
 	$scope.programName = "Select A Program";
+	$scope.suitesArray = [];
 	$scope.studentArray = [];
 	$scope.answerArray = [];
 	$scope.schoolPrograms = [];
@@ -416,6 +412,7 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 		$http.get('/Student')
 		.success(function(response) {
 			$scope.studentArray = response;
+			console.log('$scope.studentArray');
 			console.log($scope.studentArray);
 			getStudentResults();
 		})
@@ -424,23 +421,50 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 		});
 	}
 
-	getUser();
-	getStudents();
+	function getSuites() {
+		$http.get('/Suite')
+		.success(function(response) {
+			$scope.suitesArray = response;
+			console.log('$scope.suitesArray');
+			console.log($scope.suitesArray);
+			// console.log($scope.suitesArray);
+			// console.log($scope.suitesArray[0].questions.length);
+		})
+		.error(function(err) {
+			console.log(err);
+		});
+	}
 
 	function getStudentResults() {
 		var test1 = 0;
 		var test2 = 0;
-		for(var key in $scope.studentArray) {
-			for(var result in $scope.studentArray[key].studentAnswers) {
-				//console.log($scope.studentArray[key].studentAnswers[result].correct);
-				if($scope.studentArray[key].studentAnswers[result].correct) {
-					total++;
-				}
-			}
-			console.log(total);
+		for(var x=0; x < $scope.studentArray.length; x++) {
+
+			var answerCount = _.countBy($scope.studentArray[x].studentAnswers, function(answer) {
+				return answer.suiteID;
+			});
+
+			$scope.studentArray[x].answerCount = answerCount;
 		}
 	}
 
+	getSuites();
+	getUser();
+	getStudents();
+
+	function isTestComplete(suite) {
+		suite =  suite.toString();
+		console.log($scope.suitesInProgram);
+		console.log($scope.studentArray);
+
+		if($scope.studentArray[0].answerCount[suite] >= $scope.suitesInProgram[suite].questions.length) {
+			console.log('Test Complete');
+		}
+		else {
+			console.log('Test Incomplete');
+		}
+	}
+	
 	function getPrograms() {
 		$http.get('/Program')
 		.success(function(response) {
@@ -457,11 +481,16 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 	}
 
 	function getSuitesInProgram(programSelected) {
-		for(var key in $scope.programArray) {
-			if(programSelected === $scope.programArray[key].name) {
-				$scope.suitesInProgram = $scope.programArray[key].suites;
-			}
-		}
+		$scope.suitesInProgram = _.filter($scope.suitesArray, function(suite) {
+			for(var i=0; i < suite.programs.length; i++) {
+				if(suite.programs[i].name === programSelected) {
+					return true;
+				}
+			} 
+			return false;
+		});
+		console.log('$scope.suitesInProgram');
+		console.log($scope.suitesInProgram);
 	}
 
 	$scope.changeName = function(programSelected) {
@@ -471,7 +500,6 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 
 		for(var key in $scope.studentArray) {
 			if($scope.studentArray[key].studentID.name === programSelected) {
-				console.log('Student '+$scope.studentArray[key].name+" is in this program");
 				$scope.studentsInProgram.push($scope.studentArray[key].name);
 			}
 		}
@@ -486,7 +514,6 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 	};
 
 	$scope.studentResults = function(studentName) {
-		console.log('Student '+studentName+' was chosen');
 		$state.go('studentResults',{id:studentName});
 	};
 
@@ -507,7 +534,6 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 	$scope.addProgram = function(programAdded) {
 		$scope.programs.push(programAdded);
 		$scope.programAdded = '';
-		console.log($scope.programs);
 		$scope.confirmMsg = '';
 	};
 
@@ -515,8 +541,6 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 		for(var key in $scope.programs) {
 			$http.post('/Program', { name: $scope.programs[key], programID: $scope.userID})
 			.success(function(res) {
-				console.log(res);
-				console.log('Posted program model');
 				$scope.programs = [];
 				$scope.confirmMsg = 'Programs Updated';
 			})
@@ -548,7 +572,31 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 	});
 })
 .controller('addStudentCtrl', function($scope) {
+	var studentObj = {
+		name: '',
+		email: '',
+		program: '',
+		loginKey: ''
+	};
+
 	$scope.programClick = function() {
 		console.log('click');
+	};
+
+	$scope.addStudent = function(name, email) {
+		studentObj.name = student.name;
+		studentObj.email = student.email;
+		console.log('add student clicked');
+		console.log(student);
+
+		if(validator.isNull(name)) {
+			$scope.nameErrorMsg = 'Please enter the student\'s name';
+		}
+		else if(name.length === 0) {
+			$scope.nameErrorMsg = 'Please enter the student\'s name';
+		} 
+		else {
+			studentObj.name = name;
+		}
 	};
 });
