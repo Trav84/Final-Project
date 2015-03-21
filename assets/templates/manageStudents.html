@@ -12,13 +12,10 @@
 			<th ng-repeat="suites in suitesInProgram">{{ suites.name }}</th>
 		</tr>
 		<tr ng-repeat="student in studentsInProgram">
-			<td class="student" ng-click="studentResults('Travis Czerw')"> {{ student }} </td>
+			<td class="student" ng-click="studentResults('Travis Czerw')"> {{ student.name }} </td>
 			<td ng-repeat="suite in suitesInProgram">
-				<i class="fa fa-check-circle-o">
-				<!-- <i class="fa fa-check-circle-o " ng-show="student.answerCount[suite.id] >= suite.questions.length"></i> <i class="fa fa-times-circle-o" ng-show="student.answerCount[suite.id] < suite.questions.length"></i> -->
-				<!-- {{suite.id.toString()}} ???? {{student.answerCount[suite.id.toString()]}} ???? {{suite.questions.length}} -->
-
-				{{ isTestComplete(suite.id) ? 'show' : 'hide' }}
+				<i ng=show="student[suite.id] === true" ng-hide="student[suite.id] === false" class="fa fa-check-circle-o"> </i>
+				<i ng-show="student[suite.id] === false" ng-hide="student[suite.id] === true" class="fa fa-times-circle-o" > </i> 
 			</td>
 		</tr>
 	</table>

@@ -412,8 +412,6 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 		$http.get('/Student')
 		.success(function(response) {
 			$scope.studentArray = response;
-			console.log('$scope.studentArray');
-			console.log($scope.studentArray);
 			getStudentResults();
 		})
 		.error(function(err) {
@@ -427,8 +425,6 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 			$scope.suitesArray = response;
 			console.log('$scope.suitesArray');
 			console.log($scope.suitesArray);
-			// console.log($scope.suitesArray);
-			// console.log($scope.suitesArray[0].questions.length);
 		})
 		.error(function(err) {
 			console.log(err);
@@ -452,16 +448,22 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 	getUser();
 	getStudents();
 
-	function isTestComplete(suite) {
-		suite =  suite.toString();
-		console.log($scope.suitesInProgram);
-		console.log($scope.studentArray);
+	function isTestComplete(suiteID) {
+		for(var i=0; i < $scope.studentsInProgram.length; i++) {
+			for(var x=1; x <= suiteID; x++) {
+				console.log($scope.studentsInProgram[i].name+' has answered '
+				+$scope.studentsInProgram[i].answerCount[x]+
+				' out of 5');
 
-		if($scope.studentArray[0].answerCount[suite] >= $scope.suitesInProgram[suite].questions.length) {
-			console.log('Test Complete');
-		}
-		else {
-			console.log('Test Incomplete');
+				//console.log($scope.studentsInProgram[i].answerCount[x]);
+
+				if($scope.studentsInProgram[i].answerCount[x] >= 5) {
+					$scope.studentsInProgram[i][x] = true;
+				}
+				else {
+					$scope.studentsInProgram[i][x] = false;
+				}
+			}
 		}
 	}
 	
@@ -500,9 +502,12 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 
 		for(var key in $scope.studentArray) {
 			if($scope.studentArray[key].studentID.name === programSelected) {
-				$scope.studentsInProgram.push($scope.studentArray[key].name);
+				$scope.studentsInProgram.push($scope.studentArray[key]);
 			}
 		}
+		console.log('$scope.stduentsInProgram');
+		console.log($scope.studentsInProgram);
+		isTestComplete($scope.suitesInProgram.length);
 
 		if($scope.studentsInProgram.length === 0) {
 			$scope.message = "No Students In Program";
@@ -620,6 +625,7 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 	};
 
 	$scope.addStudent = function(name, email, program) {
+		$scope.successMsg = '';
 
 		if(validator.isNull(name)) {
 			$scope.nameErrorMsg = 'Please enter the student\'s name';
@@ -653,14 +659,14 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 			$scope.programErrorMsg = '';
 		}
 
-		console.log(studentObj);
-
 		if(emailPass && namePass && programPass) {
 			studentObj.loginKey = studentObj.name+'key';
 
 			$http.post('/Student', studentObj)
 			.success(function(response) {
-				console.log(response);
+				$scope.successMsg = 'Student Succesfully Added';
+				$scope.studentName = '';
+				$scope.studentEmail = '';
 			})
 			.error(function(err) {
 
