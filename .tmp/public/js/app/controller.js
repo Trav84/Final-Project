@@ -11,9 +11,21 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 		});
 	};
 })
-.controller('studentLogInCtrl', function($scope, $state, $http, student) {
+.controller('studentLogInCtrl', function($scope, $state, $http, student, completeTest) {
 
 	$scope.studentLoginSubmit = function(key) {
+
+		completeTest = {
+			testOne : {
+				id: null,
+				complete: false
+			},
+			testTwo: {
+				id: null,
+				complete: false
+			}
+		}
+		console.log(completeTest);
 
 		$http.get('/Student?loginKey='+key)
 		.success(function(recieved) {
@@ -626,8 +638,14 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 		}
 		$scope.test1Total = (test/5)*100;
 		console.log($scope.test1Total);
+		if($scope.test1Totlal > 100) {
+			$scope.test1Total = 100;
+		}
 		resultArray.push($scope.test1Total);
 		$scope.test2Total = (test2/5)*100;
+		if($scope.test2Totlal > 100) {
+			$scope.test2Total = 100;
+		}
 		console.log($scope.test2Total);
 		resultArray.push($scope.test2Total);
 
