@@ -159,34 +159,27 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 	$scope.studentName = student.info.name;
 	$scope.studentProgram = student.info.studentID.name;
 	$scope.tests = [];
+	console.log(completeTest);
 
-	$http.get('/Suite')
-	.success(function(testData) {
-		if(!completeTest.testOne.noTestFinished) {
-			for(var key in testData) {
-				if(completeTest.testOne.id == testData[key].id) {
-					
+	$http.get('/Program?id='+student.info.studentID.id)
+	.success(function(response) {
+		for(var i=0;i < response.suites.length; i++) {
+			if(completeTest.testOne.complete) {
+				if(response.suites[i].id == completeTest.testOne.id) {
+					console.log('Cut out test 1');
+					response.suites.splice(i, 1);
 				}
-				else {
-					$scope.tests.push(testData[key]);
+			}
+			if(completeTest.testTwo.complete) {
+				if(response.suites[i].id == completeTest.testTwo.id) {
+					console.log('Cut out test 2');
+					response.suites.splice(i,1);
 				}
 			}
 		}
-		if(!completeTest.testTwo.noTestFinished) {
-			for(var key in testData) {
-				if(completeTest.testTwo.id == testData[key].id) {
-					
-				}
-				else {
-					$scope.tests.push(testData[key]);
-				}
-			}
-		}
-		else {
-			$scope.tests = testData;			
-		}
+		$scope.tests = response.suites;
 	})
-	.error(function(err){
+	.error(function(err) {
 		console.log(err);
 	});
 
@@ -258,10 +251,10 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 			console.log('No more questions. End of test');
 			console.log('Student got '+numberCorrect+' answers correct');
 			if(isTestOne) {
-				completeTest.testOne.noTestFinished = false;
+				completeTest.testOne.complete = true;
 			}
 			else if(!isTestOne) {
-				completeTest.testTwo.noTestFinished = false;
+				completeTest.testTwo.complete = true;
 			}
 			
 			$state.go('testEnd');

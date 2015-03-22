@@ -93,4 +93,11 @@ header {
 		text-align:left;
 		width:10%;
 	}
+
+	@media(min-width:992px){
+
+		h1 {
+			font-size:6.5em;
+		}
+	}
 }

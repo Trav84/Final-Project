@@ -6,11 +6,11 @@ angular.module('app.services', [])
 	return { 
 		testOne : {
 			id: null,
-			noTestFinished: true
+			complete: false
 		},
 		testTwo: {
 			id: null,
-			noTestFinished: true
+			complete: false
 		}
 	};
 })
