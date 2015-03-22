@@ -4,8 +4,14 @@ angular.module('app.services', [])
 })
 .factory('completeTest', function() {
 	return { 
-		id: null,
-		noTestFinished: true
+		testOne : {
+			id: null,
+			noTestFinished: true
+		},
+		testTwo: {
+			id: null,
+			noTestFinished: true
+		}
 	};
 })
 .factory('studentScore', function() {

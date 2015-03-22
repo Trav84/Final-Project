@@ -162,9 +162,22 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 
 	$http.get('/Suite')
 	.success(function(testData) {
-		if(!completeTest.noTestFinished) {
+		if(!completeTest.testOne.noTestFinished) {
 			for(var key in testData) {
-				if(completeTest.id !== testData[key].id) {
+				if(completeTest.testOne.id == testData[key].id) {
+					
+				}
+				else {
+					$scope.tests.push(testData[key]);
+				}
+			}
+		}
+		if(!completeTest.testTwo.noTestFinished) {
+			for(var key in testData) {
+				if(completeTest.testTwo.id == testData[key].id) {
+					
+				}
+				else {
 					$scope.tests.push(testData[key]);
 				}
 			}
@@ -186,9 +199,11 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 	var correctAnswer = null;
 	var position = 0;
 	var test = $stateParams.id;
+	console.log(test);
 	var question = 0;
 	var numberCorrect = 0;
 	var numberOfQuestions = 5;
+	var isTestOne = false;
 	var answerObject = {
 		questionID: '',
 		studentID: '',
@@ -197,7 +212,6 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 		suiteID: test
 	};
 	$scope.questionNum = 1;
-	console.log(completeTest);
 	
 	function getTestData(question) {
 		answerObject = {
@@ -214,8 +228,18 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 				console.log(testAndQuestions);
 				$scope.question = testAndQuestions.questions[question].title;
 				numberOfQuestions = testAndQuestions.questions.length;
-				completeTest.id = testAndQuestions.id;
-				answerObject.questionID = completeTest.id;
+				if(test == 1) {
+					console.log(testAndQuestions.id)
+					completeTest.testOne.id = testAndQuestions.id;
+					answerObject.questionID = testAndQuestions.id;
+					isTestOne = true;
+				}
+				else if (test == 2) {
+					console.log(testAndQuestions.id)
+					completeTest.testTwo.id = testAndQuestions.id;
+					answerObject.questionID = testAndQuestions.id;
+					isTestOne = false;
+				}
 
 				$http.get('/SuiteAnswers?SuiteQuestionID='+testAndQuestions.questions[question].id)
 					.success(function(answers) {
@@ -233,7 +257,13 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 		else {
 			console.log('No more questions. End of test');
 			console.log('Student got '+numberCorrect+' answers correct');
-			completeTest.noTestFinished = false;
+			if(isTestOne) {
+				completeTest.testOne.noTestFinished = false;
+			}
+			else if(!isTestOne) {
+				completeTest.testTwo.noTestFinished = false;
+			}
+			
 			$state.go('testEnd');
 		}
 	}
@@ -557,28 +587,45 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 	$scope.numberCorrect = 0;	
 	$scope.studentName = studentScore.name;
 	var answerArray = [];
-	$scope.testTotal = null;
+	var resultArray = [];
+	$scope.test1Total = null;
+	$scope.test2Total = null;
 	var test = 0;
+	var test2 = 0;
 
 	function calcScores() {
 		for(var i=0; i < answerArray.length; i++) {
-			if(answerArray[i].correct) {
-				test++;
+			if(answerArray[i].suiteID === 1) {
+				if(answerArray[i].correct) {
+					test++;
+				}
 			}
+			if(answerArray[i].suiteID === 2) {
+				if(answerArray[i].correct) {
+					test2++;
+				}
+			}
+			
 		}
-		$scope.testTotal = (test/5)*100;
-		console.log($scope.testTotal);
-		//$scope.testTotal = $scope.testTotal.toString();
-		//console.log($scope.testTotal);
+		$scope.test1Total = (test/5)*100;
+		console.log($scope.test1Total);
+		resultArray.push($scope.test1Total);
+		$scope.test2Total = (test2/5)*100;
+		console.log($scope.test2Total);
+		resultArray.push($scope.test2Total);
+
 		runAnimation();
 	}
 
 	function runAnimation() {
+		var i = 0;
 		var bar = $('.progress-bar');
 		$(function(){
 			$(bar).each(function(){
-				bar_width = $(this).attr('aria-valuenow');
-				$(this).width(bar_width + '%');
+				//bar_width = $(this).attr('aria-valuenow');
+				//$(this).width(bar_width + '%');
+				$(this).width(resultArray[i] + '%');
+				i++;
 			});
 		});
 	}
