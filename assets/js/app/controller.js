@@ -159,10 +159,16 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 	$scope.studentName = student.info.name;
 	$scope.studentProgram = student.info.studentID.name;
 	$scope.tests = [];
+	$scope.allTestsDone = false;
+	$scope.noTestsAssoc = false;
+	var numOfSuites = null;
 	console.log(completeTest);
 
 	$http.get('/Program?id='+student.info.studentID.id)
 	.success(function(response) {
+		console.log(response);
+		numOfSuites = response.suites.length;
+
 		for(var i=0;i < response.suites.length; i++) {
 			if(completeTest.testOne.complete) {
 				if(response.suites[i].id == completeTest.testOne.id) {
@@ -178,6 +184,24 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 			}
 		}
 		$scope.tests = response.suites;
+		if($scope.tests.length === 0) {
+			if(numOfSuites === 1) {
+				if(completeTest.testOne.complete || completeTest.testTwo.complete) {
+					console.log('Tests finished by student');
+					$scope.allTestsDone = true;
+				}
+			}
+			else if (numOfSuites === 2) {
+				if(completeTest.testOne.complete && completeTest.testTwo.complete) {
+					console.log('Tests finished by student');
+					$scope.allTestsDone = true;
+				}
+			}
+			else {
+				console.log('No tests associated with program yet!');
+				$scope.noTestsAssoc = true;
+			}
+		}
 	})
 	.error(function(err) {
 		console.log(err);
@@ -222,13 +246,13 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 				$scope.question = testAndQuestions.questions[question].title;
 				numberOfQuestions = testAndQuestions.questions.length;
 				if(test == 1) {
-					console.log(testAndQuestions.id)
+					console.log(testAndQuestions.id);
 					completeTest.testOne.id = testAndQuestions.id;
 					answerObject.questionID = testAndQuestions.id;
 					isTestOne = true;
 				}
 				else if (test == 2) {
-					console.log(testAndQuestions.id)
+					console.log(testAndQuestions.id);
 					completeTest.testTwo.id = testAndQuestions.id;
 					answerObject.questionID = testAndQuestions.id;
 					isTestOne = false;

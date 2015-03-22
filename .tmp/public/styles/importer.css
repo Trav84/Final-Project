@@ -279,6 +279,14 @@ header {
     /* IE6-9 */ }
   .student-dash .test-display:hover {
     color: white; }
+  .student-dash .warning {
+    margin-top: 1em;
+    font-size: 1.5em;
+    text-align: center;
+    color: #c9462c; }
+  .student-dash .success {
+    font-size: 1.5em;
+    text-align: center; }
   .student-dash a {
     color: black;
     text-decoration: none; }
