@@ -508,6 +508,7 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 	getStudents();
 
 	function isTestComplete(suiteID) {
+		suiteID = 2;
 		for(var i=0; i < $scope.studentsInProgram.length; i++) {
 			for(var x=1; x <= suiteID; x++) {
 				console.log($scope.studentsInProgram[i].name+' has answered '
@@ -627,16 +628,17 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 			if(answerArray[i].suiteID === 1) {
 				if(answerArray[i].correct) {
 					test++;
+					console.log('Added one to test 1');
 				}
 			}
 			if(answerArray[i].suiteID === 2) {
 				if(answerArray[i].correct) {
 					test2++;
+					console.log('Added one to test 2');
 				}
 			}
-			
 		}
-		if(test >= 5) {
+		if(answerArray.length >= 5) {
 			$scope.test1Total = (test/5)*100;
 			console.log($scope.test1Total);
 			if($scope.test1Total > 100) {
