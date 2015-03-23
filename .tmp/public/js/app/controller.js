@@ -562,7 +562,7 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 				$scope.studentsInProgram.push($scope.studentArray[key]);
 			}
 		}
-		console.log('$scope.stduentsInProgram');
+		console.log('$scope.studentsInProgram');
 		console.log($scope.studentsInProgram);
 		isTestComplete($scope.suitesInProgram.length);
 
@@ -636,20 +636,23 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 			}
 			
 		}
-		$scope.test1Total = (test/5)*100;
-		console.log($scope.test1Total);
-		if($scope.test1Totlal > 100) {
-			$scope.test1Total = 100;
-		}
-		resultArray.push($scope.test1Total);
-		$scope.test2Total = (test2/5)*100;
-		if($scope.test2Totlal > 100) {
-			$scope.test2Total = 100;
-		}
-		console.log($scope.test2Total);
-		resultArray.push($scope.test2Total);
+		if(test >= 5) {
+			$scope.test1Total = (test/5)*100;
+			console.log($scope.test1Total);
+			if($scope.test1Total > 100) {
+				$scope.test1Total = 100;
+			}
+			resultArray.push($scope.test1Total);
+			$scope.test2Total = (test2/5)*100;
+			if($scope.test2Total > 100) {
+				$scope.test2Total = 100;
+			}
+			console.log($scope.test2Total);
+			resultArray.push($scope.test2Total);
 
-		runAnimation();
+			runAnimation();
+		}
+		
 	}
 
 	function runAnimation() {
