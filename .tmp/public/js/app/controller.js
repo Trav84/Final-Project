@@ -482,8 +482,6 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 		$http.get('/Suite')
 		.success(function(response) {
 			$scope.suitesArray = response;
-			console.log('$scope.suitesArray');
-			console.log($scope.suitesArray);
 		})
 		.error(function(err) {
 			console.log(err);
@@ -549,8 +547,6 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 			} 
 			return false;
 		});
-		console.log('$scope.suitesInProgram');
-		console.log($scope.suitesInProgram);
 	}
 
 	$scope.changeName = function(programSelected) {

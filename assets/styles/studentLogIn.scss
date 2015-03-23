@@ -15,9 +15,10 @@
 	}
 
 	p {
-		font-size:1.4em;
+		font-size:1em;
 		text-indent: 50px;
-		line-height:1.6em;
+		line-height:1.4em;
+		margin-bottom:1em;
 	}
 
 	.login-area {
@@ -64,5 +65,17 @@
 
 	#noShadowBtn {
 		text-shadow:none;
+	}
+
+	@media(min-width:992px){
+
+		.student-login {
+			max-width:1000px;
+		}
+
+		p {
+			max-width: 950px;
+			font-size:1.2em;
+		}
 	}
 }

@@ -121,7 +121,6 @@ header {
   -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) inset, 0 1px 0 #FFF;
   -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) inset, 0 1px 0 #FFF;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) inset, 0 1px 0 #FFF;
-  position: absolute;
   content: "";
   left: -6px;
   right: -6px;
@@ -185,9 +184,10 @@ header {
     margin-top: 2em;
     margin-bottom: 0.5em; }
   .student-login p {
-    font-size: 1.4em;
+    font-size: 1em;
     text-indent: 50px;
-    line-height: 1.6em; }
+    line-height: 1.4em;
+    margin-bottom: 1em; }
   .student-login .login-area {
     margin: 1em auto;
     float: none;
@@ -220,6 +220,12 @@ header {
     box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset, 0 -1px 0 rgba(255, 255, 255, 0.1) inset, 0 4px 0 #338A94, 0 4px 2px rgba(0, 0, 0, 0.5); }
   .student-login #noShadowBtn {
     text-shadow: none; }
+  @media (min-width: 992px) {
+    .student-login .student-login {
+      max-width: 1000px; }
+    .student-login p {
+      max-width: 950px;
+      font-size: 1.2em; } }
 
 .school-register {
   margin: 0 auto;
@@ -548,7 +554,7 @@ header {
 .manage-tests .header {
   border-bottom: 1px solid black; }
   .manage-tests .header h1 {
-    margin-top: 1em;
+    margin-top: 0.5em;
     margin-bottom: 0.5em;
     text-align: center;
     font-size: 2em;
@@ -609,7 +615,10 @@ header {
   color: #c9462c;
   font-weight: 700; }
 .manage-tests #result {
-  background-color: #379AA4; }
+  color: black;
+  background-color: white; }
+.manage-tests #result:hover i {
+  color: #379AA4; }
 
 .manage-students {
   font-size: 16px; }

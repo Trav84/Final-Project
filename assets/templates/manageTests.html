@@ -15,13 +15,13 @@
 		<button class="orange" ng-click="buttonClick('Add')"> 
 			<i ng-hide="Add" class="fa fa-caret-right"></i> <i ng-show="Add" class="fa fa-caret-down"></i> Add Test
 		</button>
-		<button class="test" id="result" ng-repeat="test in retrievedTests" ng-click="addTest(test.id)" ng-show="Add"> {{ test.name }} </button>
+		<button class="test" id="result" ng-repeat="test in retrievedTests" ng-click="addTest(test.id)" ng-show="Add"> <i class="fa fa-pencil-square"></i> {{ test.name }} </button>
 		<button class="orange" ng-click="buttonClick('Remove')">
-			<i ng-hide="visible" class="fa fa-caret-right"></i> <i ng-show="visible" class="fa fa-caret-down"></i> Remove Test
+			<i ng-hide="Remove" class="fa fa-caret-right"></i> <i ng-show="Remove" class="fa fa-caret-down"></i> Remove Test
 		</button>
-		<button class="test" id="result" ng-repeat="test in programTests" ng-show="Remove"> {{ test.name }} </button>
+		<button class="test" id="result" ng-repeat="test in programTests" ng-show="Remove"> <i class="fa fa-pencil-square"></i> {{ test.name }} </button>
 		<button class="orange" ng-click="buttonClick('Create')"> 
-			<i ng-hide="visible" class="fa fa-caret-right"></i> <i ng-show="visible" class="fa fa-caret-down"></i> Create Custom Test 
+			<i ng-hide="Create" class="fa fa-caret-right"></i> <i ng-show="Create" class="fa fa-caret-down"></i> Create Custom Test 
 		</button>
 		<button class="test" id="result" ng-show="Create"> Coming Soon! </button>
 	</section>
