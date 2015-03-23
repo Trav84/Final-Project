@@ -15,17 +15,8 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 
 	$scope.studentLoginSubmit = function(key) {
 
-		completeTest = {
-			testOne : {
-				id: null,
-				complete: false
-			},
-			testTwo: {
-				id: null,
-				complete: false
-			}
-		}
-		console.log(completeTest);
+		completeTest.testOne.complete = false;
+		completeTest.testTwo.complete = false;
 
 		$http.get('/Student?loginKey='+key)
 		.success(function(recieved) {
@@ -284,8 +275,6 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 			});
 		}
 		else {
-			console.log('No more questions. End of test');
-			console.log('Student got '+numberCorrect+' answers correct');
 			if(isTestOne) {
 				completeTest.testOne.complete = true;
 			}
@@ -769,7 +758,7 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 				$scope.studentEmail = '';
 			})
 			.error(function(err) {
-
+				console.log(err);
 			});
 		}
 	};

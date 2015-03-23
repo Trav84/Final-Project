@@ -52,6 +52,8 @@
 		font-size:1.5em;
 		border-radius:5px;
 		color:black;
+		border: none;
+		box-shadow:1px 1px 1px black;
 	}
 
 	.orange {
@@ -86,6 +88,7 @@
 	#result {
 		color:black;
 		background-color:white;
+		box-shadow:1px 1px 1px 1px black;
 	}
 
 	#result:hover {
