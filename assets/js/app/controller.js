@@ -165,23 +165,19 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 	$scope.allTestsDone = false;
 	$scope.noTestsAssoc = false;
 	var numOfSuites = null;
-	console.log(completeTest);
 
 	$http.get('/Program?id='+student.info.studentID.id)
 	.success(function(response) {
-		console.log(response);
 		numOfSuites = response.suites.length;
 
 		for(var i=0;i < response.suites.length; i++) {
 			if(completeTest.testOne.complete) {
 				if(response.suites[i].id == completeTest.testOne.id) {
-					console.log('Cut out test 1');
 					response.suites.splice(i, 1);
 				}
 			}
 			if(completeTest.testTwo.complete) {
 				if(response.suites[i].id == completeTest.testTwo.id) {
-					console.log('Cut out test 2');
 					response.suites.splice(i,1);
 				}
 			}
@@ -190,18 +186,15 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 		if($scope.tests.length === 0) {
 			if(numOfSuites === 1) {
 				if(completeTest.testOne.complete || completeTest.testTwo.complete) {
-					console.log('Tests finished by student');
 					$scope.allTestsDone = true;
 				}
 			}
 			else if (numOfSuites === 2) {
 				if(completeTest.testOne.complete && completeTest.testTwo.complete) {
-					console.log('Tests finished by student');
 					$scope.allTestsDone = true;
 				}
 			}
 			else {
-				console.log('No tests associated with program yet!');
 				$scope.noTestsAssoc = true;
 			}
 		}
@@ -219,7 +212,6 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 	var correctAnswer = null;
 	var position = 0;
 	var test = $stateParams.id;
-	console.log(test);
 	var question = 0;
 	var numberCorrect = 0;
 	var numberOfQuestions = 5;
@@ -245,17 +237,14 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 			$http.get('/Suite?id='+test)
 			.success(function(testAndQuestions) {
 				$scope.title = testAndQuestions.name;
-				console.log(testAndQuestions);
 				$scope.question = testAndQuestions.questions[question].title;
 				numberOfQuestions = testAndQuestions.questions.length;
 				if(test == 1) {
-					console.log(testAndQuestions.id);
 					completeTest.testOne.id = testAndQuestions.id;
 					answerObject.questionID = testAndQuestions.id;
 					isTestOne = true;
 				}
 				else if (test == 2) {
-					console.log(testAndQuestions.id);
 					completeTest.testTwo.id = testAndQuestions.id;
 					answerObject.questionID = testAndQuestions.id;
 					isTestOne = false;
@@ -292,19 +281,16 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 
 		answerObject.studentID = student.info.id;
 		answerObject.answer = choice;
-		console.log(answerObject);
 
 		$scope.questionNum++;
 		if(choice === correctAnswer) {
-			console.log('Correct answer was selected');
 			question++;
 			numberCorrect++;	
 			answerObject.correct = true;
-			console.log(answerObject);
 
 			$http.post('/StudentAnswer', answerObject)
 			.success(function(res) {
-				console.log('Answer posted');
+				
 			})
 			.error(function(err) {
 				console.log(err);
@@ -313,11 +299,9 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 			getTestData(question);		
 		} 
 		else {
-			console.log('Wrong answer was selected');
 			answerObject.correct = false;
 			$http.post('/StudentAnswer', answerObject)
 			.success(function(res) {
-				console.log('Answer posted');
 			})
 			.error(function(err) {
 				console.log(err);
@@ -498,10 +482,6 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 		suiteID = 2;
 		for(var i=0; i < $scope.studentsInProgram.length; i++) {
 			for(var x=1; x <= suiteID; x++) {
-				console.log($scope.studentsInProgram[i].name+' has answered '
-				+$scope.studentsInProgram[i].answerCount[x]+
-				' out of 5');
-
 				if($scope.studentsInProgram[i].answerCount[x] >= 5) {
 					$scope.studentsInProgram[i][x] = true;
 				}
@@ -548,8 +528,7 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 				$scope.studentsInProgram.push($scope.studentArray[key]);
 			}
 		}
-		console.log('$scope.studentsInProgram');
-		console.log($scope.studentsInProgram);
+
 		isTestComplete($scope.suitesInProgram.length);
 
 		if($scope.studentsInProgram.length === 0) {
@@ -613,19 +592,17 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 			if(answerArray[i].suiteID === 1) {
 				if(answerArray[i].correct) {
 					test++;
-					console.log('Added one to test 1');
 				}
 			}
 			if(answerArray[i].suiteID === 2) {
 				if(answerArray[i].correct) {
 					test2++;
-					console.log('Added one to test 2');
 				}
 			}
 		}
 		if(answerArray.length >= 5) {
 			$scope.test1Total = (test/5)*100;
-			console.log($scope.test1Total);
+
 			if($scope.test1Total > 100) {
 				$scope.test1Total = 100;
 			}
@@ -634,7 +611,7 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 			if($scope.test2Total > 100) {
 				$scope.test2Total = 100;
 			}
-			console.log($scope.test2Total);
+
 			resultArray.push($scope.test2Total);
 
 			runAnimation();
@@ -658,7 +635,6 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 	$http.get('/Student?name='+$scope.studentName)
 	.success(function(response) {
 		answerArray = response[0].studentAnswers;
-		console.log(answerArray);
 		calcScores();
 	})
 	.error(function(err) {
@@ -710,7 +686,7 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 	getUser();
 
 	$scope.programClick = function() {
-		console.log('click');
+
 	};
 
 	$scope.addStudent = function(name, email, program) {
