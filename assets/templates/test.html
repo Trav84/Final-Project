@@ -1,7 +1,7 @@
 <section class="test">
 	<h1 ng-bind="title"> [Test Name] </h1>
 	<h2> <span> Question {{ questionNum}} </span>: {{question}}</h2>
-	<div class="choice-box">
+	<div class="choice-box col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
 		<div ng-repeat="choice in choices" class="col-xs-12 push_button blue" ng-click="choiceClick(choice.answer)"> {{ choice.displayText }} </div>
 	</div>
 </section>

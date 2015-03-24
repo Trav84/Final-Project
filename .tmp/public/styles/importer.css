@@ -156,6 +156,9 @@ header {
   background-image: -ms-linear-gradient(top, #3EACBA, #48C6D4);
   background-image: -o-linear-gradient(top, #3EACBA, #48C6D4);
   background-image: linear-gradient(top, #3EACBA, #48C6D4); }
+@media (min-width: 992px) {
+  .landing .button-area {
+    max-width: 800px; } }
 
 .school-login .register-button {
   margin-top: 2em; }
@@ -225,7 +228,7 @@ header {
       max-width: 1000px; }
     .student-login p {
       max-width: 950px;
-      font-size: 1.2em; } }
+      font-size: 1.4em; } }
 
 .school-register {
   margin: 0 auto;
@@ -304,10 +307,11 @@ header {
   .student-dash h3 {
     text-align: center;
     font-size: 1.5em;
-    margin-bottom: 2em; }
+    margin-bottom: 1.2em; }
   .student-dash p {
     text-indent: 50px;
     line-height: 1.6em;
+    font-size: 1.4em;
     float: none;
     margin: 0 auto; }
   .student-dash div {
@@ -334,8 +338,6 @@ header {
     color: #FF9900;
     text-shadow: 1px 1px 1px black;
     text-decoration: none; }
-  .test .choice-box {
-    margin: 1em 1em; }
   .test .option {
     border: 1px solid black;
     padding: 1em 1em;

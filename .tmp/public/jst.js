@@ -34,7 +34,7 @@ this["JST"]["assets/templates/landing.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<section class="landing">\n\t<h1> Welcome to Codify! </h1>\n\t\t<a class="col-xs-12 col-sm-6" ui-sref="studentLogIn"> <div class="push_button blue"> I\'m A Student </div> </a>\n\t\t<a class="col-xs-12 col-sm-6" ui-sref="schoolLogIn"> <div class="push_button blue"> I\'m A Code School </div> </a>\n</section>\n';
+__p += '<section class="landing">\n\t<h1> Welcome to Codify! </h1>\n\t\t<section class="button-area col-md-8 col-md-offset-2">\n\t\t\t<a class="col-xs-12 col-sm-6" ui-sref="studentLogIn"> <div class="push_button blue"> I\'m A Student </div> </a>\n\t\t\t<a class="col-xs-12 col-sm-6" ui-sref="schoolLogIn"> <div class="push_button blue"> I\'m A Code School </div> </a>\n\t\t</section>\n</section>\n';
 
 }
 return __p
@@ -104,7 +104,7 @@ this["JST"]["assets/templates/studentDashboard.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<section class="student-dash">\n\t<h2> Welcome <span> {{ studentName }} </span> </h2>\n\t<h3> A brand new student in <span> {{ studentProgram }} </span> </h3>\n\t<p ng-hide="allTestsDone" class="col-md-10 row"> You are here because you\'ve been accepted into your code school and are about to embark on a new journey. Congratulations! Your school has selected a set of simple assessment tests for you to complete so they can better understand the basic skill set you are bringing into class. This helps them tailor their cirriculum and course work to better suit the needs of you and your fellow classmates. Just click on a test below to get started. </p> \n\t<p ng-show="allTestsDone" class="col-md-10 row success"> You are all done! You have completed all the tests assigned to you. Good luck in your program! </p>\n\t<p ng-show="noTestsAssoc" class="col-md-10 row warning"> Woops! Your school has not selected any tests for you to take. </p>\n\t<div>\n\t\t<button ng-click="testClick(test.id)" class=" test-display col-xs-12 col-md-6 col-md-offset-3" ng-repeat="test in tests"> {{ test.name }} </button>\n\t</div>\n</section>';
+__p += '<section class="student-dash">\n\t<h2> Welcome <span> {{ studentName }} </span> </h2>\n\t<h3> A brand new student in <span> {{ studentProgram }} </span> </h3>\n\t<p ng-hide="allTestsDone" class="col-md-10 row"> Below are some assessment tests for you to complete so your school can better understand the basic skill set you are bringing into class. Just click on a test below to get started. </p> \n\t<p ng-show="allTestsDone" class="col-md-10 row success"> You are all done! You have completed all the tests assigned to you. Good luck in your program! </p>\n\t<p ng-show="noTestsAssoc" class="col-md-10 row warning"> Woops! Your school has not selected any tests for you to take. </p>\n\t<div>\n\t\t<button ng-click="testClick(test.id)" class=" test-display col-xs-12 col-md-6 col-md-offset-3" ng-repeat="test in tests"> {{ test.name }} </button>\n\t</div>\n</section>';
 
 }
 return __p
@@ -134,7 +134,7 @@ this["JST"]["assets/templates/test.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<section class="test">\n\t<h1 ng-bind="title"> [Test Name] </h1>\n\t<h2> <span> Question {{ questionNum}} </span>: {{question}}</h2>\n\t<div class="choice-box">\n\t\t<div ng-repeat="choice in choices" class="col-xs-12 push_button blue" ng-click="choiceClick(choice.answer)"> {{ choice.displayText }} </div>\n\t</div>\n</section>';
+__p += '<section class="test">\n\t<h1 ng-bind="title"> [Test Name] </h1>\n\t<h2> <span> Question {{ questionNum}} </span>: {{question}}</h2>\n\t<div class="choice-box col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">\n\t\t<div ng-repeat="choice in choices" class="col-xs-12 push_button blue" ng-click="choiceClick(choice.answer)"> {{ choice.displayText }} </div>\n\t</div>\n</section>';
 
 }
 return __p

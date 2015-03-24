@@ -91,4 +91,11 @@
 		background-image:-o-linear-gradient(top, #3EACBA, #48C6D4);
 		background-image:linear-gradient(top, #3EACBA, #48C6D4);
 	}
+
+	@media(min-width:992px){
+
+		.button-area {
+			max-width: 800px;
+		}
+	}
 }
