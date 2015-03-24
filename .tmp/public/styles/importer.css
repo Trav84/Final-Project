@@ -594,6 +594,7 @@ header {
   border: none;
   box-shadow: 1px 1px 1px black; }
 .manage-tests .orange {
+  width: 25%;
   background: #ffaf4b;
   /* Old browsers */
   background: -moz-linear-gradient(top, #ffaf4b 0%, #ff920a 100%);
