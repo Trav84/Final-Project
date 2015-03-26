@@ -513,6 +513,9 @@ header {
   background-size: contain;
   background-repeat: no-repeat;
   background-image: url("../images/anyone.png"); }
+@media (max-width: 768px) {
+  .code-schools nav {
+    text-align: center; } }
 
 .about h1 {
   font-size: 2em;

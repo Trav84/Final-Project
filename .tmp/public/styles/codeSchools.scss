@@ -80,4 +80,11 @@
 		background-repeat: no-repeat;
 		background-image: url('../images/anyone.png');
 	}
+
+	@media(max-width:768px){
+
+		nav {
+			text-align:center;
+		}
+	}
 }
