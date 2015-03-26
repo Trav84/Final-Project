@@ -95,6 +95,17 @@ header {
 		width:10%;
 	}
 
+	@media(min-width:768px) { 
+
+		h1 {
+			font-size: 3em;
+		}
+
+		a {
+			padding:1em 1em;
+		}
+	}
+
 	@media(min-width:992px){
 
 		h1 {

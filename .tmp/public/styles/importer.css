@@ -84,6 +84,11 @@ header {
   header li {
     text-align: left;
     width: 10%; }
+  @media (min-width: 768px) {
+    header h1 {
+      font-size: 3em; }
+    header a {
+      padding: 1em 1em; } }
   @media (min-width: 992px) {
     header h1 {
       font-size: 6.5em; } }
@@ -635,6 +640,9 @@ header {
   box-shadow: 1px 1px 1px 1px black; }
 .manage-tests #result:hover i {
   color: #379AA4; }
+@media (max-width: 768px) {
+  .manage-tests .orange {
+    width: 50%; } }
 
 .manage-students {
   font-size: 16px; }

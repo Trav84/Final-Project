@@ -97,4 +97,11 @@
 			color: #379AA4;
 		}
 	}
+
+	@media(max-width:768px) { 
+
+		.orange {
+			width:50%;
+		}
+	}
 }
