@@ -1,5 +1,10 @@
 .landing {
 
+	.button-area {
+		margin: 0 auto;
+		float: none;
+	}
+
 	h1 {
 		margin-top:1em;
 		text-align:center;
@@ -29,7 +34,6 @@
 	line-height:43px;
 	font-family:'Oswald', Helvetica;
 	display: block;
-	float:none;
 	}
 
 	.push_button:hover {
