@@ -16,7 +16,7 @@
 html, body {
   background-color: #e9e9e9;
   background-color: #FFF; }
-  html p, html h1, html h2, html h3, html span, body p, body h1, body h2, body h3, body span {
+  html p, html h1, html h2, html h3, html span, html a, body p, body h1, body h2, body h3, body span, body a {
     font-family: monospace;
     font-family: 'Roboto', sans-serif; }
 
@@ -120,7 +120,8 @@ header {
   text-decoration: none;
   line-height: 43px;
   font-family: 'Oswald', Helvetica;
-  display: block; }
+  display: block;
+  float: none; }
 .landing .push_button:hover {
   color: #FFF; }
 .landing .push_button:before {
