@@ -149,7 +149,7 @@ header {
   bottom: -5px;
   content: ""; }
 .landing .blue {
-  text-shadow: -1px -1px 0 #2C7982;
+  text-shadow: none;
   background-color: #32b7bb;
   border: 1px solid #379AA4;
   background-image: -webkit-linear-gradient(top, #48C6D4, #3EACBA);
@@ -530,7 +530,7 @@ header {
 .about p {
   text-indent: 50px;
   line-height: 1.4em;
-  margin: 1em 0; }
+  margin: 1em auto; }
 @media (min-width: 992px) {
   .about p {
     max-width: 940px; } }

@@ -70,7 +70,8 @@
 	}
 
 	.blue {
-		text-shadow:-1px -1px 0 #2C7982;
+		//text-shadow:-1px -1px 0 #2C7982;
+		text-shadow:none;
 		background-color: rgb(50,183,187);
 		border:1px solid #379AA4;
 		background-image:-webkit-linear-gradient(top, #48C6D4, #3EACBA);
