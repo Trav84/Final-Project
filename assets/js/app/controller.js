@@ -13,12 +13,14 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 })
 .controller('studentLogInCtrl', function($scope, $state, $http, student, completeTest) {
 
+	$scope.errorMsg = 'Log in validation has been disabled. You will be logged in as an example user.';
 	$scope.studentLoginSubmit = function(key) {
 
 		completeTest.testOne.complete = false;
 		completeTest.testTwo.complete = false;
 
-		$http.get('/Student?loginKey='+key)
+		
+		$http.get('/Student?loginKey=traviskey')
 		.success(function(recieved) {
 			if(recieved.length > 0) {
 				student.info = recieved[0];
@@ -32,38 +34,54 @@ angular.module('app.controllers', ['app.services', 'ui.router'])
 		.error(function(err) {
 			console.log(err);
 		});		
+
+		// $http.get('/Student?loginKey='+key)
+		// .success(function(recieved) {
+		// 	if(recieved.length > 0) {
+		// 		student.info = recieved[0];
+		// 		$state.go('studentDashboard');
+		// 	}
+		// 	else {
+		// 		$scope.errorMsg = 'Key is not valid.';
+		// 		$scope.uniqueKey = '';
+		// 	}
+		// })
+		// .error(function(err) {
+		// 	console.log(err);
+		// });		
 	};
 })
 .controller('schoolLogInCtrl', function($scope, $state, $http) {
 
 	$scope.email = '';
 	$scope.password = '';
+	$scope.loginErrorMsg = 'Login validation has been disabled. You will be logged in as an example user.'
 
 	$scope.schoolLogin = function(email, pass) {
 
 		var loginObject = {
-			identifier: '',
-			password: ''
+			identifier: 'iron@gmail.com',
+			password: 'ironyard'
 		};
 
-		if(validator.isNull(email)) {
-			$scope.emailErrorMsg = "Please enter an email";
-		}
-		else if(!validator.isEmail(email)) {
-			$scope.emailErrorMsg = "Email is not valid";
-		}
-		else {
-			$scope.emailErrorMsg = '';
-			loginObject.identifier = email;
-		}
+		// if(validator.isNull(email)) {
+		// 	$scope.emailErrorMsg = "Please enter an email";
+		// }
+		// else if(!validator.isEmail(email)) {
+		// 	$scope.emailErrorMsg = "Email is not valid";
+		// }
+		// else {
+		// 	$scope.emailErrorMsg = '';
+		// 	loginObject.identifier = email;
+		// }
 
-		if(validator.isNull(pass)) {
-			$scope.passErrorMsg = "Password is incorrect";
-		}
-		else {
-			$scope.passErrorMsg = '';
-			loginObject.password = pass;
-		}
+		// if(validator.isNull(pass)) {
+		// 	$scope.passErrorMsg = "Password is incorrect";
+		// }
+		// else {
+		// 	$scope.passErrorMsg = '';
+		// 	loginObject.password = pass;
+		// }
 
 		$http.post('/auth/local', loginObject)
 			.success(function(res) {
